@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.PrincipalController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="90.0" prefWidth="907.0" style="-fx-background-color: #001233;">
+               <children>
+                  <ImageView fx:id="imgCarRent" fitHeight="88.0" fitWidth="140.0" layoutY="2.0" onMouseClicked="#inicio" onMouseExited="#iconExited" onMouseMoved="#iconMoved" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/car5.png" />
+                     </image>
+                  </ImageView>
+                  <ButtonBar layoutX="105.0" layoutY="-1.0" prefHeight="91.0" prefWidth="800.0">
+                     <buttons>
+                        <Button fx:id="manageButton" mnemonicParsing="false" onMouseExited="#usersButtonExited" onMouseMoved="#usersButtonMoved" prefHeight="90.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Dashboard" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="HOME" size="1.2em" wrappingWidth="17.5" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="reportButton" mnemonicParsing="false" onMouseExited="#usersButtonExited" onMouseMoved="#usersButtonMoved" prefHeight="90.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Reports" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="PLUS" size="1.2em" wrappingWidth="14.678571701049805" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="manageButton1" mnemonicParsing="false" onMouseExited="#usersButtonExited" onMouseMoved="#usersButtonMoved" prefHeight="90.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Manage" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutButtonAction" onMouseExited="#logoutButtonExited" onMouseMoved="#logoutButtonMoved" prefHeight="76.0" prefWidth="88.0" style="-fx-background-color: #001233;" text="Log out" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="EXTERNAL_LINK" size="1.2em" wrappingWidth="20.5" />
+                           </graphic>
+                        </Button>
+                     </buttons>
+                  </ButtonBar>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="-7.0" layoutY="90.0" prefHeight="460.0" prefWidth="914.0" style="-fx-background-color: #ECECE7;">
+               <children>
+                  <TableView fx:id="usersTable" layoutX="237.0" prefHeight="462.0" prefWidth="677.0" visible="false">
+                    <columns>
+                      <TableColumn fx:id="usernameColumn" prefWidth="334.0" text="username" />
+                      <TableColumn fx:id="rolColumn" prefWidth="339.0" text="rol" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="carsTable" layoutX="237.0" prefHeight="462.0" prefWidth="677.0" visible="false">
+                     <columns>
+                        <TableColumn fx:id="plateColumn" prefWidth="138.0" text="plate" />
+                        <TableColumn fx:id="situationColumn" prefWidth="138.0" text="situation" />
+                        <TableColumn fx:id="colorColumn" prefWidth="133.0" text="color" />
+                        <TableColumn fx:id="kmColumn" prefWidth="122.0" text="km" />
+                        <TableColumn fx:id="modelColumn" prefWidth="145.0" text="model" />
+                     </columns>
+                  </TableView>
+                  <AnchorPane fx:id="anchorPaneCar" layoutX="11.0" prefHeight="462.0" prefWidth="226.0" style="-fx-background-color: #1757AB;" visible="false">
+                     <children>
+                        <Button layoutX="24.0" layoutY="25.0" mnemonicParsing="false" onAction="#insertCarButtonOnAction" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Insert Car" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="24.0" layoutY="74.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Update Car" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="24.0" layoutY="125.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Delete Car" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchorPaneUser" layoutX="11.0" prefHeight="461.0" prefWidth="226.0" style="-fx-background-color: #1757AB;" visible="false">
+                     <children>
+                        <Button fx:id="insertUserButton" layoutX="24.0" layoutY="25.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Insert User" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="24.0" layoutY="73.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Update User" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="24.0" layoutY="121.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Delete User" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="11.0" prefHeight="462.0" prefWidth="226.0" style="-fx-background-color: #1757AB;" visible="false">
+                     <children>
+                        <Button fx:id="usersButton" layoutX="21.0" layoutY="23.0" mnemonicParsing="false" onAction="#usersButtonOnAction" onMouseExited="#usersButtonExited" onMouseMoved="#usersButtonMoved" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Users" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="USERS" wrappingWidth="24.071428298950195" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="carsButton" layoutX="21.0" layoutY="72.0" mnemonicParsing="false" onAction="#carsButtonOnAction" onMouseExited="#carsButtonExited" onMouseMoved="#carsButtonMoved" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Cars" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="CAR" wrappingWidth="29.14285659790039" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="carsButton1" layoutX="21.0" layoutY="119.0" mnemonicParsing="false" onAction="#carsButtonOnAction" onMouseExited="#carsButtonExited" onMouseMoved="#carsButtonMoved" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Contracts" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="CAR" wrappingWidth="29.14285659790039" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="carsButton2" layoutX="21.0" layoutY="169.0" mnemonicParsing="false" onAction="#carsButtonOnAction" onMouseExited="#carsButtonExited" onMouseMoved="#carsButtonMoved" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: #001233;" text="Drivers" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="CAR" wrappingWidth="29.14285659790039" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <FontAwesomeIcon fill="#001233" iconName="USER" layoutX="41.0" layoutY="43.0" size="2.5em" text="" />
+                  <Label layoutX="75.0" layoutY="16.0" text="user" textFill="#001233">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="33.0" layoutY="62.0" prefHeight="343.0" prefWidth="863.0">
+                     <children>
+                        <AnchorPane layoutX="28.0" layoutY="28.0" prefHeight="164.0" prefWidth="240.0" style="-fx-background-color: #001233; -fx-background-radius: 10;">
+                           <children>
+                              <Label layoutX="33.0" layoutY="118.0" prefHeight="17.0" prefWidth="92.0" text="Awayment Car " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIcon fill="WHITE" iconName="CAR" layoutX="21.0" layoutY="32.0" size="1.7em" />
+                              <Label alignment="CENTER_RIGHT" layoutX="143.0" layoutY="109.0" prefHeight="35.0" prefWidth="69.0" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="31.0" layoutY="83.0" prefHeight="17.0" prefWidth="92.0" text="Awayment Car " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="141.0" layoutY="74.0" prefHeight="35.0" prefWidth="69.0" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <effect>
+                              <DropShadow height="26.93" radius="12.225" width="23.97" />
+                           </effect>
+                        </AnchorPane>
+                        <AnchorPane layoutX="594.0" layoutY="28.0" prefHeight="164.0" prefWidth="240.0" style="-fx-background-color: #001233; -fx-background-radius: 10;">
+                           <children>
+                              <Label layoutX="33.0" layoutY="118.0" prefHeight="17.0" prefWidth="92.0" text="Awayment Car " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIcon fill="WHITE" iconName="CAR" layoutX="21.0" layoutY="32.0" size="1.7em" />
+                              <Label alignment="CENTER_RIGHT" layoutX="143.0" layoutY="109.0" prefHeight="35.0" prefWidth="69.0" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="31.0" layoutY="83.0" prefHeight="17.0" prefWidth="92.0" text="Awayment Car " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="141.0" layoutY="74.0" prefHeight="35.0" prefWidth="69.0" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <effect>
+                              <DropShadow height="26.93" radius="12.225" width="23.97" />
+                           </effect>
+                        </AnchorPane>
+                        <AnchorPane layoutX="312.0" layoutY="28.0" prefHeight="164.0" prefWidth="240.0" style="-fx-background-color: #001233; -fx-background-radius: 10;">
+                           <children>
+                              <Label layoutX="33.0" layoutY="118.0" prefHeight="17.0" prefWidth="92.0" text="Awayment Car " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIcon fill="WHITE" iconName="CAR" layoutX="21.0" layoutY="32.0" size="1.7em" />
+                              <Label alignment="CENTER_RIGHT" layoutX="143.0" layoutY="109.0" prefHeight="35.0" prefWidth="69.0" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="31.0" layoutY="83.0" prefHeight="17.0" prefWidth="92.0" text="Awayment Car " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="141.0" layoutY="74.0" prefHeight="35.0" prefWidth="69.0" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <effect>
+                              <DropShadow height="26.93" radius="12.225" width="23.97" />
+                           </effect>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

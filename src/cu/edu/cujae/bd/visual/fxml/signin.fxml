@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.LoginController">
+   <left>
+      <AnchorPane prefHeight="500.0" prefWidth="256.0" style="-fx-background-color: #001233;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imgSignin" fitHeight="219.0" fitWidth="261.0" layoutX="-3.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/car5.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #ECECE7;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="userField" alignment="CENTER" layoutX="48.0" layoutY="180.0" prefHeight="29.0" prefWidth="256.0" promptText="username">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></TextField>
+            <PasswordField fx:id="passField" alignment="CENTER" layoutX="48.0" layoutY="236.0" prefHeight="29.0" prefWidth="256.0" promptText="password">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></PasswordField>
+            <Button fx:id="loginButton" layoutX="48.0" layoutY="376.0" mnemonicParsing="false" onAction="#loginButtonAction" onMouseExited="#loginButtonExited" onMouseMoved="#loginButtonMoved" prefHeight="29.0" prefWidth="256.0" style="-fx-background-color: #001233;" text="Sign in" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Label fx:id="loginMessage" alignment="CENTER" layoutX="27.0" layoutY="302.0" prefHeight="19.0" prefWidth="285.0" textFill="#f80a0a" visible="false">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <FontAwesomeIcon iconName="USERS" layoutX="133.0" layoutY="104.0" size="6em" />
+            <Hyperlink layoutX="108.0" layoutY="434.0" text="Login your Account ?" />
+            <FontAwesomeIcon fill="#bfbbbb" iconName="USER" layoutX="58.0" layoutY="200.0" size="1.5em" />
+            <FontAwesomeIcon fill="#bfbbbb" iconName="LOCK" layoutX="59.0" layoutY="256.0" size="1.5em" text="" />
+            <PasswordField fx:id="passField1" alignment="CENTER" layoutX="48.0" layoutY="288.0" prefHeight="29.0" prefWidth="256.0" promptText="confirm password">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </PasswordField>
+            <FontAwesomeIcon fill="#bfbbbb" iconName="LOCK" layoutX="59.0" layoutY="308.0" size="1.5em" text="" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
