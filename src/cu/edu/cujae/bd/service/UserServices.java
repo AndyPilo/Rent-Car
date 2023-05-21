@@ -95,7 +95,6 @@ public class UserServices {
 			preparedFunction.setString(3, Encription.getMd5(password)); // Encrypting password to save in database
 			preparedFunction.execute();
 
-			System.out.println( Encription.getMd5(password));
 			ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
 			
 			while (resultSet.next()) {
