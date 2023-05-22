@@ -3,6 +3,8 @@ package cu.edu.cujae.bd.visual;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import cu.edu.cujae.bd.visual.models.Model;
+import cu.edu.cujae.bd.visual.views.ViewFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +19,7 @@ public class Main extends Application{
 		launch(args);
 	}
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	/*public void start(Stage primaryStage) throws Exception {
 		stage = primaryStage;
 		Parent root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
 		primaryStage.setTitle("Login");
@@ -25,7 +27,12 @@ public class Main extends Application{
 		primaryStage.setResizable(false);
 		primaryStage.show();
 	
+	}*/
+
+	public void start(Stage stage) throws Exception {
+		Model.getInstanse().getViewFactory().showLoginWindow();
 	}
+
 	public void changeScene(String fxml) throws IOException{
 		Parent pane = FXMLLoader.load(getClass().getResource(fxml));
 		
