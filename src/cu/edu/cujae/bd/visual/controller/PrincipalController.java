@@ -180,13 +180,13 @@ public class PrincipalController implements Initializable{
 	}
 	
 	public void exitButtonOnAction(ActionEvent event) {
-		Main.getStage().close();
+		//Main.getStage().close();
 	}
 	
 	
 	public void logoutButtonAction(ActionEvent event) throws IOException {
-		Main main = new Main();
-		main.changeSceneTam("fxml/login.fxml",600,500);
+		/*Main main = new Main();
+		main.changeSceneTam("fxml/login.fxml",600,500);*/
 	}
 	
 	/*********************************             Effects              **************************************/
@@ -194,6 +194,7 @@ public class PrincipalController implements Initializable{
 	public void carsButtonMoved() {
 		Bloom bloom = new Bloom();
 		carsButton.setEffect(bloom);
+		
 	}
 	public void carsButtonExited() {
 		carsButton.setEffect(null);

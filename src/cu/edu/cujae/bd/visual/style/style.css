@@ -1,0 +1,21 @@
+
+.button{
+    -fx-background-color:  #001233;
+}
+
+.button:hover{
+    -fx-background-color: #000245;
+}
+
+
+.table-view .column-header,
+.table-view .column-header-background .filler{
+    -fx-cell-size: 20;
+    -fx-background-color:  #AB27A8;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill:  #c9c1c1;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}

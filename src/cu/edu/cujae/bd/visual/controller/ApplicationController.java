@@ -16,13 +16,10 @@ public class ApplicationController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
      
-
-        System.out.println(Model.getInstanse().getViewFactory().getSelectedMenu() + "aplication");
         Model.getInstanse().getViewFactory().getSelectedMenu().addListener((observableValue, oldVal, newVal) -> {       
             switch(newVal){
-                case "manage":
+                case MANAGE:
                      applicationId.setCenter(Model.getInstanse().getViewFactory().getManageView());
-                     System.out.println("magane en case");
                      break;
                 default:
                      applicationId.setCenter(Model.getInstanse().getViewFactory().getDashboard());

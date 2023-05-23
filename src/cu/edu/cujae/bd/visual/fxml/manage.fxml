@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #ECECE7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="490.0" layoutY="68.0" prefHeight="582.0" prefWidth="210.0" style="-fx-background-color: #74CEE9;">
+      <AnchorPane layoutY="-3.0" prefHeight="72.0" prefWidth="900.0" style="-fx-background-color: #001233;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="210.0" style="-fx-background-color: #74CEE9;" text="Contracts" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-            <Button layoutY="388.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="210.0" style="-fx-background-color: #74CEE9;" text="Models" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-            <Button layoutY="194.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="210.0" style="-fx-background-color: #74CEE9;" text="Tourist" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-            <Button layoutY="97.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="210.0" style="-fx-background-color: #74CEE9;" text="Cars" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-            <Button layoutY="291.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="210.0" style="-fx-background-color: #74CEE9;" text="Drivers" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-            <Button layoutY="485.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="210.0" style="-fx-background-color: #74CEE9;" text="Brands" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutY="-3.0" prefHeight="70.0" prefWidth="700.0" style="-fx-background-color: #ffffff;">
-         <children>
-            <Label alignment="CENTER" layoutX="11.0" layoutY="-1.0" prefHeight="70.0" prefWidth="144.0" text="Manage">
+            <Label alignment="CENTER" layoutX="11.0" layoutY="-1.0" prefHeight="70.0" prefWidth="144.0" text="Manage" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <FontAwesomeIcon iconName="BELL" layoutX="607.0" layoutY="40.0" size="1.5em" />
-            <FontAwesomeIcon iconName="GEAR" layoutX="652.0" layoutY="39.0" size="1.5em" />
+            <FontAwesomeIcon fill="WHITE" iconName="CLOSE" layoutX="854.0" layoutY="40.0" size="1.5em" />
+            <FontAwesomeIcon fill="WHITE" iconName="GEAR" layoutX="820.0" layoutY="41.0" size="1.5em" text="" />
          </children>
       </AnchorPane>
-      <TableView layoutY="205.0" prefHeight="445.0" prefWidth="490.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
-      <AnchorPane layoutY="68.0" prefHeight="138.0" prefWidth="490.0" style="-fx-background-color: #74CEE9;">
+      <Label layoutX="39.0" layoutY="142.0" prefHeight="25.0" prefWidth="823.0" style="-fx-background-color: #C0E3DC;" text="Options">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </Label>
+      <HBox alignment="CENTER" layoutX="40.0" layoutY="84.0" prefHeight="42.0" prefWidth="823.0" spacing="50.0">
          <children>
-            <TextField layoutX="52.0" layoutY="101.0" />
-            <Button layoutX="14.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0">
+            <Button mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #014B10;" text="Contracts" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #9C0205;" text="Cars" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #0153A7;" text="Tourists" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #E05C21;" text="Drivers" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <AnchorPane layoutX="39.0" layoutY="169.0" prefHeight="481.0" prefWidth="823.0">
+         <children>
+            <TableView layoutY="56.0" prefHeight="411.0" prefWidth="823.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
+            </TableView>
+            <TextField layoutX="36.0" layoutY="14.0" />
+            <FontAwesomeIcon iconName="SEARCH" layoutX="7.0" layoutY="31.0" size="1.3em" />
+            <Button layoutX="723.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #014B10;" text="Add Contract" textFill="WHITE">
                <graphic>
-                  <FontAwesomeIcon iconName="SEARCH" />
+                  <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
                </graphic>
             </Button>
          </children>

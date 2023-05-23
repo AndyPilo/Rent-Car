@@ -7,23 +7,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.MenuController">
    <children>
-      <HBox prefHeight="70.0" prefWidth="271.0" style="-fx-background-color: #819FD3;">
+      <HBox prefHeight="70.0" prefWidth="271.0" style="-fx-background-color: #9887FF;">
          <children>
             <Label alignment="CENTER" prefHeight="85.0" prefWidth="140.0" text="Menu" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
       </HBox>
       <VBox layoutY="70.0" prefHeight="270.0" prefWidth="270.0" style="-fx-background-color: #001233;">
          <children>
-            <Button fx:id="dashboardButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" text="Dashboard" textFill="#c9c1c1">
+            <Button fx:id="dashboardButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" stylesheets="@../style/style.css" text="Dashboard" textFill="#c9c1c1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -34,7 +33,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="reportsButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" text="Reports" textFill="#c9c1c1">
+            <Button fx:id="reportsButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" stylesheets="@../style/style.css" text="Reports" textFill="#c9c1c1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -45,7 +44,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="manageButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" text="Manage" textFill="#c9c1c1">
+            <Button fx:id="manageButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" stylesheets="@../style/style.css" text="Manage" textFill="#c9c1c1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -56,7 +55,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="usersButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" text="Users" textFill="#c9c1c1">
+            <Button fx:id="usersButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" stylesheets="@../style/style.css" text="Users" textFill="#c9c1c1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -67,22 +66,11 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <HBox prefHeight="50.0" prefWidth="270.0">
-               <padding>
-                  <Insets top="25.0" />
-               </padding>
-               <children>
-                  <Line endX="169.2928924560547" endY="1.6033649444580078E-5" startX="-100.0" stroke="#819fd3" />
-               </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </HBox>
          </children>
       </VBox>
       <AnchorPane layoutY="340.0" prefHeight="310.0" prefWidth="271.0" style="-fx-background-color: #001233;">
          <children>
-            <Button layoutY="254.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="270.0" style="-fx-background-color: #001233;" text="Logout" textFill="#c9c1c1">
+            <Button fx:id="logoutButton" layoutY="254.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="270.0" style="-fx-background-color: #001233;" text="Logout" textFill="#c9c1c1">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
