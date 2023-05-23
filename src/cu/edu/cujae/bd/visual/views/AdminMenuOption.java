@@ -3,6 +3,10 @@ package cu.edu.cujae.bd.visual.views;
 public enum AdminMenuOption {
     DASHBOARD,
     REPORTS,
+    USERS,
     MANAGE,
-    USERS
+    CONTRACTS,
+    CARS,
+    TOURIST,
+    DRIVER
 }

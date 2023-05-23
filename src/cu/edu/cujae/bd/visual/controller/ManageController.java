@@ -2,8 +2,8 @@ package cu.edu.cujae.bd.visual.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.fxml.Initializable;
+
 
 public class ManageController implements Initializable{
 
@@ -12,8 +12,7 @@ public class ManageController implements Initializable{
        
     }
 
-    public void onContract(){
-        
-    }
+
+   
     
 }

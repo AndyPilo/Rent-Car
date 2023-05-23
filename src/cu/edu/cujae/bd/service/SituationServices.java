@@ -5,7 +5,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import cu.edu.cujae.bd.dto.ModelDto;
 import cu.edu.cujae.bd.dto.SituationDto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class SituationServices {
     
@@ -34,6 +37,30 @@ public class SituationServices {
 		connection.close();
 		
 		return situation;
+	}
+
+	public ObservableList<SituationDto> getAllSituation() throws SQLException {
+		ObservableList<SituationDto> lista = FXCollections.observableArrayList();
+		String function = "{?= call list_situation()}";
+		Connection connection = ServicesLocator.getConnection();
+		connection.setAutoCommit(false);
+		
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.registerOutParameter(1,java.sql.Types.OTHER);
+		preparedFunction.execute();
+		
+		ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
+		
+		while(resultSet.next()){	
+			lista.add(new SituationDto(resultSet.getInt(1),
+										resultSet.getString(2)));
+		}
+		
+		resultSet.close();
+		preparedFunction.close();
+		connection.close();
+		
+		return lista;
 	}
 
 }

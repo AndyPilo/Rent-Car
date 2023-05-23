@@ -18,12 +18,17 @@ public class ApplicationController implements Initializable{
      
         Model.getInstanse().getViewFactory().getSelectedMenu().addListener((observableValue, oldVal, newVal) -> {       
             switch(newVal){
-                case MANAGE:
-                     applicationId.setCenter(Model.getInstanse().getViewFactory().getManageView());
-                     break;
+                case CONTRACTS:
+                    applicationId.setCenter(Model.getInstanse().getViewFactory().getContractView());
+                    System.out.println(Model.getInstanse().getViewFactory().getSelectedMenu());
+                    break;
+                case CARS:
+                    applicationId.setCenter(Model.getInstanse().getViewFactory().getCarView());
+                    System.out.println(Model.getInstanse().getViewFactory().getSelectedMenu() + "En el case");
+                    break;
                 default:
-                     applicationId.setCenter(Model.getInstanse().getViewFactory().getDashboard());
-                     break;
+                    applicationId.setCenter(Model.getInstanse().getViewFactory().getDashboard());
+                    break;
             }
         
         });

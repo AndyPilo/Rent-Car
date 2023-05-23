@@ -3,8 +3,6 @@ package cu.edu.cujae.bd.visual.views;
 import cu.edu.cujae.bd.visual.controller.LoginController;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
@@ -19,10 +17,11 @@ public class ViewFactory {
 
     //MENU
     private AnchorPane dashboardView;
-    private AnchorPane manageView;
+    //private AnchorPane manageView;
 
     //MANAGE MENU
     private AnchorPane contractView;
+    private AnchorPane carView;
 
     //POSiTION OF THE APPLICATION
     private double xOffSet = 0;
@@ -47,7 +46,7 @@ public class ViewFactory {
         return dashboardView;
     }
 
-    public AnchorPane getManageView(){
+    /*public AnchorPane getManageView(){
         if(manageView == null){
             try{
             manageView = new FXMLLoader(getClass().getResource("../fxml/manage.fxml")).load();
@@ -56,7 +55,7 @@ public class ViewFactory {
             }         
         }
         return manageView;
-    }
+    }*/
 
     public AnchorPane getContractView(){
         if(contractView == null){
@@ -67,6 +66,18 @@ public class ViewFactory {
             }
         }
         return contractView;
+    }
+
+    public AnchorPane getCarView(){
+        if(carView == null){
+            try{
+                carView = new FXMLLoader(getClass().getResource("../fxml/car.fxml")).load();  
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        System.out.println(selectedMenu);
+        return carView;
     }
 
     public void showLoginWindow(){

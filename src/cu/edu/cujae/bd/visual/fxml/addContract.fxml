@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -10,6 +11,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 
@@ -22,59 +25,89 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <FontAwesomeIcon fill="WHITE" iconName="CLOSE" layoutX="854.0" layoutY="40.0" size="1.5em" />
-            <FontAwesomeIcon fill="WHITE" iconName="GEAR" layoutX="820.0" layoutY="41.0" size="1.5em" text="" />
+            <FontAwesomeIcon fill="WHITE" iconName="CLOSE" layoutX="841.0" layoutY="46.0" size="2em" styleClass="close" text="" wrappingWidth="18.85714340209961" />
          </children>
       </AnchorPane>
-      <Label layoutX="34.0" layoutY="92.0" prefHeight="17.0" prefWidth="253.0" text="Select the tourist who requests a car :">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <ChoiceBox layoutX="34.0" layoutY="130.0" prefHeight="25.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" />
-      <CheckBox layoutX="34.0" layoutY="263.0" mnemonicParsing="false" text="Driver" />
-      <ChoiceBox disable="true" layoutX="34.0" layoutY="299.0" prefHeight="25.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" />
-      <Label layoutX="34.0" layoutY="174.0" prefHeight="21.0" prefWidth="285.0" text="Select the way the contract will be paid :">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <ChoiceBox layoutX="34.0" layoutY="213.0" prefHeight="25.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" />
-      <Label layoutX="419.0" layoutY="91.0" prefHeight="17.0" prefWidth="171.0" text="Select the contract bill :">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Spinner layoutX="419.0" layoutY="129.0" prefHeight="25.0" prefWidth="218.0" />
-      <Label layoutX="420.0" layoutY="169.0" prefHeight="32.0" prefWidth="341.0" text="Select the special bill for the days of extension :">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Spinner layoutX="419.0" layoutY="213.0" prefHeight="25.0" prefWidth="218.0" />
-      <DatePicker layoutX="419.0" layoutY="299.0" prefHeight="25.0" prefWidth="218.0" />
-      <Label layoutX="420.0" layoutY="261.0" prefHeight="21.0" prefWidth="232.0" text="Select the date the contract ends :">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Button layoutX="771.0" layoutY="601.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #014B10;" text="Rent" textFill="WHITE">
-         <graphic>
-            <FontAwesomeIcon fill="WHITE" iconName="PLUS" wrappingWidth="17.428571701049805" />
-         </graphic>
-      </Button>
-      <Button layoutX="644.0" layoutY="601.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #014B10;" text="Back" textFill="WHITE" />
-      <Button layoutX="34.0" layoutY="601.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #014B10;" text="Refresh" textFill="WHITE" />
-      <TableView layoutX="34.0" layoutY="371.0" prefHeight="200.0" prefWidth="832.0">
+      <AnchorPane layoutX="7.0" layoutY="512.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button fx:id="rentButton" layoutX="752.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #014B10;" text="Rent" textFill="WHITE" visible="false" />
+            <Button fx:id="backButton" layoutX="110.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: #014B10;" text="Back" textFill="WHITE" visible="false" />
+            <Button fx:id="refreshButton" layoutX="604.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #014B10;" text="Refresh" textFill="WHITE" visible="false" />
+            <Button fx:id="addContractButton" layoutX="752.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #014B10;" text="Add Contract" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="40.0" layoutY="100.0" prefHeight="420.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox prefHeight="508.0" prefWidth="453.0" spacing="30.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="253.0" text="Select the tourist who requests a car :">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox prefHeight="25.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" />
+                        <Label prefHeight="17.0" prefWidth="253.0" text="Select the tourist who requests a car :">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox prefHeight="25.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" />
+                        <Label prefHeight="21.0" prefWidth="285.0" text="Select the way the contract will be paid :">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox prefHeight="25.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" />
+                        <CheckBox mnemonicParsing="false" text="Driver" />
+                        <ChoiceBox disable="true" prefHeight="25.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="110.0" top="50.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="508.0" prefWidth="447.0" spacing="30.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="171.0" text="Select the contract bill :">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Spinner prefHeight="25.0" prefWidth="218.0" />
+                        <Label prefHeight="32.0" prefWidth="341.0" text="Select the special bill for the days of extension :">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Spinner prefHeight="25.0" prefWidth="218.0" />
+                        <Label prefHeight="21.0" prefWidth="232.0" text="Select the date the contract ends :">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <DatePicker prefHeight="25.0" prefWidth="218.0" />
+                     </children>
+                     <padding>
+                        <Insets left="110.0" top="50.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <TableView layoutX="12.0" layoutY="80.0" prefHeight="554.0" prefWidth="870.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <Label layoutX="34.0" layoutY="341.0" prefHeight="21.0" prefWidth="285.0" text="Available Cars">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

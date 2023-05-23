@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import cu.edu.cujae.bd.dto.BrandDto;
 import cu.edu.cujae.bd.dto.ModelDto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class ModelServices {
     public void insertModel(ModelDto model) throws SQLException{
@@ -22,6 +24,7 @@ public class ModelServices {
         preparedFunction.close();
         connection.close();
     }
+
     public void updateModel(ModelDto model) throws SQLException{
         String function ="{call update_model(?,?)}";
 		
@@ -36,6 +39,7 @@ public class ModelServices {
         preparedFunction.close();
         connection.close();
     }
+
     public void deleteModel(int modelId) throws SQLException{
         String function ="{call delete_model(?)}";
 		
@@ -76,6 +80,32 @@ public class ModelServices {
 		connection.close();
 		
 		return model;
+	}
+
+	public ObservableList<ModelDto> getAllModels() throws SQLException {
+		ObservableList<ModelDto> lista = FXCollections.observableArrayList();
+		String function = "{?= call list_models()}";
+		Connection connection = ServicesLocator.getConnection();
+		connection.setAutoCommit(false);
+		
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.registerOutParameter(1,java.sql.Types.OTHER);
+		preparedFunction.execute();
+		
+		ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
+		
+		while(resultSet.next()){	
+			BrandDto brand = ServicesLocator.getBrandServices().getBrandById(resultSet.getInt(3));
+			lista.add(new ModelDto(resultSet.getInt(1),
+									resultSet.getString(2),
+									brand));
+		}
+		
+		resultSet.close();
+		preparedFunction.close();
+		connection.close();
+		
+		return lista;
 	}
     
 }

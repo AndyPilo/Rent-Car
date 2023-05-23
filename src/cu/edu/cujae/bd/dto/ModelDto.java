@@ -10,6 +10,13 @@ public class ModelDto {
 		this.nameModel = nameModel;
 		this.brand = brand;
 	}
+
+	public ModelDto(int codModel,String nameModel, BrandDto brand) {
+		super();
+		this.nameModel = nameModel;
+		this.brand = brand;
+		this.codModel = codModel;
+	}
 	
 	public int getCodModel() {
 		return codModel;

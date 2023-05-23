@@ -1,0 +1,6 @@
+
+.slideItem:hover{
+    -fx-background-color:  #9887FF;
+    -fx-border-color: white;
+    -fx-border-width: 0px 0px 0px 3px;
+}

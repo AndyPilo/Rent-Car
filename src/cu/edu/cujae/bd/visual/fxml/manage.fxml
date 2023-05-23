@@ -34,22 +34,22 @@
       </Label>
       <HBox alignment="CENTER" layoutX="40.0" layoutY="84.0" prefHeight="42.0" prefWidth="823.0" spacing="50.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #014B10;" text="Contracts" textFill="WHITE">
+            <Button fx:id="contractsButton" mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #014B10;" text="Contracts" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #9C0205;" text="Cars" textFill="WHITE">
+            <Button fx:id="carsButton" mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #9C0205;" text="Cars" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #0153A7;" text="Tourists" textFill="WHITE">
+            <Button fx:id="touristsButton" mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #0153A7;" text="Tourists" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #E05C21;" text="Drivers" textFill="WHITE">
+            <Button fx:id="driversButton" mnemonicParsing="false" prefHeight="174.0" prefWidth="131.0" style="-fx-background-color: #E05C21;" text="Drivers" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -58,15 +58,15 @@
       </HBox>
       <AnchorPane layoutX="39.0" layoutY="169.0" prefHeight="481.0" prefWidth="823.0">
          <children>
-            <TableView layoutY="56.0" prefHeight="411.0" prefWidth="823.0">
+            <TableView fx:id="tableContracts" layoutY="56.0" prefHeight="411.0" prefWidth="823.0" visible="false">
                <columns>
                   <TableColumn prefWidth="75.0" text="C1" />
                   <TableColumn prefWidth="75.0" text="C2" />
                </columns>
             </TableView>
-            <TextField layoutX="36.0" layoutY="14.0" />
-            <FontAwesomeIcon iconName="SEARCH" layoutX="7.0" layoutY="31.0" size="1.3em" />
-            <Button layoutX="723.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #014B10;" text="Add Contract" textFill="WHITE">
+            <TextField fx:id="searchContracts" layoutX="36.0" layoutY="14.0" visible="false" />
+            <FontAwesomeIcon fx:id="iconSearch" iconName="SEARCH" layoutX="7.0" layoutY="31.0" size="1.3em" visible="false" />
+            <Button fx:id="addContract" layoutX="723.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onAddContract" style="-fx-background-color: #014B10;" text="Add Contract" textFill="WHITE" visible="false">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
                </graphic>
