@@ -20,11 +20,15 @@ public class ApplicationController implements Initializable{
             switch(newVal){
                 case CONTRACTS:
                     applicationId.setCenter(Model.getInstanse().getViewFactory().getContractView());
-                    System.out.println(Model.getInstanse().getViewFactory().getSelectedMenu());
                     break;
                 case CARS:
                     applicationId.setCenter(Model.getInstanse().getViewFactory().getCarView());
-                    System.out.println(Model.getInstanse().getViewFactory().getSelectedMenu() + "En el case");
+                    break;
+                case TOURIST:
+                    applicationId.setCenter(Model.getInstanse().getViewFactory().getTouristView());
+                    break;
+                case DRIVER:
+                    applicationId.setCenter(Model.getInstanse().getViewFactory().getDriverView());
                     break;
                 default:
                     applicationId.setCenter(Model.getInstanse().getViewFactory().getDashboard());

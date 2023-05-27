@@ -49,6 +49,9 @@ public class MenuController implements Initializable{
         manageButton.setOnAction(event -> onManage());
         contractButton.setOnAction(event -> onContract());
         carButton.setOnAction(event -> onCar());
+        touristButton.setOnAction(event -> onTourist());
+        driverButton.setOnAction(event -> onDriver());
+
    }
 
 
@@ -70,19 +73,19 @@ public class MenuController implements Initializable{
    }
 
    public void onContract(){
-        Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.CONTRACTS);
+          Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.CONTRACTS);
    }
 
    public void onCar(){
-        Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.CARS);
+          Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.CARS);
    }
 
    public void onTourist(){
-     
+          Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.TOURIST);
    }
 
    public void onDriver(){
-     
+          Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.DRIVER);
    }
   
 

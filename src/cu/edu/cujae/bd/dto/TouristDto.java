@@ -24,6 +24,20 @@ public class TouristDto {
 		this.country = country;
 	}
 
+	public TouristDto(int codTourist,String passport, String name, String last_name, int age,
+			char sex, int contact, CountryDto country) {
+		super();
+	
+		this.passport = passport;
+		this.name = name;
+		this.lastName = last_name;
+		this.age = age;
+		this.sex = sex;
+		this.contact = contact;
+		this.country = country;
+		this.codTourist = codTourist;
+	}
+
 	
 	/********************     Getters   And    Setters      **********************/
 

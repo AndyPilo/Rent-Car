@@ -22,6 +22,8 @@ public class ViewFactory {
     //MANAGE MENU
     private AnchorPane contractView;
     private AnchorPane carView;
+    private AnchorPane touristView;
+    private AnchorPane driverView;
 
     //POSiTION OF THE APPLICATION
     private double xOffSet = 0;
@@ -78,6 +80,30 @@ public class ViewFactory {
         }
         System.out.println(selectedMenu);
         return carView;
+    }
+
+    public AnchorPane getTouristView(){
+        if(touristView == null){
+            try{
+                touristView = new FXMLLoader(getClass().getResource("../fxml/tourist.fxml")).load();  
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        System.out.println(selectedMenu);
+        return touristView;
+    }
+
+    public AnchorPane getDriverView(){
+        if(driverView == null){
+            try{
+                driverView = new FXMLLoader(getClass().getResource("../fxml/driver.fxml")).load();  
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        System.out.println(selectedMenu);
+        return driverView;
     }
 
     public void showLoginWindow(){

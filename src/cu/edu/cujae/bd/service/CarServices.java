@@ -49,7 +49,7 @@ public class CarServices {
     }
     
     public void deleteCar(int carId) throws SQLException{
-    	String function = "{call update_car(?)}";
+    	String function = "{call delete_car(?)}";
 		
 		Connection connection = ServicesLocator.getConnection();		
 		CallableStatement preparedFunction = connection.prepareCall(function);

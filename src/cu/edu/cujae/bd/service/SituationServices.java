@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import cu.edu.cujae.bd.dto.ModelDto;
 import cu.edu.cujae.bd.dto.SituationDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

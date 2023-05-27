@@ -11,7 +11,6 @@ import cu.edu.cujae.bd.dto.RolDto;
 import cu.edu.cujae.bd.dto.SituationDto;
 import cu.edu.cujae.bd.dto.UserDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
-import cu.edu.cujae.bd.visual.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
