@@ -40,7 +40,9 @@ public class SituationServices {
 
 	public ObservableList<SituationDto> getAllSituation() throws SQLException {
 		ObservableList<SituationDto> lista = FXCollections.observableArrayList();
+
 		String function = "{?= call list_situation()}";
+		System.out.println("Conexion de Situation");
 		Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
 		

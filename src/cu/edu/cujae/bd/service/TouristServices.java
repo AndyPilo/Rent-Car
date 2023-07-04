@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 public class TouristServices {
 
 	private int touristId;
+	private CountryServices countryServices = ServicesLocator.getCountryServices();
 
 	public TouristServices() {
 
@@ -69,6 +70,8 @@ public class TouristServices {
 
 	public ObservableList<TouristDto> getAllTourist() throws SQLException {
 		ObservableList<TouristDto> lista = FXCollections.observableArrayList();
+		ObservableList<CountryDto> countrys = countryServices.getAllCountry();
+
 		String function = "{?= call list_tourists()}";
 		Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
@@ -81,8 +84,14 @@ public class TouristServices {
 
 		while (resultSet.next()) {
 
-			CountryDto countryDto = ServicesLocator.getCountryServices()
-					.getCountryById(resultSet.getInt("cod_country"));
+			int codCountry = resultSet.getInt("cod_country");
+			CountryDto country = null;
+
+			for(int i = 0;i < countrys.size();i++){
+				if(codCountry == countrys.get(i).getCodCountry()){
+					country = countrys.get(i);
+				}
+			}
 			
 			lista.add(new TouristDto(resultSet.getInt("cod_tourist"),
 					resultSet.getString("passport"),
@@ -91,7 +100,7 @@ public class TouristServices {
 					resultSet.getInt("age"),
 					resultSet.getString("sex").charAt(0),
 					resultSet.getInt("contact"),
-					countryDto));
+					country));
 		}
 
 		resultSet.close();

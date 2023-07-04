@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import cu.edu.cujae.bd.dto.CarDto;
 import cu.edu.cujae.bd.dto.ModelDto;
@@ -12,6 +13,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class CarServices {
+
+	private ModelServices modelServices = ServicesLocator.getModelServices();
+	private SituationServices situationServices = ServicesLocator.getSituationServices();
 	
     public void insertCar(CarDto car) throws SQLException{
     	String function = "{call insert_car(?,?,?,?,?)}";
@@ -62,9 +66,13 @@ public class CarServices {
     }
     
     public ObservableList<CarDto> getAllCars() throws SQLException {
-		ObservableList<CarDto> lista = FXCollections.observableArrayList();
-		String function = "{?= call list_cars()}";
 		
+		ObservableList<CarDto> lista = FXCollections.observableArrayList();
+		ObservableList<ModelDto> models = modelServices.getAllModels();
+		ObservableList<SituationDto> situations = situationServices.getAllSituation();
+
+		String function = "{?= call list_cars()}";
+		System.out.println("Conexion de Car");
 		Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
 		
@@ -79,9 +87,21 @@ public class CarServices {
 			String color = resultSet.getString(4);
 			int km = resultSet.getInt(5);
 			int codModel = resultSet.getInt(3);
-			ModelDto model = ServicesLocator.getModelServices().getModelById(codModel);
+			ModelDto model = null;
 			int codSituation = resultSet.getInt(6);
-			SituationDto situation = ServicesLocator.getSituationServices().getSituationById(codSituation);
+			SituationDto situation = null;
+
+			for(int i = 0;i < models.size();i++){
+				if(codModel == models.get(i).getCodModel()){
+					 model = models.get(i);
+				}
+			}
+			for(int i = 0;i < situations.size();i++){
+				if(codSituation == situations.get(i).getCodSituation()){
+					situation = situations.get(i);
+				}
+			}
+
 			lista.add(new CarDto(codCar,plate,color,km,model,situation));
 		}
 

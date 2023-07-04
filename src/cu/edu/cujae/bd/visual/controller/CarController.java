@@ -266,23 +266,27 @@ public class CarController implements Initializable {
         kmField.setText("");
         modelMenu.setValue(null);
         situationMenu.setValue(null);
-        try {
-            rellenarTablaCar();
+             
             rellenarChoiceBoxModel();
             rellenarChoiceBoxSituation();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        configurarTablaCar();
-        configurarChoiceBoxModel();
-        configurarChoiceBoxSituation();
-        onRefreshButton();
+        
+        try {
+            configurarTablaCar();
+            rellenarTablaCar();
+            configurarChoiceBoxModel();
+            configurarChoiceBoxSituation();
+        } catch (SQLException e) {
+        
+            e.printStackTrace();
+        }
 
+        //Solo numeros en el campo de KM
         kmField.addEventFilter(KeyEvent.KEY_TYPED, event -> {
             if (!event.getCharacter().matches("\\d")) {
                 event.consume();

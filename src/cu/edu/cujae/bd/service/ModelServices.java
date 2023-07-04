@@ -11,6 +11,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class ModelServices {
+
+	private BrandServices brandServices = ServicesLocator.getBrandServices();
+
     public void insertModel(ModelDto model) throws SQLException{
         String function ="{call insert_model(?,?)}";
 		
@@ -84,7 +87,10 @@ public class ModelServices {
 
 	public ObservableList<ModelDto> getAllModels() throws SQLException {
 		ObservableList<ModelDto> lista = FXCollections.observableArrayList();
+		ObservableList<BrandDto> brands = brandServices.getAllBrand();
+
 		String function = "{?= call list_models()}";
+		System.out.println("Conexion de Model");
 		Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
 		
@@ -94,11 +100,17 @@ public class ModelServices {
 		
 		ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
 		
-		while(resultSet.next()){	
-			BrandDto brand = ServicesLocator.getBrandServices().getBrandById(resultSet.getInt(3));
-			lista.add(new ModelDto(resultSet.getInt(1),
-									resultSet.getString(2),
-									brand));
+		while(resultSet.next()){
+			int codBrand = resultSet.getInt(3);
+			BrandDto brand = null;
+
+			for(int i = 0;i < brands.size();i++){
+				if(codBrand == brands.get(i).getCodBrand()){
+					 brand = brands.get(i);
+				}
+			}
+
+			lista.add(new ModelDto(resultSet.getInt(1),resultSet.getString(2),brand));
 		}
 		
 		resultSet.close();

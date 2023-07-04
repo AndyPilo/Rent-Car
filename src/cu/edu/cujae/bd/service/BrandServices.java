@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import cu.edu.cujae.bd.dto.BrandDto;
+import cu.edu.cujae.bd.dto.CarDto;
+import cu.edu.cujae.bd.dto.SituationDto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class BrandServices {
 
@@ -39,6 +43,31 @@ public class BrandServices {
         preparedFunction.execute();     
         preparedFunction.close();
         connection.close();
+    }
+
+    public ObservableList<BrandDto> getAllBrand() throws SQLException{
+        ObservableList<BrandDto> lista = FXCollections.observableArrayList();
+		String function = "{?= call list_brands()}";
+
+        System.out.println("Conexion de Brand");
+        Connection connection = ServicesLocator.getConnection();
+		connection.setAutoCommit(false);
+		
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.registerOutParameter(1,java.sql.Types.OTHER);
+		preparedFunction.execute();	
+		ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
+
+        while(resultSet.next()){	
+			lista.add(new BrandDto(resultSet.getInt(1),
+                                   resultSet.getString(2)));
+		}
+		
+		resultSet.close();
+		preparedFunction.close();
+		connection.close();
+
+        return lista;
     }
     
     public BrandDto getBrandById(int brandId) throws SQLException{

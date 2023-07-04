@@ -4,8 +4,12 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Observable;
 
+import cu.edu.cujae.bd.dto.BrandDto;
 import cu.edu.cujae.bd.dto.CountryDto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class CountryServices {
 	
@@ -42,6 +46,32 @@ public class CountryServices {
 		
 		preparedFunction.close();
 		connection.close();	
+	}
+
+	public ObservableList<CountryDto> getAllCountry() throws SQLException{
+
+		ObservableList<CountryDto> lista = FXCollections.observableArrayList();
+		String function = "{?= call list_countrys()}";
+
+        System.out.println("Conexion de Country");
+        Connection connection = ServicesLocator.getConnection();
+		connection.setAutoCommit(false);
+		
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.registerOutParameter(1,java.sql.Types.OTHER);
+		preparedFunction.execute();	
+		ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
+
+        while(resultSet.next()){	
+			lista.add(new CountryDto(resultSet.getInt(1),
+                                   resultSet.getString(2)));
+		}
+		
+		resultSet.close();
+		preparedFunction.close();
+		connection.close();
+
+        return lista;
 	}
 	
 	public CountryDto getCountryById (int countryId) throws SQLException{

@@ -7,6 +7,10 @@ public class BrandDto {
 	public BrandDto(String nameBrand){
 		this.nameBrand = nameBrand;
 	}
+	public BrandDto(int codBrand,String nameBrand){
+		this.codBrand = codBrand;
+		this.nameBrand = nameBrand;
+	}
 
 	public int getCodBrand() {
 		return codBrand;
