@@ -25,7 +25,7 @@ public class ViewFactory {
     private AnchorPane touristView;
     private AnchorPane driverView;
 
-    //POSiTION OF THE APPLICATION
+    //POSITION OF THE APPLICATION
     private double xOffSet = 0;
     private double yOffSet = 0;
 

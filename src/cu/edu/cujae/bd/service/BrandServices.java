@@ -15,9 +15,7 @@ public class BrandServices {
         Connection connection = ServicesLocator.getConnection();
         CallableStatement preparedFunction = connection.prepareCall(function);
         preparedFunction.setString(1,brand.getNameBrand());
-
         preparedFunction.execute();
-
         preparedFunction.close();
         connection.close();
     }
@@ -28,9 +26,7 @@ public class BrandServices {
         CallableStatement preparedFunction = connection.prepareCall(function);
         preparedFunction.setInt(1,brand.getCodBrand());
         preparedFunction.setString(2, brand.getNameBrand());
-
-        preparedFunction.execute();
-        
+        preparedFunction.execute();       
         preparedFunction.close();
         connection.close();
     }
@@ -40,16 +36,13 @@ public class BrandServices {
         Connection connection = ServicesLocator.getConnection();
         CallableStatement preparedFunction = connection.prepareCall(function);
         preparedFunction.setInt(1,brandId);
-
-        preparedFunction.execute();
-        
+        preparedFunction.execute();     
         preparedFunction.close();
         connection.close();
     }
     
     public BrandDto getBrandById(int brandId) throws SQLException{
-		BrandDto brand = null;  
-		
+		BrandDto brand = null;  	
 		String function = "{?= call load_brand_by_id(?)}";
 		Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
@@ -61,9 +54,7 @@ public class BrandServices {
 		
 		ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
 		if(resultSet.next()){
-		String nameBrand = resultSet.getString(2);
-		
-		
+		String nameBrand = resultSet.getString(2);	
 		brand = new BrandDto(nameBrand);
 		brand.setCodBrand(brandId);
 		}

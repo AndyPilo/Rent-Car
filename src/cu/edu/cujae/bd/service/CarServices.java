@@ -64,13 +64,13 @@ public class CarServices {
     public ObservableList<CarDto> getAllCars() throws SQLException {
 		ObservableList<CarDto> lista = FXCollections.observableArrayList();
 		String function = "{?= call list_cars()}";
+		
 		Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
 		
 		CallableStatement preparedFunction = connection.prepareCall(function);
 		preparedFunction.registerOutParameter(1,java.sql.Types.OTHER);
-		preparedFunction.execute();
-		
+		preparedFunction.execute();	
 		ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
 		
 		while(resultSet.next()){
@@ -84,11 +84,10 @@ public class CarServices {
 			SituationDto situation = ServicesLocator.getSituationServices().getSituationById(codSituation);
 			lista.add(new CarDto(codCar,plate,color,km,model,situation));
 		}
-		
+
 		resultSet.close();
 		preparedFunction.close();
 		connection.close();
-		
 		return lista;
 	}
     

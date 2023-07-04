@@ -22,34 +22,34 @@
       </HBox>
       <VBox layoutY="70.0" prefHeight="155.0" prefWidth="270.0" style="-fx-background-color: #001233;">
          <children>
-            <Button fx:id="dashboardButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Dashboard" textFill="#c9c1c1">
+            <Button fx:id="dashboardButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fill="#c9c1c1" iconName="DASHBOARD" wrappingWidth="20.0" />
+                  <FontAwesomeIcon fill="WHITE" iconName="DASHBOARD" wrappingWidth="20.0" />
                </graphic>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="reportsButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Reports" textFill="#c9c1c1">
+            <Button fx:id="reportsButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Reports" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fill="#c9c1c1" iconName="PLUS" wrappingWidth="20.0" />
+                  <FontAwesomeIcon fill="WHITE" iconName="PLUS" wrappingWidth="20.0" />
                </graphic>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="usersButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Users" textFill="#c9c1c1">
+            <Button fx:id="usersButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Users" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fill="#c9c1c1" iconName="USERS" wrappingWidth="20.0" />
+                  <FontAwesomeIcon fill="WHITE" iconName="USERS" wrappingWidth="20.0" />
                </graphic>
                <opaqueInsets>
                   <Insets />
@@ -67,12 +67,12 @@
       </Button>
       <AnchorPane layoutY="225.0" prefHeight="50.0" prefWidth="270.0" AnchorPane.leftAnchor="0.0">
          <children>
-            <Button fx:id="manageButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="57.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Manage" textFill="#c9c1c1">
+            <Button fx:id="manageButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="57.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Manage" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fill="#c9c1c1" iconName="LIST" wrappingWidth="20.0" />
+                  <FontAwesomeIcon fill="WHITE" iconName="LIST" wrappingWidth="20.0" />
                </graphic>
                <opaqueInsets>
                   <Insets />
@@ -87,7 +87,7 @@
          <children>
             <VBox layoutX="85.0" layoutY="25.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button fx:id="contractButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Contracts" textFill="#c9c1c1">
+                  <Button fx:id="contractButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Contracts" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -95,10 +95,10 @@
                         <Insets bottom="20.0" left="40.0" />
                      </padding>
                      <graphic>
-                        <FontAwesomeIcon fill="#c9c1c1" iconName="FILE" wrappingWidth="20.0" />
+                        <FontAwesomeIcon fill="WHITE" iconName="FILE" wrappingWidth="20.0" />
                      </graphic>
                   </Button>
-                  <Button fx:id="carButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Cars" textFill="#c9c1c1">
+                  <Button fx:id="carButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Cars" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -106,10 +106,10 @@
                         <Insets bottom="20.0" left="40.0" />
                      </padding>
                      <graphic>
-                        <FontAwesomeIcon fill="#c9c1c1" iconName="CAR" wrappingWidth="20.0" />
+                        <FontAwesomeIcon fill="WHITE" iconName="CAR" wrappingWidth="20.0" />
                      </graphic>
                   </Button>
-                  <Button fx:id="touristButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Tourist" textFill="#c9c1c1">
+                  <Button fx:id="touristButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Tourist" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -117,10 +117,10 @@
                         <Insets bottom="20.0" left="40.0" />
                      </padding>
                      <graphic>
-                        <FontAwesomeIcon fill="#c9c1c1" iconName="USER" wrappingWidth="20.0" />
+                        <FontAwesomeIcon fill="WHITE" iconName="USER" wrappingWidth="20.0" />
                      </graphic>
                   </Button>
-                  <Button fx:id="driverButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Drivers" textFill="#c9c1c1">
+                  <Button fx:id="driverButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #001233;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Drivers" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -128,7 +128,7 @@
                         <Insets bottom="20.0" left="40.0" />
                      </padding>
                      <graphic>
-                        <FontAwesomeIcon fill="#c9c1c1" wrappingWidth="20.0" />
+                        <FontAwesomeIcon fill="WHITE" wrappingWidth="20.0" />
                      </graphic>
                   </Button>
                </children>
