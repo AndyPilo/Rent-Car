@@ -27,6 +27,10 @@ public class LoginController implements Initializable{
 	private PasswordField passField;
 	@FXML
 	private Label lblMessage;
+	@FXML
+    private Button closeButton;
+	@FXML
+    private Button AwesomeIcon;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -55,6 +59,12 @@ public class LoginController implements Initializable{
 			Model.getInstanse().getViewFactory().showApplicationWindow();
 		}			
 	}
+
+	public void close() {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        Model.getInstanse().getViewFactory().closeStage(stage);
+    }
+  
 	
 	/*********************************             Effects              **************************************/
 	
@@ -65,4 +75,11 @@ public class LoginController implements Initializable{
 	public void loginButtonExited() {
 		loginButton.setEffect(null);
 	}
+	public void moved(){
+        //AwesomeIcon.setStyle("-fx-background-color:  #bf0603");
+    }
+    public void exited(){
+        //AwesomeIcon.setStyle("-fx-background-color:  #000000");
+		
+    }
 }

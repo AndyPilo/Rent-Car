@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.effect.Bloom;
 import javafx.stage.Stage;
 
-public class DriverController {
+public class ContractController {
     @FXML
     private Button closeButton;
 
@@ -16,9 +16,9 @@ public class DriverController {
     }
       public void moved(){
         Bloom bloom =new Bloom();
+        bloom.setThreshold(0.8);
         closeButton.setEffect(bloom);
     }
-
     public void exited(){
         closeButton.setEffect(null);
     }

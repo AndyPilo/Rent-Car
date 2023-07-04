@@ -59,6 +59,16 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
+            <Button layoutX="312.0" mnemonicParsing="false" onMouseExited="#exited" onMouseMoved="#moved" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #ECECE7;">
+               <graphic>
+                  <FontAwesomeIcon iconName="CLOSE" size="1.5em" />
+               </graphic>
+            </Button>
+            <Button layoutX="281.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #ECECE7;">
+               <graphic>
+                  <FontAwesomeIcon iconName="PLUS_CIRCLE" size="1.5em" />
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </center>

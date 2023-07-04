@@ -94,11 +94,9 @@ public class MenuController implements Initializable{
      manageButton.setOnMouseClicked(event ->{
        if(expande == false){
           managePane.setVisible(true);
-          manageButton.setStyle("-fx-background-color:  #9887FF");
           expande = true;     
        }else{
             managePane.setVisible(false);
-            manageButton.setStyle("-fx-background-color: #001233");
            expande = false;
        }
      });

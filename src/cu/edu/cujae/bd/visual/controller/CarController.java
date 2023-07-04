@@ -180,6 +180,7 @@ public class CarController implements Initializable {
 
     public void moved(){
         Bloom bloom =new Bloom();
+        bloom.setThreshold(0.80);
         closeButton.setEffect(bloom);
     }
 
@@ -267,8 +268,14 @@ public class CarController implements Initializable {
         modelMenu.setValue(null);
         situationMenu.setValue(null);
              
-            rellenarChoiceBoxModel();
-            rellenarChoiceBoxSituation();
+           
+            try {
+                rellenarTablaCar();
+                rellenarChoiceBoxModel();
+                rellenarChoiceBoxSituation();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         
     }
 

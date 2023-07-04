@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import cu.edu.cujae.bd.dto.CountryDto;
 import cu.edu.cujae.bd.dto.TouristDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
+import cu.edu.cujae.bd.visual.models.Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +19,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.Bloom;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class TouristController implements Initializable{
 
@@ -64,6 +67,8 @@ public class TouristController implements Initializable{
     private TableColumn<TouristDto, Integer> contactNumberColumn;
     @FXML
     private TableColumn<TouristDto, String> countryColumn;
+    @FXML
+    private Button closeButton;
 
     public void configurarTablaCar() {
         passportColumn.setCellValueFactory(new PropertyValueFactory<>("Passport"));
@@ -99,6 +104,19 @@ public class TouristController implements Initializable{
             e.printStackTrace();
         }
         
+    }
+    public void close() {
+        Stage stage = (Stage) touristTable.getScene().getWindow();
+        Model.getInstanse().getViewFactory().closeStage(stage);
+    }
+      public void moved(){
+        Bloom bloom =new Bloom();
+        bloom.setThreshold(0.60);
+        closeButton.setEffect(bloom);
+    }
+
+    public void exited(){
+        closeButton.setEffect(null);
     }
 
 }
