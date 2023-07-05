@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="270.0" style="-fx-background-color: #33415c;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="270.0" style="-fx-background-color: #33415c;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.MenuController">
    <children>
       <HBox prefHeight="70.0" prefWidth="271.0" style="-fx-background-color: #001233;">
          <children>
@@ -44,7 +44,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="PLUS" wrappingWidth="20.0" />
+                  <FontAwesomeIcon fill="WHITE" iconName="PLUS" wrappingWidth="16.0" />
                </graphic>
                <opaqueInsets>
                   <Insets />
@@ -103,7 +103,7 @@
                         <Insets bottom="20.0" left="40.0" />
                      </padding>
                      <graphic>
-                        <FontAwesomeIcon fill="WHITE" iconName="FILE" wrappingWidth="20.0" />
+                        <FontAwesomeIcon fill="WHITE" iconName="FOLDER" wrappingWidth="15.0" />
                      </graphic>
                   </Button>
                   <Button fx:id="carButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #33415c;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Cars" textFill="WHITE">
@@ -125,7 +125,7 @@
                         <Insets bottom="20.0" left="40.0" />
                      </padding>
                      <graphic>
-                        <FontAwesomeIcon fill="WHITE" iconName="USER" wrappingWidth="20.0" />
+                        <FontAwesomeIcon fill="WHITE" iconName="USER" wrappingWidth="18.0" />
                      </graphic>
                   </Button>
                   <Button fx:id="driverButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #33415c;" styleClass="slideItem" stylesheets="@../style/menu.css" text="Drivers" textFill="WHITE">
@@ -136,7 +136,7 @@
                         <Insets bottom="20.0" left="40.0" />
                      </padding>
                      <graphic>
-                        <FontAwesomeIcon fill="WHITE" wrappingWidth="20.0" />
+                        <FontAwesomeIcon fill="WHITE" iconName="CREDIT_CARD" wrappingWidth="19.0" />
                      </graphic>
                   </Button>
                </children>

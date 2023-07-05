@@ -109,6 +109,11 @@
                   <FontAwesomeIcon fill="WHITE" iconName="CLOSE" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
+            <Button fx:id="closeButton1" layoutX="817.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" onMouseExited="#exited" onMouseMoved="#moved" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #002855;">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="MINUS" size="1.5em" styleClass="close" />
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>

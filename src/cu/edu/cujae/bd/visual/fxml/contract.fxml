@@ -113,8 +113,15 @@
       </AnchorPane>
       <TableView layoutX="12.0" layoutY="65.0" prefHeight="515.0" prefWidth="900.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn minWidth="100.0" prefWidth="0.0" text="Tourist" />
+          <TableColumn minWidth="100.0" prefWidth="0.0" text="Car" />
+            <TableColumn minWidth="100.0" prefWidth="0.0" text="Driver" />
+            <TableColumn minWidth="100.0" prefWidth="0.0" text="Payment" />
+            <TableColumn minWidth="100.0" prefWidth="0.0" text="Bill" />
+            <TableColumn minWidth="100.0" prefWidth="0.0" text="SpecialBill" />
+            <TableColumn minWidth="100.0" prefWidth="0.0" text="Extension" />
+            <TableColumn minWidth="100.0" prefWidth="0.0" text="StartDate" />
+            <TableColumn minWidth="100.0" prefWidth="0.0" text="FinalDate" />
         </columns>
       </TableView>
    </children>

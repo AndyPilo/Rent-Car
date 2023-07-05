@@ -30,7 +30,7 @@
             </Button>
             <Button fx:id="closeButton1" layoutX="823.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" onMouseExited="#exited" onMouseMoved="#moved" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #023e7d;">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="PLUS_CIRCLE" size="1.5em" styleClass="close" />
+                  <FontAwesomeIcon fill="WHITE" iconName="MINUS" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
          </children>

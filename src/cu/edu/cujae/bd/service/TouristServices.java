@@ -26,10 +26,10 @@ public class TouristServices {
 		CallableStatement preparedFunction = connection.prepareCall(function);
 		preparedFunction.setString(1, tourist.getPassport());
 		preparedFunction.setString(2, tourist.getName());
-		preparedFunction.setString(3, tourist.getLast_name());
+		preparedFunction.setString(3, tourist.getLastName());
 		preparedFunction.setInt(4, tourist.getAge());
 		preparedFunction.setString(5, String.valueOf(tourist.getSex()));
-		preparedFunction.setInt(6, tourist.getContact());
+		preparedFunction.setString(6, tourist.getContact());
 		preparedFunction.setInt(7, tourist.getCountry().getCodCountry());
 		preparedFunction.execute();
 
@@ -57,10 +57,10 @@ public class TouristServices {
 		preparedFunction.setInt(1, tourist.getCodTourist());
 		preparedFunction.setString(2, tourist.getPassport());
 		preparedFunction.setString(3, tourist.getName());
-		preparedFunction.setString(4, tourist.getLast_name());
+		preparedFunction.setString(4, tourist.getLastName());
 		preparedFunction.setInt(5, tourist.getAge());
 		preparedFunction.setString(6, String.valueOf(tourist.getSex()));
-		preparedFunction.setInt(7, tourist.getContact());
+		preparedFunction.setString(7, tourist.getContact());
 		preparedFunction.setInt(8, tourist.getCountry().getCodCountry());
 		preparedFunction.execute();
 
@@ -99,7 +99,7 @@ public class TouristServices {
 					resultSet.getString("last_name"),
 					resultSet.getInt("age"),
 					resultSet.getString("sex").charAt(0),
-					resultSet.getInt("contact"),
+					resultSet.getString("contact"),
 					country));
 		}
 
@@ -129,7 +129,7 @@ public class TouristServices {
 			String lastName = resultSet.getString(4);
 			int age = resultSet.getInt(5);
 			char sex = resultSet.getString(6).charAt(0);
-			int contact = resultSet.getInt(7);
+			String contact = resultSet.getString(7);
 			CountryDto country = ServicesLocator.getCountryServices().getCountryById(resultSet.getInt(8));
 
 			tourist = new TouristDto(passport, name, lastName, age, sex, contact, country);

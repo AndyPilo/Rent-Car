@@ -7,12 +7,12 @@ public class TouristDto {
 	private String lastName;
 	private int age;
 	private char sex;
-	private int contact;
+	private String contact;
 	private CountryDto country;
 	
 	
 	public TouristDto(String passport, String name, String last_name, int age,
-			char sex, int contact, CountryDto country) {
+			char sex, String contact, CountryDto country) {
 		super();
 	
 		this.passport = passport;
@@ -25,7 +25,7 @@ public class TouristDto {
 	}
 
 	public TouristDto(int codTourist,String passport, String name, String last_name, int age,
-			char sex, int contact, CountryDto country) {
+			char sex, String contact, CountryDto country) {
 		super();
 	
 		this.passport = passport;
@@ -37,7 +37,6 @@ public class TouristDto {
 		this.country = country;
 		this.codTourist = codTourist;
 	}
-
 	
 	/********************     Getters   And    Setters      **********************/
 
@@ -48,7 +47,7 @@ public class TouristDto {
 	public void setCodTourist(int codTourist) {
 		this.codTourist = codTourist;
 	}
-	
+
 	public String getPassport() {
 		return passport;
 	}
@@ -65,12 +64,12 @@ public class TouristDto {
 		this.name = name;
 	}
 
-	public String getLast_name() {
+	public String getLastName() {
 		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.lastName = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public int getAge() {
@@ -89,11 +88,11 @@ public class TouristDto {
 		this.sex = sex;
 	}
 
-	public int getContact() {
+	public String getContact() {
 		return contact;
 	}
 
-	public void setContact(int contact) {
+	public void setContact(String contact) {
 		this.contact = contact;
 	}
 
@@ -104,5 +103,4 @@ public class TouristDto {
 	public void setCountry(CountryDto country) {
 		this.country = country;
 	}
-	
 }

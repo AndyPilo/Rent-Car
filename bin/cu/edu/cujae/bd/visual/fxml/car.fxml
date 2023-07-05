@@ -30,7 +30,7 @@
             </Button>
             <Button fx:id="closeButton1" layoutX="830.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" onMouseExited="#exited" onMouseMoved="#moved" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #7d8597;">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="PLUS_CIRCLE" size="1.5em" styleClass="close" />
+                  <FontAwesomeIcon fill="WHITE" iconName="MINUS" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
          </children>
@@ -140,13 +140,11 @@
       </AnchorPane>
       <TableView fx:id="carsTable" layoutY="70.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
         <columns>
-          <TableColumn fx:id="plateColumn" minWidth="30.0" prefWidth="164.0" resizable="false" text="Plate" />
-            <TableColumn fx:id="modelColumn" prefWidth="159.0" resizable="false" text="Model" />
-            <TableColumn fx:id="situationColumn" prefWidth="152.0" resizable="false" text="Situation" />
-            <TableColumn fx:id="kmColumn" prefWidth="139.0" resizable="false" text="Kilometros" />
-            <TableColumn fx:id="colorColumn" prefWidth="173.0" resizable="false" text="Color" />
-            <TableColumn fx:id="updateColumn" prefWidth="56.0" text="Update" />
-            <TableColumn fx:id="daleteColumn" prefWidth="56.0" text="Delete" />
+          <TableColumn fx:id="plateColumn" minWidth="180.0" prefWidth="164.0" resizable="false" text="Plate" />
+            <TableColumn fx:id="modelColumn" minWidth="180.0" prefWidth="159.0" resizable="false" text="Model" />
+            <TableColumn fx:id="situationColumn" minWidth="180.0" prefWidth="152.0" resizable="false" text="Situation" />
+            <TableColumn fx:id="kmColumn" minWidth="180.0" prefWidth="139.0" resizable="false" text="Kilometros" />
+            <TableColumn fx:id="colorColumn" minWidth="180.0" prefWidth="173.0" resizable="false" text="Color" />
         </columns>
       </TableView>
    </children>

@@ -64,26 +64,28 @@ public class TouristController implements Initializable{
     @FXML
     private TableColumn<TouristDto, String> sexColumn;
     @FXML
-    private TableColumn<TouristDto, Integer> contactNumberColumn;
+    private TableColumn<TouristDto, String> contactNumberColumn;
     @FXML
     private TableColumn<TouristDto, String> countryColumn;
     @FXML
     private Button closeButton;
+    
 
     public void configurarTablaCar() {
         passportColumn.setCellValueFactory(new PropertyValueFactory<>("Passport"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("Last Name"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("LastName"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<>("Age"));
-        contactNumberColumn.setCellValueFactory(new PropertyValueFactory<>("Contact Number"));
+        contactNumberColumn.setCellValueFactory(new PropertyValueFactory<>("Contact"));
+
         countryColumn.setCellValueFactory(cellData -> {
             CountryDto country = cellData.getValue().getCountry();
             String nameCountry = country != null ? country.getName() : "";
             return new SimpleStringProperty(nameCountry);
         });
         sexColumn.setCellValueFactory(cellData -> {
-            CountryDto country = cellData.getValue().getCountry();
-            String sex = country != null ? String.valueOf(country.getName()):"";
+            TouristDto touristDto = cellData.getValue();
+            String sex = String.valueOf(touristDto.getSex());
             return new SimpleStringProperty(sex);
         });
         touristTable.setItems(tourists);
@@ -92,19 +94,11 @@ public class TouristController implements Initializable{
     public void rellenarTablaCar() throws SQLException {
         tourists.clear();
         ObservableList<TouristDto> touristList = ServicesLocator.getTouristServices().getAllTourist();
+        System.out.println(touristList.get(0).getContact());
+        System.out.println(touristList.get(0).getLastName());
         tourists.setAll(touristList);
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        configurarTablaCar();
-        try{
-            rellenarTablaCar();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        
-    }
     public void close() {
         Stage stage = (Stage) touristTable.getScene().getWindow();
         Model.getInstanse().getViewFactory().closeStage(stage);
@@ -119,4 +113,14 @@ public class TouristController implements Initializable{
         closeButton.setEffect(null);
     }
 
+        @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        configurarTablaCar();
+        try{
+            rellenarTablaCar();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
 }

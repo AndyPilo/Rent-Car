@@ -64,11 +64,6 @@
                   <FontAwesomeIcon iconName="CLOSE" size="1.5em" />
                </graphic>
             </Button>
-            <Button layoutX="281.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #ECECE7;">
-               <graphic>
-                  <FontAwesomeIcon iconName="PLUS_CIRCLE" size="1.5em" />
-               </graphic>
-            </Button>
          </children>
       </AnchorPane>
    </center>

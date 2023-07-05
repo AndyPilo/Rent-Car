@@ -30,7 +30,7 @@
             </Button>
             <Button fx:id="closeButton1" layoutX="823.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" onMouseExited="#exited" onMouseMoved="#moved" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #1e6091;">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="PLUS_CIRCLE" size="1.5em" styleClass="close" />
+                  <FontAwesomeIcon fill="WHITE" iconName="MINUS" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
          </children>
@@ -167,11 +167,11 @@
         <columns>
           <TableColumn fx:id="passportColumn" editable="false" minWidth="30.0" prefWidth="163.0" resizable="false" text="Passport" />
             <TableColumn fx:id="nameColumn" editable="false" prefWidth="134.0" resizable="false" text="Name" />
-            <TableColumn fx:id="lastNameColumn" editable="false" prefWidth="134.0" resizable="false" text="Last Name" />
-            <TableColumn fx:id="ageColumn" editable="false" prefWidth="87.0" resizable="false" text="Age" />
-            <TableColumn fx:id="sexColumn" editable="false" prefWidth="84.0" resizable="false" text="Sex" />
-            <TableColumn fx:id="contactNumberColumn" editable="false" prefWidth="168.0" text="Contact Number" />
-            <TableColumn fx:id="countryColumn" editable="false" prefWidth="128.0" text="Country" />
+            <TableColumn fx:id="lastNameColumn" editable="false" prefWidth="116.0" resizable="false" text="LastName" />
+            <TableColumn fx:id="ageColumn" editable="false" prefWidth="105.0" resizable="false" text="Age" />
+            <TableColumn fx:id="sexColumn" editable="false" prefWidth="128.0" resizable="false" text="Sex" />
+            <TableColumn fx:id="contactNumberColumn" editable="false" prefWidth="131.0" text="Contact" />
+            <TableColumn fx:id="countryColumn" editable="false" prefWidth="121.0" text="Country" />
         </columns>
       </TableView>
    </children>
