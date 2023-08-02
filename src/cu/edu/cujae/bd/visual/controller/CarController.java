@@ -22,7 +22,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.effect.Bloom;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -33,6 +32,7 @@ public class CarController implements Initializable {
     public ObservableList<CarDto> cars = FXCollections.observableArrayList();
     private ObservableList<ModelDto> listModels = FXCollections.observableArrayList();
     private ObservableList<SituationDto> listSituation = FXCollections.observableArrayList();
+    private CarDto selectedCarDto;
 
     @FXML
     private TableView<CarDto> carsTable;
@@ -46,6 +46,8 @@ public class CarController implements Initializable {
     private TableColumn<CarDto, String> kmColumn;
     @FXML
     private TableColumn<CarDto, String> modelColumn;
+    @FXML
+    private TableColumn<CarDto, Void> updateColumn;
     @FXML
     private Button newCarButton;
     @FXML
@@ -61,8 +63,6 @@ public class CarController implements Initializable {
     @FXML
     private ChoiceBox<SituationDto> situationMenu;
     @FXML
-    private Button refreshButton;
-    @FXML
     private Button insertButton;
     @FXML
     private Button backButton;
@@ -72,6 +72,8 @@ public class CarController implements Initializable {
     private Button updateButton;
     @FXML
     private Button closeButton;
+
+/****************************    TABLAS Y CHOISEBOX     ****************************/
 
     public void configurarTablaCar() {
         plateColumn.setCellValueFactory(new PropertyValueFactory<>("Plate"));
@@ -149,15 +151,7 @@ public class CarController implements Initializable {
         }
     }
 
-    public void onNewCar() {
-        carsTable.setVisible(false);
-        newCarButton.setVisible(false);
-        insertCarPane.setVisible(true);
-        backButton.setVisible(true);
-        refreshButton.setVisible(true);
-        insertButton.setVisible(true);
-
-    }
+/****************************    BOTONES     ****************************/
 
     public void onDeleteButton() {
         CarDto selectedCar = carsTable.getSelectionModel().getSelectedItem();
@@ -167,116 +161,128 @@ public class CarController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
             cars.remove(selectedCar);
             carsTable.refresh();
         }
+    }
+
+    public void onAcceptButton() throws SQLException{
+        boolean camposLLenos = validarCamposLLenos();
+
+        if(camposLLenos){
+            if(selectedCarDto.getCodCar() == 0){
+                    CarDto carDto = new CarDto(plateField.getText(), 
+                                        colorField.getText(), 
+                                        Integer.parseInt(kmField.getText()),  
+                                        modelMenu.getValue(), 
+                                        situationMenu.getValue());
+                    
+                    ServicesLocator.getCarServices().insertCar(carDto);
+                    
+
+                    // Mostrar mensaje de exito
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Éxito");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Se ha insertado correctamente el Auto.");
+                    alert.showAndWait();
+
+                    //Actualizar en la tabla
+                    rellenarTablaCar();
+                
+                    onBackButton();           
+            }else{
+                    CarDto  carUpdate = new CarDto(selectedCarDto.getCodCar()
+                            , plateField.getText()
+                            , colorField.getText() 
+                            , Integer.parseInt(kmField.getText())
+                            , modelMenu.getValue()
+                            , situationMenu.getValue());
+                
+                    ServicesLocator.getCarServices().updateCar(carUpdate);
+                        
+                    //Actualizar en la tabla
+                    rellenarTablaCar();
+                        
+                    onBackButton();
+            }
+        }
+    }
+    
+    public void onBackButton() {
+        carsTable.setVisible(true);
+        newCarButton.setVisible(true);
+        deleteButton.setVisible(true);
+        updateButton.setVisible(true);
+        insertCarPane.setVisible(false);
+        backButton.setVisible(false);
+        insertButton.setVisible(false);
+        cleanFields();
+    }
+
+    public void onCarForm() {
+        carsTable.setVisible(false);
+        newCarButton.setVisible(false);
+        deleteButton.setVisible(false);
+        updateButton.setVisible(false);
+        insertCarPane.setVisible(true);
+        backButton.setVisible(true);
+        insertButton.setVisible(true);
+    }
+
+    public void cleanFields(){
+        colorField.setText("");
+        plateField.setText("");
+        kmField.setText("");
+        modelMenu.setValue(null);
+        situationMenu.setValue(null);
+    }
+
+    //se ejecuta al pulsar el boton new car
+    public void openNew() {
+        this.selectedCarDto = new CarDto();
+        onCarForm();
+    }
+
+    //Se ejecuta al dar clic en el boton update
+	public void openForEdit() {
+		this.selectedCarDto = carsTable.getSelectionModel().getSelectedItem();
+        if(selectedCarDto != null){
+            plateField.setText(selectedCarDto.getPlate());
+            colorField.setText(selectedCarDto.getColor());
+            kmField.setText(String.valueOf(selectedCarDto.getKm()));
+            onCarForm();
+        }else{
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("You must select a car");
+            alert.showAndWait();
+        }        
+	}
+
+    public boolean validarCamposLLenos(){
+        boolean camposLLenos = true;
+         if ((plateField.getText().equals("")) || (kmField.getText().equals(""))
+                || (colorField.getText().equals("")) || (modelMenu.getValue() == null)
+                || (situationMenu.getValue() == null)) {
+
+                Alert alert2 = new Alert(AlertType.ERROR);
+                alert2.setTitle("Error");
+                alert2.setHeaderText(null);
+                alert2.setContentText("You must fill in all fields");
+                alert2.showAndWait();
+                camposLLenos = false;
+            }
+            return camposLLenos;
     }
 
     public void close() {
         Stage stage = (Stage) carsTable.getScene().getWindow();
         Model.getInstanse().getViewFactory().closeStage(stage);
     }
-
-    public void moved(){
-        Bloom bloom =new Bloom();
-        bloom.setThreshold(0.80);
-        closeButton.setEffect(bloom);
-    }
-
-    public void exited(){
-        closeButton.setEffect(null);
-    }
-
-    /*public void onUpdate() {
-        CarDto filaSeleccionada = carsTable.getSelectionModel().getSelectedItem();
-
-        if (filaSeleccionada != null) {
-            onNewCar();
-            int codCar = filaSeleccionada.getCodCar();
-            plateField.setText(filaSeleccionada.getPlate());
-            colorField.setText(filaSeleccionada.getColor());
-            kmField.setText(String.valueOf(filaSeleccionada.getKm()));
-            modelMenu.setValue(filaSeleccionada.getModel());
-            situationMenu.setValue(filaSeleccionada.getSituation());
-
-            CarDto carUpdate = new CarDto(codCar,
-                    plateField.getText(),
-                    colorField.getText() ,
-                    Integer.parseInt(kmField.getText()),
-                    modelMenu.getValue(),
-                    situationMenu.getValue());
-
-            try {
-                ServicesLocator.getCarServices().updateCar(carUpdate);
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-    }*/
-
-    public void onBackButton() {
-        carsTable.setVisible(true);
-        newCarButton.setVisible(true);
-        insertCarPane.setVisible(false);
-        backButton.setVisible(false);
-        insertButton.setVisible(false);
-        onRefreshButton();
-
-    }
-
-    public void onInsertButton() {
-
-        if ((plateField.getText().equals("")) || (kmField.getText().equals(""))
-                || (colorField.getText().equals("")) || (modelMenu.getValue() == null)
-                || (situationMenu.getValue() == null)) {
-
-            Alert alert2 = new Alert(AlertType.ERROR);
-            alert2.setTitle("Error");
-            alert2.setHeaderText(null);
-            alert2.setContentText("Se produjo un error al insertar el Auto.");
-            alert2.showAndWait();
-        } else {
-            String plate = plateField.getText();
-            SituationDto situation = situationMenu.getValue();
-            ModelDto model = modelMenu.getValue();
-            int km = Integer.parseInt(kmField.getText());
-            String color = colorField.getText();
-
-            CarDto carDto = new CarDto(plate, color, km, model, situation);
-            try {
-                ServicesLocator.getCarServices().insertCar(carDto);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            // Mostrar mensaje de confirmación
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Éxito");
-            alert.setHeaderText(null);
-            alert.setContentText("Se ha insertado correctamente el Auto.");
-            alert.showAndWait();
-        }
-        onRefreshButton();
-    }
-
-    public void onRefreshButton() {
-        colorField.setText("");
-        plateField.setText("");
-        kmField.setText("");
-        modelMenu.setValue(null);
-        situationMenu.setValue(null);
-             
-           
-            try {
-                rellenarTablaCar();
-                rellenarChoiceBoxModel();
-                rellenarChoiceBoxSituation();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        
+    public void minimice(){
+        Stage stage = (Stage) carsTable.getScene().getWindow();
+        stage.setIconified(true);
     }
 
     @Override
@@ -288,8 +294,10 @@ public class CarController implements Initializable {
             rellenarTablaCar();
             configurarChoiceBoxModel();
             configurarChoiceBoxSituation();
-        } catch (SQLException e) {
-        
+            rellenarChoiceBoxModel();
+            rellenarChoiceBoxSituation();
+
+        } catch (SQLException e) {       
             e.printStackTrace();
         }
 
@@ -300,5 +308,4 @@ public class CarController implements Initializable {
             }
         });
     }
-
 }

@@ -4,7 +4,6 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import cu.edu.cujae.bd.dto.CarDto;
 import cu.edu.cujae.bd.dto.ModelDto;

@@ -38,6 +38,7 @@ public class TouristDto {
 		this.codTourist = codTourist;
 	}
 	
+	
 	/********************     Getters   And    Setters      **********************/
 
 	public int getCodTourist() {

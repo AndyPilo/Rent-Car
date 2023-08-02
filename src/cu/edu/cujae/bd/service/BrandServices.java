@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import cu.edu.cujae.bd.dto.BrandDto;
-import cu.edu.cujae.bd.dto.CarDto;
-import cu.edu.cujae.bd.dto.SituationDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

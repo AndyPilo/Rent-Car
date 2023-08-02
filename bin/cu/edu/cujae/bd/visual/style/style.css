@@ -20,4 +20,20 @@
     -fx-alignment: CENTER;
 }
 
+.close{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.close:hover{
+    -fx-background-color: #ff3852; 
+}
+.minimice{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.minimice:hover{
+    -fx-background-color: #9c9c9c;   
+}
+
+
 

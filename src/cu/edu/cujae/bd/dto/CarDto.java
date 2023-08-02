@@ -29,6 +29,10 @@ public class CarDto {
 		this.situation = situation;
 	}
 
+	public CarDto(){
+		
+	}
+
 	public int getCodCar() {
 		return codCar;
 	}

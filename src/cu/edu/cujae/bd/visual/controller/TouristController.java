@@ -25,7 +25,8 @@ import javafx.stage.Stage;
 
 public class TouristController implements Initializable{
 
-    public ObservableList<TouristDto> tourists = FXCollections.observableArrayList();
+    private ObservableList<TouristDto> tourists = FXCollections.observableArrayList();
+    private TouristDto selectedTourist;
 
     @FXML
     private AnchorPane insertTouristPane;
@@ -91,11 +92,9 @@ public class TouristController implements Initializable{
         touristTable.setItems(tourists);
     }
 
-    public void rellenarTablaCar() throws SQLException {
+    public void rellenarTablaTourist() throws SQLException {
         tourists.clear();
         ObservableList<TouristDto> touristList = ServicesLocator.getTouristServices().getAllTourist();
-        System.out.println(touristList.get(0).getContact());
-        System.out.println(touristList.get(0).getLastName());
         tourists.setAll(touristList);
     }
 
@@ -103,7 +102,7 @@ public class TouristController implements Initializable{
         Stage stage = (Stage) touristTable.getScene().getWindow();
         Model.getInstanse().getViewFactory().closeStage(stage);
     }
-      public void moved(){
+    public void moved(){
         Bloom bloom =new Bloom();
         bloom.setThreshold(0.60);
         closeButton.setEffect(bloom);
@@ -113,14 +112,41 @@ public class TouristController implements Initializable{
         closeButton.setEffect(null);
     }
 
-        @Override
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         configurarTablaCar();
         try{
-            rellenarTablaCar();
+            rellenarTablaTourist();
         }catch(Exception e){
             e.printStackTrace();
         }
         
     }
+    /***********************  Nueva logica   *****************************/
+  /* 
+    //se ejecuta al pulsar el boton new tourist
+    public void openNew() {
+        this.selectedTourist = new TouristDto();
+    }
+
+    //Se ejecuta al dar clic en el boton update
+	public void openForEdit() {
+		this.selectedTourist = touristTable.getSelectionModel().getSelectedItem();
+	}
+
+    public void saveTourist() throws SQLException{
+        if (this.selectedTourist.getCodTourist() == null) {
+            
+            ServicesLocator.getTouristServices().insertTourist(this.selectedTourist);
+        }
+        else {
+			ServicesLocator.getTouristServices().updateTourist(this.selectedTourist);
+        }
+		//Actualizar en la tabla
+        rellenarTablaTourist();    
+    }
+*/
+
+
+
 }

@@ -4,9 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Observable;
 
-import cu.edu.cujae.bd.dto.BrandDto;
 import cu.edu.cujae.bd.dto.CountryDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

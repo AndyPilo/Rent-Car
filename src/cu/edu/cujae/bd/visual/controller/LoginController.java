@@ -9,10 +9,12 @@ import cu.edu.cujae.bd.service.UserServices;
 import cu.edu.cujae.bd.visual.models.Model;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.Bloom;
 import javafx.stage.Stage;
 
@@ -51,7 +53,11 @@ public class LoginController implements Initializable{
 			lblMessage.setText("Invalid login, please try again");
 			userField.setText("");
 			passField.setText("");
-		}else if(rol.equals("admin")){		
+		}else if(rol.equals("admin")){	
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText(null);
+			alert.setContentText("Successfully Login");
+			alert.showAndWait();
 			Model.getInstanse().getViewFactory().showApplicationWindow();
 			Model.getInstanse().getViewFactory().closeStage(stage);
 		}else if(rol.equals("user")){
