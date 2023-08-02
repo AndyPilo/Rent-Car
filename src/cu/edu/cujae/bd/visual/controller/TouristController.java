@@ -13,13 +13,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.effect.Bloom;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -31,27 +33,7 @@ public class TouristController implements Initializable{
     @FXML
     private AnchorPane insertTouristPane;
     @FXML
-    private TextField plateField;
-    @FXML
-    private TextField colorField;
-    @FXML
-    private TextField colorField1;
-    @FXML
-    private TextField kmField;
-    @FXML
-    private ChoiceBox<?> situationMenu;
-    @FXML
-    private TextField colorField11;
-    @FXML
-    private ChoiceBox<?> modelMenu;
-    @FXML
-    private Button refreshButton;
-    @FXML
-    private Button backButton;
-    @FXML
-    private Button newTouristButton;
-    @FXML
-    private Button insertButton;
+    private Label touristFormLabel;
     @FXML
     private TableView<TouristDto> touristTable;
     @FXML
@@ -70,7 +52,44 @@ public class TouristController implements Initializable{
     private TableColumn<TouristDto, String> countryColumn;
     @FXML
     private Button closeButton;
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private Button updateButton;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Button backButton;
+    @FXML
+    private Button newTouristButton;
+    @FXML
+    private TextField passportField;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField lastNameField;
+    @FXML
+    private TextField ageField;
+    @FXML
+    private TextField contactField;
+    @FXML
+    private ChoiceBox<Character>sexMenu;
+    @FXML
+    private ChoiceBox<CountryDto>countryMenu;
+
+
+
+    public void close() {
+        Stage stage = (Stage) touristTable.getScene().getWindow();
+        Model.getInstanse().getViewFactory().closeStage(stage);
+    }
+
+    public void minimice(){
+        Stage stage = (Stage) touristTable.getScene().getWindow();
+        stage.setIconified(true);
+    }
     
+    /***********************  TABLAS Y CHOICEBOX   *****************************/
 
     public void configurarTablaCar() {
         passportColumn.setCellValueFactory(new PropertyValueFactory<>("Passport"));
@@ -98,19 +117,65 @@ public class TouristController implements Initializable{
         tourists.setAll(touristList);
     }
 
-    public void close() {
-        Stage stage = (Stage) touristTable.getScene().getWindow();
-        Model.getInstanse().getViewFactory().closeStage(stage);
-    }
-    public void moved(){
-        Bloom bloom =new Bloom();
-        bloom.setThreshold(0.60);
-        closeButton.setEffect(bloom);
+/***********************           VISTAS          *****************************/
+public void onTouristForm() {
+    touristTable.setVisible(false);
+    newTouristButton.setVisible(false);
+    deleteButton.setVisible(false);
+    updateButton.setVisible(false);
+    insertTouristPane.setVisible(true);
+    backButton.setVisible(true);
+    saveButton.setVisible(true);
+}
+
+public void onBackButton() {
+    touristTable.setVisible(true);
+    newTouristButton.setVisible(true);
+    deleteButton.setVisible(true);
+    updateButton.setVisible(true);
+    insertTouristPane.setVisible(false);
+    backButton.setVisible(false);
+    saveButton.setVisible(false);
+    cleanFields();
+}
+
+public void cleanFields(){
+    passportField.setText(null);
+    nameField.setText(null);
+    lastNameField.setText(null);
+    ageField.setText(null);
+    contactField.setText(null);
+    sexMenu.setValue(null);
+    countryMenu.setValue(null);
+}
+
+//se ejecuta al pulsar el boton new car
+    public void openNew() {
+        this.selectedTourist = new TouristDto();
+        touristFormLabel.setText("New Tourist");
+        onTouristForm();
     }
 
-    public void exited(){
-        closeButton.setEffect(null);
-    }
+//Se ejecuta al dar clic en el boton update
+	public void openForEdit() {
+		this.selectedTourist = touristTable.getSelectionModel().getSelectedItem();
+        touristFormLabel.setText("Update Tourist");
+        if(selectedTourist != null){
+            passportField.setText(selectedTourist.getPassport());
+            nameField.setText(selectedTourist.getName());
+            lastNameField.setText(selectedTourist.getLastName());
+            ageField.setText(Integer.toString(selectedTourist.getAge()));
+            contactField.setText(selectedTourist.getContact());
+            onTouristForm();
+        }else{
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("You must select a tourist");
+            alert.showAndWait();
+        }        
+	}
+
+/***********************  METODO INITIALIZE   *****************************/
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -122,31 +187,5 @@ public class TouristController implements Initializable{
         }
         
     }
-    /***********************  Nueva logica   *****************************/
-  /* 
-    //se ejecuta al pulsar el boton new tourist
-    public void openNew() {
-        this.selectedTourist = new TouristDto();
-    }
-
-    //Se ejecuta al dar clic en el boton update
-	public void openForEdit() {
-		this.selectedTourist = touristTable.getSelectionModel().getSelectedItem();
-	}
-
-    public void saveTourist() throws SQLException{
-        if (this.selectedTourist.getCodTourist() == null) {
-            
-            ServicesLocator.getTouristServices().insertTourist(this.selectedTourist);
-        }
-        else {
-			ServicesLocator.getTouristServices().updateTourist(this.selectedTourist);
-        }
-		//Actualizar en la tabla
-        rellenarTablaTourist();    
-    }
-*/
-
-
 
 }

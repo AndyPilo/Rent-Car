@@ -37,6 +37,10 @@ public class TouristDto {
 		this.country = country;
 		this.codTourist = codTourist;
 	}
+
+	public TouristDto(){
+		
+	}
 	
 	
 	/********************     Getters   And    Setters      **********************/

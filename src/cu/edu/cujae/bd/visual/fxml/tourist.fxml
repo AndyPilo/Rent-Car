@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.TouristController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.TouristController">
    <children>
       <AnchorPane layoutX="101.0" layoutY="49.0" prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: #1e6091;" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -23,12 +23,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="closeButton" layoutX="855.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" onMouseExited="#exited" onMouseMoved="#moved" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #1e6091;">
+            <Button fx:id="closeButton" layoutX="855.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" styleClass="close" stylesheets="@../style/style.css" AnchorPane.leftAnchor="855.0">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" iconName="CLOSE" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
-            <Button fx:id="closeButton1" layoutX="823.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" onMouseExited="#exited" onMouseMoved="#moved" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #1e6091;">
+            <Button fx:id="closeButton1" layoutX="823.0" layoutY="20.0" mnemonicParsing="false" onAction="#minimice" prefHeight="30.0" prefWidth="30.0" styleClass="minimice" stylesheets="@../style/style.css" AnchorPane.leftAnchor="825.0">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" iconName="MINUS" size="1.5em" styleClass="close" />
                </graphic>
@@ -46,7 +46,7 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="62.0" text="Passport" />
-                                    <TextField fx:id="plateField" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Passport">
+                                    <TextField fx:id="passportField" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Passport">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
@@ -56,7 +56,7 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Label text="Name" />
-                                    <TextField fx:id="colorField" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Name">
+                                    <TextField fx:id="nameField" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Name">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
@@ -66,7 +66,7 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Label text="Last Name" />
-                                    <TextField fx:id="colorField1" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Last Name">
+                                    <TextField fx:id="lastNameField1" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Last Name">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
@@ -76,7 +76,7 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Label text="Age ( 16 - 70 )" />
-                                    <TextField fx:id="kmField" alignment="CENTER" promptText="Age" />
+                                    <TextField fx:id="ageField" alignment="CENTER" promptText="Age" />
                                  </children>
                               </VBox>
                            </children>
@@ -92,8 +92,8 @@
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
-                                    <Label text="Age" />
-                                    <ChoiceBox fx:id="situationMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
+                                    <Label text="Sex" />
+                                    <ChoiceBox fx:id="sexMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
                                        <styleClass>
                                           <String fx:value="arrow" />
                                           <String fx:value="arrow-button" />
@@ -109,7 +109,7 @@
                               <Label text="Contact Number" />
                               <VBox prefHeight="57.0" prefWidth="297.0" spacing="15.0">
                                  <children>
-                                    <TextField fx:id="colorField11" alignment="CENTER" prefHeight="25.0" prefWidth="336.0" promptText="Color">
+                                    <TextField fx:id="contactField" alignment="CENTER" prefHeight="25.0" prefWidth="336.0" promptText="Color">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
@@ -122,7 +122,7 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Label text="Country" />
-                                    <ChoiceBox fx:id="modelMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
+                                    <ChoiceBox fx:id="countryMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
                                        <styleClass>
                                           <String fx:value="choice-box-dropdown" />
                                           <String fx:value="arrow-button" />
@@ -141,7 +141,7 @@
                   </VBox>
                </children>
             </HBox>
-            <Label layoutX="83.0" layoutY="28.0" prefHeight="25.0" prefWidth="113.0" text="New Tourist ">
+            <Label fx:id="touristFormLabel" layoutX="83.0" layoutY="28.0" prefHeight="25.0" prefWidth="113.0" text="New Tourist ">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -153,14 +153,11 @@
       </AnchorPane>
       <AnchorPane layoutX="-16.0" layoutY="580.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-16.0" AnchorPane.rightAnchor="16.0">
          <children>
-            <Button fx:id="refreshButton" layoutX="60.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="Refresh" textFill="WHITE" />
-            <Button fx:id="backButton" layoutX="611.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #FFBB14;" text="Back" textFill="WHITE" visible="false" />
-            <Button fx:id="newTouristButton" layoutX="781.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="New Tourist" textFill="WHITE">
-               <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="PLUS" wrappingWidth="13.428571701049805" />
-               </graphic>
-            </Button>
-            <Button fx:id="insertButton" layoutX="754.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #FFBB14;" text="Insert" textFill="WHITE" visible="false" />
+            <Button fx:id="deleteButton" layoutX="60.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="Delete" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
+            <Button fx:id="backButton" layoutX="611.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="Back" textFill="WHITE" visible="false" AnchorPane.leftAnchor="625.0" />
+            <Button fx:id="newTouristButton" layoutX="781.0" layoutY="23.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="New Tourist" textFill="WHITE" AnchorPane.leftAnchor="775.0" />
+            <Button fx:id="saveButton" layoutX="754.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="Save" textFill="WHITE" visible="false" AnchorPane.leftAnchor="775.0" />
+            <Button fx:id="updateButton" layoutX="203.0" layoutY="23.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" />
          </children>
       </AnchorPane>
       <TableView fx:id="touristTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">

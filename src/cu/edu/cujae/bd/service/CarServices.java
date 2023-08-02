@@ -71,7 +71,6 @@ public class CarServices {
 		ObservableList<SituationDto> situations = situationServices.getAllSituation();
 
 		String function = "{?= call list_cars()}";
-		System.out.println("Conexion de Car");
 		Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
 		

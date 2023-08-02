@@ -12,7 +12,6 @@ public class RolServices {
 		String function = "{? = call load_rol_by_id(?)}";
 		RolDto rol = null;
 		
-		System.out.println("Segunda conexion");
 		Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
 		

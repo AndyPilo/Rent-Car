@@ -51,7 +51,6 @@ public class CountryServices {
 		ObservableList<CountryDto> lista = FXCollections.observableArrayList();
 		String function = "{?= call list_countrys()}";
 
-        System.out.println("Conexion de Country");
         Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
 		

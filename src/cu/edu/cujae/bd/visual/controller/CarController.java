@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -32,7 +33,7 @@ public class CarController implements Initializable {
     public ObservableList<CarDto> cars = FXCollections.observableArrayList();
     private ObservableList<ModelDto> listModels = FXCollections.observableArrayList();
     private ObservableList<SituationDto> listSituation = FXCollections.observableArrayList();
-    private CarDto selectedCarDto;
+    private CarDto selectedCar;
 
     @FXML
     private TableView<CarDto> carsTable;
@@ -63,7 +64,7 @@ public class CarController implements Initializable {
     @FXML
     private ChoiceBox<SituationDto> situationMenu;
     @FXML
-    private Button insertButton;
+    private Button saveButton;
     @FXML
     private Button backButton;
     @FXML
@@ -72,8 +73,10 @@ public class CarController implements Initializable {
     private Button updateButton;
     @FXML
     private Button closeButton;
+    @FXML
+    private Label carFormLabel;
 
-/****************************    TABLAS Y CHOISEBOX     ****************************/
+/****************************    TABLAS Y CHOICEBOX     ****************************/
 
     public void configurarTablaCar() {
         plateColumn.setCellValueFactory(new PropertyValueFactory<>("Plate"));
@@ -166,11 +169,11 @@ public class CarController implements Initializable {
         }
     }
 
-    public void onAcceptButton() throws SQLException{
+    public void onSaveButton() throws SQLException{
         boolean camposLLenos = validarCamposLLenos();
 
         if(camposLLenos){
-            if(selectedCarDto.getCodCar() == 0){
+            if(selectedCar.getCodCar() == 0){
                     CarDto carDto = new CarDto(plateField.getText(), 
                                         colorField.getText(), 
                                         Integer.parseInt(kmField.getText()),  
@@ -192,7 +195,7 @@ public class CarController implements Initializable {
                 
                     onBackButton();           
             }else{
-                    CarDto  carUpdate = new CarDto(selectedCarDto.getCodCar()
+                    CarDto  carUpdate = new CarDto(selectedCar.getCodCar()
                             , plateField.getText()
                             , colorField.getText() 
                             , Integer.parseInt(kmField.getText())
@@ -209,6 +212,7 @@ public class CarController implements Initializable {
         }
     }
     
+/***********************           VISTAS          *****************************/
     public void onBackButton() {
         carsTable.setVisible(true);
         newCarButton.setVisible(true);
@@ -216,7 +220,7 @@ public class CarController implements Initializable {
         updateButton.setVisible(true);
         insertCarPane.setVisible(false);
         backButton.setVisible(false);
-        insertButton.setVisible(false);
+        saveButton.setVisible(false);
         cleanFields();
     }
 
@@ -227,7 +231,7 @@ public class CarController implements Initializable {
         updateButton.setVisible(false);
         insertCarPane.setVisible(true);
         backButton.setVisible(true);
-        insertButton.setVisible(true);
+        saveButton.setVisible(true);
     }
 
     public void cleanFields(){
@@ -240,17 +244,19 @@ public class CarController implements Initializable {
 
     //se ejecuta al pulsar el boton new car
     public void openNew() {
-        this.selectedCarDto = new CarDto();
+        this.selectedCar = new CarDto();
+        carFormLabel.setText("New Car");
         onCarForm();
     }
 
     //Se ejecuta al dar clic en el boton update
 	public void openForEdit() {
-		this.selectedCarDto = carsTable.getSelectionModel().getSelectedItem();
-        if(selectedCarDto != null){
-            plateField.setText(selectedCarDto.getPlate());
-            colorField.setText(selectedCarDto.getColor());
-            kmField.setText(String.valueOf(selectedCarDto.getKm()));
+		this.selectedCar = carsTable.getSelectionModel().getSelectedItem();
+        carFormLabel.setText("Update Car");
+        if(selectedCar != null){
+            plateField.setText(selectedCar.getPlate());
+            colorField.setText(selectedCar.getColor());
+            kmField.setText(String.valueOf(selectedCar.getKm()));
             onCarForm();
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -284,6 +290,8 @@ public class CarController implements Initializable {
         Stage stage = (Stage) carsTable.getScene().getWindow();
         stage.setIconified(true);
     }
+
+/***********************  METODO INITIALIZE   *****************************/
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

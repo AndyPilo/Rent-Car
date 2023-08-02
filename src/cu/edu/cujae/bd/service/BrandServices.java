@@ -47,7 +47,6 @@ public class BrandServices {
         ObservableList<BrandDto> lista = FXCollections.observableArrayList();
 		String function = "{?= call list_brands()}";
 
-        System.out.println("Conexion de Brand");
         Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
 		

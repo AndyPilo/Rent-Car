@@ -86,7 +86,6 @@ public class UserServices {
 
 		try {
 			String function = "{?= call get_login_user(?,?)}";
-			System.out.println("1ra conexion");
 			Connection connection = ServicesLocator.getConnection();
 			connection.setAutoCommit(false);
 			

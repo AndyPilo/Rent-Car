@@ -90,7 +90,6 @@ public class ModelServices {
 		ObservableList<BrandDto> brands = brandServices.getAllBrand();
 
 		String function = "{?= call list_models()}";
-		System.out.println("Conexion de Model");
 		Connection connection = ServicesLocator.getConnection();
 		connection.setAutoCommit(false);
 		
