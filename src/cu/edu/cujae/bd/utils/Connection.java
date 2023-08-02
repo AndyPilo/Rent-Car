@@ -11,7 +11,6 @@ public class Connection {
 		Class.forName("org.postgresql.Driver");
 		String url = "jdbc:postgresql://" + serveraddres + ":5432/"+ database;
 		connection = DriverManager.getConnection(url, user, pass);
-		System.out.println("Conexion ...");
 	}
 	
 	 public java.sql.Connection getConnection() {

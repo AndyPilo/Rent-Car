@@ -66,7 +66,7 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Label text="Last Name" />
-                                    <TextField fx:id="lastNameField1" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Last Name">
+                                    <TextField fx:id="lastNameField" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Last Name">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
@@ -153,10 +153,10 @@
       </AnchorPane>
       <AnchorPane layoutX="-16.0" layoutY="580.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-16.0" AnchorPane.rightAnchor="16.0">
          <children>
-            <Button fx:id="deleteButton" layoutX="60.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="Delete" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
+            <Button fx:id="deleteButton" layoutX="60.0" layoutY="23.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="Delete" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
             <Button fx:id="backButton" layoutX="611.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="Back" textFill="WHITE" visible="false" AnchorPane.leftAnchor="625.0" />
             <Button fx:id="newTouristButton" layoutX="781.0" layoutY="23.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="New Tourist" textFill="WHITE" AnchorPane.leftAnchor="775.0" />
-            <Button fx:id="saveButton" layoutX="754.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="Save" textFill="WHITE" visible="false" AnchorPane.leftAnchor="775.0" />
+            <Button fx:id="saveButton" layoutX="754.0" layoutY="23.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="Save" textFill="WHITE" visible="false" AnchorPane.leftAnchor="775.0" />
             <Button fx:id="updateButton" layoutX="203.0" layoutY="23.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #1e6091;" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" />
          </children>
       </AnchorPane>

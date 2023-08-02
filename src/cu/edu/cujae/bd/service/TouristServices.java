@@ -12,7 +12,6 @@ import javafx.collections.ObservableList;
 
 public class TouristServices {
 
-	private int touristId;
 	private CountryServices countryServices = ServicesLocator.getCountryServices();
 
 	public TouristServices() {
@@ -37,12 +36,12 @@ public class TouristServices {
 		connection.close();
 	}
 
-	public void deleteTourist() throws SQLException {
+	public void deleteTourist(int touristId) throws SQLException {
 		String function = "{call delete_tourist(?)}";
 
 		Connection connection = ServicesLocator.getConnection();
 		CallableStatement preparedFunction = connection.prepareCall(function);
-		preparedFunction.setInt(1, this.touristId);
+		preparedFunction.setInt(1, touristId);
 		preparedFunction.execute();
 
 		preparedFunction.close();

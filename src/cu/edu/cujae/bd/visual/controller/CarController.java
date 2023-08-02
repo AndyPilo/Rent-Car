@@ -156,19 +156,45 @@ public class CarController implements Initializable {
 
 /****************************    BOTONES     ****************************/
 
+    //se ejecuta al pulsar el boton new car
+    public void openNew() {
+        this.selectedCar = new CarDto();
+        carFormLabel.setText("New Car");
+        onCarForm();
+    }
+
+    //Se ejecuta al dar clic en el boton update
+	public void openForEdit() {
+		this.selectedCar = carsTable.getSelectionModel().getSelectedItem();
+        carFormLabel.setText("Update Car");
+        if(selectedCar != null){
+            plateField.setText(selectedCar.getPlate());
+            colorField.setText(selectedCar.getColor());
+            kmField.setText(String.valueOf(selectedCar.getKm()));
+            onCarForm();
+        }else{
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("You must select a car");
+            alert.showAndWait();
+        }        
+	}
+
+    //Se ejecuta al dar clic en el boton delete
     public void onDeleteButton() {
-        CarDto selectedCar = carsTable.getSelectionModel().getSelectedItem();
-        if (selectedCar != null) {
+        CarDto selectedCarDto = carsTable.getSelectionModel().getSelectedItem();
+        if (selectedCarDto != null) {
             try {
-                ServicesLocator.getCarServices().deleteCar(selectedCar.getCodCar());
+                ServicesLocator.getCarServices().deleteCar(selectedCarDto.getCodCar());
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            cars.remove(selectedCar);
+            cars.remove(selectedCarDto);
             carsTable.refresh();
         }
     }
 
+    //Se ejecuta al dar clic en el boton save
     public void onSaveButton() throws SQLException{
         boolean camposLLenos = validarCamposLLenos();
 
@@ -187,7 +213,7 @@ public class CarController implements Initializable {
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Éxito");
                     alert.setHeaderText(null);
-                    alert.setContentText("Se ha insertado correctamente el Auto.");
+                    alert.setContentText("The new car has been inserted successfully.");
                     alert.showAndWait();
 
                     //Actualizar en la tabla
@@ -203,6 +229,13 @@ public class CarController implements Initializable {
                             , situationMenu.getValue());
                 
                     ServicesLocator.getCarServices().updateCar(carUpdate);
+
+                    // Mostrar mensaje de exito
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Éxito");
+                    alert.setHeaderText(null);
+                    alert.setContentText("The new car has been updated successfully.");
+                    alert.showAndWait();
                         
                     //Actualizar en la tabla
                     rellenarTablaCar();
@@ -241,30 +274,6 @@ public class CarController implements Initializable {
         modelMenu.setValue(null);
         situationMenu.setValue(null);
     }
-
-    //se ejecuta al pulsar el boton new car
-    public void openNew() {
-        this.selectedCar = new CarDto();
-        carFormLabel.setText("New Car");
-        onCarForm();
-    }
-
-    //Se ejecuta al dar clic en el boton update
-	public void openForEdit() {
-		this.selectedCar = carsTable.getSelectionModel().getSelectedItem();
-        carFormLabel.setText("Update Car");
-        if(selectedCar != null){
-            plateField.setText(selectedCar.getPlate());
-            colorField.setText(selectedCar.getColor());
-            kmField.setText(String.valueOf(selectedCar.getKm()));
-            onCarForm();
-        }else{
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setContentText("You must select a car");
-            alert.showAndWait();
-        }        
-	}
 
     public boolean validarCamposLLenos(){
         boolean camposLLenos = true;

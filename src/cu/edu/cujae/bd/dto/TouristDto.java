@@ -14,7 +14,6 @@ public class TouristDto {
 	public TouristDto(String passport, String name, String last_name, int age,
 			char sex, String contact, CountryDto country) {
 		super();
-	
 		this.passport = passport;
 		this.name = name;
 		this.lastName = last_name;
@@ -27,7 +26,6 @@ public class TouristDto {
 	public TouristDto(int codTourist,String passport, String name, String last_name, int age,
 			char sex, String contact, CountryDto country) {
 		super();
-	
 		this.passport = passport;
 		this.name = name;
 		this.lastName = last_name;

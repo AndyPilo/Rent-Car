@@ -24,10 +24,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 public class TouristController implements Initializable{
 
     private ObservableList<TouristDto> tourists = FXCollections.observableArrayList();
+    private ObservableList<CountryDto> listcountry = FXCollections.observableArrayList();
     private TouristDto selectedTourist;
 
     @FXML
@@ -73,7 +75,7 @@ public class TouristController implements Initializable{
     @FXML
     private TextField contactField;
     @FXML
-    private ChoiceBox<Character>sexMenu;
+    private ChoiceBox<String>sexMenu;
     @FXML
     private ChoiceBox<CountryDto>countryMenu;
 
@@ -117,6 +119,32 @@ public class TouristController implements Initializable{
         tourists.setAll(touristList);
     }
 
+    public void configurarChoiceBoxCountry() {
+        countryMenu.setConverter(new StringConverter<CountryDto>() {
+            @Override
+            public String toString(CountryDto country) {
+                return country.getName(); // Devuelve el nombre del modelo como cadena
+            }
+
+            @Override
+            public CountryDto fromString(String string) {
+                return null; // No es necesario implementar este método para ChoiceBox
+            }
+        });
+    }
+    public void rellenarChoiceBoxModel() {
+        try {
+            listcountry = ServicesLocator.getCountryServices().getAllCountry();
+            countryMenu.setItems(listcountry);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void configurarChoiceBoxSex() {
+        sexMenu.getItems().addAll("M", "F");
+    }
+
 /***********************           VISTAS          *****************************/
 public void onTouristForm() {
     touristTable.setVisible(false);
@@ -140,16 +168,36 @@ public void onBackButton() {
 }
 
 public void cleanFields(){
-    passportField.setText(null);
-    nameField.setText(null);
-    lastNameField.setText(null);
-    ageField.setText(null);
-    contactField.setText(null);
+    passportField.setText("");
+    nameField.setText("");
+    lastNameField.setText("");
+    ageField.setText("");
+    contactField.setText("");
     sexMenu.setValue(null);
     countryMenu.setValue(null);
 }
 
-//se ejecuta al pulsar el boton new car
+public boolean validarCamposLLenos(){
+    boolean camposLLenos = true;
+     if ((passportField.getText().equals("")) || (nameField.getText().equals(""))
+            || (lastNameField.getText().equals("")) || (ageField.getText().equals("")) 
+            || (contactField.getText().equals("")) || (sexMenu.getValue() == null) 
+            || (countryMenu.getValue() == null)) {
+
+            Alert alert2 = new Alert(AlertType.ERROR);
+            alert2.setTitle("Error");
+            alert2.setHeaderText(null);
+            alert2.setContentText("You must fill in all fields");
+            alert2.showAndWait();
+            camposLLenos = false;
+        }
+        return camposLLenos;
+}
+
+
+ /***********************            BOTONES           *****************************/   
+
+ //se ejecuta al pulsar el boton new car
     public void openNew() {
         this.selectedTourist = new TouristDto();
         touristFormLabel.setText("New Tourist");
@@ -175,13 +223,85 @@ public void cleanFields(){
         }        
 	}
 
+    //Se ejecuta al dar clic en el boton delete
+    public void onDeleteButton() {
+        TouristDto selectedTouristDto = touristTable.getSelectionModel().getSelectedItem();
+        if (selectedTouristDto != null) {
+            try {
+                ServicesLocator.getTouristServices().deleteTourist(selectedTouristDto.getCodTourist());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            tourists.remove(selectedTouristDto);
+            touristTable.refresh();
+        }
+    }
+
+    //Se ejecuta al dar clic en el boton save
+    public void onSaveButton() throws SQLException{
+        boolean camposLLenos = validarCamposLLenos();
+
+        if(camposLLenos){
+            if(selectedTourist.getPassport() == null){
+                    TouristDto touristDto = new TouristDto(passportField.getText() 
+                                        , nameField.getText()
+                                        , lastNameField.getText()  
+                                        , Integer.parseInt(ageField.getText())
+                                        , sexMenu.getValue().charAt(0)
+                                        , contactField.getText()
+                                        , countryMenu.getValue());
+                    
+                    ServicesLocator.getTouristServices().insertTourist(touristDto);
+                    
+
+                    // Mostrar mensaje de exito
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Éxito");
+                    alert.setHeaderText(null);
+                    alert.setContentText("The new tourist has been inserted successfully.");
+                    alert.showAndWait();
+
+                    //Actualizar en la tabla
+                    rellenarTablaTourist();
+                
+                    onBackButton();           
+            }else{
+                    TouristDto  touristUpdate = new TouristDto(selectedTourist.getCodTourist()
+                                        , passportField.getText() 
+                                        , nameField.getText()
+                                        , lastNameField.getText()  
+                                        , Integer.parseInt(ageField.getText())
+                                        , sexMenu.getValue().charAt(0)
+                                        , contactField.getText()
+                                        , countryMenu.getValue());
+                
+                    ServicesLocator.getTouristServices().updateTourist(touristUpdate);
+
+                    // Mostrar mensaje de exito
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Éxito");
+                    alert.setHeaderText(null);
+                    alert.setContentText("The new tourist has been updated successfully.");
+                    alert.showAndWait();
+                        
+                    //Actualizar en la tabla
+                    rellenarTablaTourist();
+                        
+                    onBackButton();
+            }
+        }
+    }
+
 /***********************  METODO INITIALIZE   *****************************/
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         configurarTablaCar();
+        configurarChoiceBoxCountry();
+        configurarChoiceBoxSex();
         try{
             rellenarTablaTourist();
+            rellenarChoiceBoxModel();
         }catch(Exception e){
             e.printStackTrace();
         }
