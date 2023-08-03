@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #ECECE7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.DriverController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #ECECE7;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.DriverController">
    <children>
       <AnchorPane prefHeight="63.0" prefWidth="900.0" style="-fx-background-color: #708d81;">
          <children>
@@ -24,14 +24,14 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="closeButton" layoutX="855.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" onMouseExited="#exited" onMouseMoved="#moved" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #708d81;">
+            <Button fx:id="closeButton" layoutX="855.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #708d81;">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" iconName="CLOSE" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
-            <Button fx:id="closeButton1" layoutX="823.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" onMouseExited="#exited" onMouseMoved="#moved" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #708d81;">
+            <Button fx:id="closeButton1" layoutX="823.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #708d81;">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="PLUS_CIRCLE" size="1.5em" styleClass="close" />
+                  <FontAwesomeIcon fill="WHITE" iconName="MINUS" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
          </children>

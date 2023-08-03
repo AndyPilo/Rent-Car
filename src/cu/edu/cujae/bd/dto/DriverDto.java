@@ -17,6 +17,18 @@ public class DriverDto {
 		this.address = address;
 		this.category = category;
 	}
+	public DriverDto(int codDriver,String dni, String nameDriver, String lastName, String address, DriverCategoryDto category) {
+		super();
+		this.codDriver = codDriver;
+		this.dni = dni;
+		this.nameDriver = nameDriver;
+		this.lastName = lastName;
+		this.address = address;
+		this.category = category;
+	}
+	public DriverDto(){
+		
+	}
 
 	public int getCodDriver() {
 		return codDriver;

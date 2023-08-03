@@ -106,10 +106,10 @@
                                     <Insets top="30.0" />
                                  </padding>
                               </VBox>
-                              <Label text="Contact Number" />
                               <VBox prefHeight="57.0" prefWidth="297.0" spacing="15.0">
                                  <children>
-                                    <TextField fx:id="contactField" alignment="CENTER" prefHeight="25.0" prefWidth="336.0" promptText="Color">
+                                    <Label text="Contact Number" />
+                                    <TextField fx:id="contactField" alignment="CENTER" prefHeight="25.0" prefWidth="336.0" promptText="Contact">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>

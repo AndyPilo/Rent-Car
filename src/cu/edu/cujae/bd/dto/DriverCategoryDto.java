@@ -7,7 +7,10 @@ public class DriverCategoryDto {
     public DriverCategoryDto( String category){
         this.category = category;
     }
-
+	public DriverCategoryDto( int codCategory,String category){
+		this.codCategory = codCategory;
+        this.category = category;
+    }
     public int getCodCategory() {
 		return codCategory;
 	}

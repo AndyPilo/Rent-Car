@@ -81,11 +81,4 @@ public class LoginController implements Initializable{
 	public void loginButtonExited() {
 		loginButton.setEffect(null);
 	}
-	public void moved(){
-        //AwesomeIcon.setStyle("-fx-background-color:  #bf0603");
-    }
-    public void exited(){
-        //AwesomeIcon.setStyle("-fx-background-color:  #000000");
-		
-    }
 }

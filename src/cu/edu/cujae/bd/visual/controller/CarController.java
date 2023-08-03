@@ -48,8 +48,6 @@ public class CarController implements Initializable {
     @FXML
     private TableColumn<CarDto, String> modelColumn;
     @FXML
-    private TableColumn<CarDto, Void> updateColumn;
-    @FXML
     private Button newCarButton;
     @FXML
     private AnchorPane insertCarPane;
@@ -234,7 +232,7 @@ public class CarController implements Initializable {
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Éxito");
                     alert.setHeaderText(null);
-                    alert.setContentText("The new car has been updated successfully.");
+                    alert.setContentText("The car has been updated successfully.");
                     alert.showAndWait();
                         
                     //Actualizar en la tabla
