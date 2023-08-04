@@ -4,15 +4,13 @@
     -fx-border-width: 0px 0px 0px 3px;
 }
 
+.button{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
 .slideLoginButton:hover{
     -fx-border-color: white;
     -fx-border-width: 0px 0px 3px 0px;
 }
 
-.slidebar-btn:pressed .label{
-    -fx-fill:#0099ff;
-}
-
-.slidebar-btn:pressed .icon{
-    -fx-fill:#0099ff;
-}

@@ -20,6 +20,10 @@ public class UserDto {
 		this.password = password;
 		this.rol = rol;
 	}
+
+	public UserDto(){
+		
+	}
 	
 	public int getCodUser() {
 		return codUser;

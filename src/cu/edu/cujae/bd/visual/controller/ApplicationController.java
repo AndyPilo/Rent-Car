@@ -30,6 +30,9 @@ public class ApplicationController implements Initializable{
                 case DRIVER:
                     applicationId.setCenter(Model.getInstanse().getViewFactory().getDriverView());
                     break;
+                case USERS:
+                    applicationId.setCenter(Model.getInstanse().getViewFactory().getUsersView());
+                    break;
                 default:
                     applicationId.setCenter(Model.getInstanse().getViewFactory().getDashboard());
                     break;

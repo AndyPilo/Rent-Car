@@ -17,7 +17,7 @@ public class ViewFactory {
 
     //MENU
     private AnchorPane dashboardView;
-    //private AnchorPane manageView;
+    private AnchorPane usersView;
 
     //MANAGE MENU
     private AnchorPane contractView;
@@ -48,23 +48,22 @@ public class ViewFactory {
         return dashboardView;
     }
 
-    /*public AnchorPane getManageView(){
-        if(manageView == null){
+    public AnchorPane getUsersView(){
+        if(usersView == null){
             try{
-            manageView = new FXMLLoader(getClass().getResource("../fxml/manage.fxml")).load();
+            usersView = new FXMLLoader(getClass().getResource("../fxml/users.fxml")).load();
             }catch(Exception e){
                 e.printStackTrace();
             }         
         }
-        return manageView;
-    }*/
+        System.out.println(selectedMenu);
+        return usersView;
+    }
 
     public AnchorPane getContractView(){
         if(contractView == null){
             try{
-                System.out.println("getContractView ..............1");
                 contractView = new FXMLLoader(getClass().getResource("../fxml/addContract.fxml")).load(); 
-                System.out.println("getContractView ...............2"); 
             }catch(Exception e){
                 e.printStackTrace();
             }

@@ -24,7 +24,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="closeButton" layoutX="855.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #708d81;" styleClass="close" stylesheets="@../style/style.css">
+            <Button fx:id="closeButton" layoutX="855.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" styleClass="close" stylesheets="@../style/style.css">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" iconName="CLOSE" size="1.5em" styleClass="close" />
                </graphic>

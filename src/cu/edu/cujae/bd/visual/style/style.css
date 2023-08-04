@@ -34,6 +34,11 @@
 .minimice:hover{
     -fx-background-color: #9c9c9c;   
 }
+.btn:hover{
+    -fx-cursor: hand;
+    -fx-background-color: #ce4646;
+}
+
 
 
 

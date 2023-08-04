@@ -181,15 +181,20 @@ public class CarController implements Initializable {
     //Se ejecuta al dar clic en el boton delete
     public void onDeleteButton() {
         CarDto selectedCarDto = carsTable.getSelectionModel().getSelectedItem();
-        if (selectedCarDto != null) {
-            try {
-                ServicesLocator.getCarServices().deleteCar(selectedCarDto.getCodCar());
-            } catch (SQLException e) {
-                e.printStackTrace();
+            if (selectedCarDto != null) {
+                try {
+                    ServicesLocator.getCarServices().deleteCar(selectedCarDto.getCodCar());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                cars.remove(selectedCarDto);
+                carsTable.refresh();
+            }else{
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("You must select a car");
+                alert.showAndWait();
             }
-            cars.remove(selectedCarDto);
-            carsTable.refresh();
-        }
     }
 
     //Se ejecuta al dar clic en el boton save
@@ -245,6 +250,7 @@ public class CarController implements Initializable {
     
 /***********************           VISTAS          *****************************/
     public void onBackButton() {
+        System.out.println("Aqui en vista");
         carsTable.setVisible(true);
         newCarButton.setVisible(true);
         deleteButton.setVisible(true);
@@ -252,6 +258,7 @@ public class CarController implements Initializable {
         insertCarPane.setVisible(false);
         backButton.setVisible(false);
         saveButton.setVisible(false);
+        System.out.println("Saliendo de vista");
         cleanFields();
     }
 

@@ -18,17 +18,17 @@
    <children>
       <AnchorPane layoutX="101.0" layoutY="49.0" prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: #7d8597;" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" layoutX="1.0" prefHeight="70.0" prefWidth="198.0" text="Manage Car" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="1.0" prefHeight="70.0" prefWidth="198.0" text="Manage Car" textFill="WHITE" AnchorPane.rightAnchor="701.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="closeButton" layoutX="862.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" styleClass="close" stylesheets="@../style/style.css" AnchorPane.leftAnchor="855.0">
+            <Button fx:id="closeButton" layoutX="862.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" styleClass="close" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="855.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="20.0">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" iconName="CLOSE" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
-            <Button fx:id="closeButton1" layoutX="830.0" layoutY="20.0" mnemonicParsing="false" onAction="#minimice" prefHeight="30.0" prefWidth="30.0" styleClass="minimice" stylesheets="@../style/style.css" AnchorPane.leftAnchor="825.0">
+            <Button fx:id="closeButton1" layoutX="830.0" layoutY="20.0" mnemonicParsing="false" onAction="#minimice" prefHeight="30.0" prefWidth="30.0" styleClass="minimice" stylesheets="@../style/style.css" AnchorPane.leftAnchor="825.0" AnchorPane.rightAnchor="44.0">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" iconName="MINUS" size="1.5em" styleClass="close" />
                </graphic>
@@ -140,12 +140,12 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-16.0" layoutY="580.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="580.0">
+      <AnchorPane layoutX="-16.0" layoutY="580.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="580.0">
          <children>
             <Button fx:id="backButton" layoutX="611.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Back" textFill="WHITE" visible="false" AnchorPane.leftAnchor="625.0" />
             <Button fx:id="newCarButton" layoutX="781.0" layoutY="23.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="New Car" textFill="WHITE" AnchorPane.leftAnchor="775.0" />
             <Button fx:id="saveButton" layoutX="754.0" layoutY="23.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Save" textFill="WHITE" visible="false" AnchorPane.leftAnchor="775.0" />
-            <Button fx:id="deleteButton" layoutX="53.0" layoutY="23.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Delete" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
+            <Button fx:id="deleteButton" layoutX="53.0" layoutY="23.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" styleClass="btn" stylesheets="@../style/style.css" text="Delete" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
             <Button fx:id="updateButton" layoutX="194.0" layoutY="23.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" />
          </children>
       </AnchorPane>
