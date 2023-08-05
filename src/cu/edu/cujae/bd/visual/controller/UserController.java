@@ -29,7 +29,6 @@ import javafx.stage.StageStyle;
 public class UserController implements Initializable{
 
     public ObservableList<UserDto> users = FXCollections.observableArrayList();
-    private UserDto selectedUser;
 
     @FXML
     private TableView<UserDto> usersTable;
@@ -40,7 +39,7 @@ public class UserController implements Initializable{
 
 /****************************    TABLAS Y CHOICEBOX     ****************************/
 
-    public void configurarTablaCar() {
+    public void configurarTablaUser() {
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         rolCol.setCellValueFactory(cellData -> {
             RolDto rol = cellData.getValue().getRol();
@@ -52,11 +51,12 @@ public class UserController implements Initializable{
 
     }
 
-    public void rellenarTablaCar() throws SQLException {
+    public void rellenarTablaUser() throws SQLException {
         users.clear();
         ObservableList<UserDto> userList = ServicesLocator.getUserServices().getAllUsers();
         users.setAll(userList);
     }
+    
 /****************************    BOTONES     ****************************/
 
     //se ejecuta al pulsar el boton new car
@@ -75,12 +75,45 @@ public class UserController implements Initializable{
         stage.show();
     }
 
+     public void onDeleteButton() {
+        UserDto selectedUserDto = usersTable.getSelectionModel().getSelectedItem();
+            if (selectedUserDto != null) {
+                try {
+                    ServicesLocator.getUserServices().deleteUser(selectedUserDto.getCodUser());;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                users.remove(selectedUserDto);
+                usersTable.refresh();
+            }else{
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("You must select a user");
+                alert.showAndWait();
+            }
+    }
+
     //Se ejecuta al dar clic en el boton update
 	public void openForEdit() {
-		this.selectedUser = usersTable.getSelectionModel().getSelectedItem();
+		UserDto selectedUser = usersTable.getSelectionModel().getSelectedItem();
 
         if(selectedUser != null){
-            
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../fxml/addUser.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            AddUserController addUserController = loader.getController();
+            addUserController.setUpdate(true);
+            addUserController.setTextField(selectedUser.getUsername());
+
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage(StageStyle.UTILITY);
+            stage.setScene(new Scene(parent));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText(null);
@@ -100,9 +133,9 @@ public class UserController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        configurarTablaCar();
+        configurarTablaUser();
         try {
-            rellenarTablaCar();
+            rellenarTablaUser();
         } catch (SQLException e) {
             e.printStackTrace();
         }

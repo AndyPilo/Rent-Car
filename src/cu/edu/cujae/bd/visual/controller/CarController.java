@@ -286,8 +286,7 @@ public class CarController implements Initializable {
                 || (colorField.getText().equals("")) || (modelMenu.getValue() == null)
                 || (situationMenu.getValue() == null)) {
 
-                Alert alert2 = new Alert(AlertType.ERROR);
-                alert2.setTitle("Error");
+                Alert alert2 = new Alert(AlertType.INFORMATION);
                 alert2.setHeaderText(null);
                 alert2.setContentText("You must fill in all fields");
                 alert2.showAndWait();

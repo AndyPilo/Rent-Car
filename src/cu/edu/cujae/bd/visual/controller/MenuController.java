@@ -55,7 +55,7 @@ public class MenuController implements Initializable{
    }
 
    public void onDashboard(){   
-        Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.DASHBOARD);
+          Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.DASHBOARD);
           carButton.setStyle("-fx-background-color: transparent;");
           dashboardButton.setStyle("-fx-background-color: linear-gradient(to bottom right, #33415C ,#485C82 );");
           reportsButton.setStyle("-fx-background-color: transparent;");
@@ -65,7 +65,7 @@ public class MenuController implements Initializable{
           driverButton.setStyle("-fx-background-color: transparent;");
    }
    public void onReports(){
-        Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.REPORTS);
+          Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.REPORTS);
           carButton.setStyle("-fx-background-color: transparent;");
           dashboardButton.setStyle("-fx-background-color: transparent;");
           reportsButton.setStyle("-fx-background-color: linear-gradient(to bottom right, #33415C ,#485C82 );");
@@ -75,7 +75,7 @@ public class MenuController implements Initializable{
           driverButton.setStyle("-fx-background-color: transparent;");
    }
    public void onUsers(){
-        Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.USERS);
+          Model.getInstanse().getViewFactory().getSelectedMenu().set(AdminMenuOption.USERS);
           carButton.setStyle("-fx-background-color: transparent;");
           dashboardButton.setStyle("-fx-background-color: transparent;");
           reportsButton.setStyle("-fx-background-color: transparent;");
@@ -148,8 +148,8 @@ public class MenuController implements Initializable{
 
      if(option.get().equals(ButtonType.OK)){
         Stage stage = (Stage) logoutButton.getScene().getWindow();
-        Model.getInstanse().getViewFactory().showLoginWindow();
         Model.getInstanse().getViewFactory().closeStage(stage);
+        Model.getInstanse().getViewFactory().showLoginWindow();       
      }     
    }
 }

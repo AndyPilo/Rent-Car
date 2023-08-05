@@ -56,7 +56,7 @@ public class ViewFactory {
                 e.printStackTrace();
             }         
         }
-        System.out.println(selectedMenu);
+        //System.out.println(selectedMenu);
         return usersView;
     }
 
@@ -79,7 +79,7 @@ public class ViewFactory {
                 e.printStackTrace();
             }
         }
-        System.out.println(selectedMenu);
+        //System.out.println(selectedMenu);
         return carView;
     }
 
@@ -91,7 +91,7 @@ public class ViewFactory {
                 e.printStackTrace();
             }
         }
-        System.out.println(selectedMenu);
+        //System.out.println(selectedMenu);
         return touristView;
     }
 
@@ -103,7 +103,7 @@ public class ViewFactory {
                 e.printStackTrace();
             }
         }
-        System.out.println(selectedMenu);
+        //System.out.println(selectedMenu);
         return driverView;
     }
 
@@ -116,6 +116,7 @@ public class ViewFactory {
 
     public void showApplicationWindow(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/application.fxml"));
+        this.selectedMenu.set(AdminMenuOption.DASHBOARD);
         createStage(loader);
     }
 

@@ -37,9 +37,10 @@
       </TableView>
       <AnchorPane layoutX="27.0" layoutY="499.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="580.0">
          <children>
-            <Button fx:id="deleteButton" layoutX="68.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="745.0" AnchorPane.topAnchor="23.0" />
-            <Button fx:id="updateButton" layoutX="207.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="595.0" />
-            <Button fx:id="newButton" layoutX="766.0" layoutY="21.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="New User" textFill="WHITE" AnchorPane.leftAnchor="745.0" />
+            <Button fx:id="deleteButton" layoutX="68.0" layoutY="23.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="745.0" AnchorPane.topAnchor="23.0" />
+            <Button fx:id="updateButton" layoutX="207.0" layoutY="23.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="595.0" />
+            <Button fx:id="newButton" layoutX="766.0" layoutY="21.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="New User" textFill="WHITE" AnchorPane.leftAnchor="750.0" />
+            <Button fx:id="refreshButton" layoutX="345.0" layoutY="23.0" mnemonicParsing="false" onAction="#rellenarTablaUser" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Resfresh" textFill="WHITE" AnchorPane.leftAnchor="350.0" />
          </children>
       </AnchorPane>
    </children>

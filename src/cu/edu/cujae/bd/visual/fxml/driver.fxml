@@ -39,51 +39,62 @@
          <children>
             <HBox layoutX="74.0" layoutY="51.0" prefHeight="459.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0">
                <children>
-                  <VBox prefHeight="510.0" prefWidth="420.0">
+                  <VBox prefHeight="510.0" prefWidth="420.0" spacing="40.0">
                      <children>
-                        <VBox prefHeight="95.0" prefWidth="300.0" spacing="30.0">
+                        <VBox prefHeight="24.0" prefWidth="420.0" spacing="10.0">
                            <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
-                                 <children>
-                                    <Label text="Dni" />
-                                    <TextField fx:id="dniField" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Dni">
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
-                                 <children>
-                                    <Label text="Name" />
-                                    <TextField fx:id="nameField" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Name">
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
-                                 <children>
-                                    <Label text="Last Name" />
-                                    <TextField fx:id="lastNameField" alignment="CENTER" promptText="Last Name" />
-                                 </children>
-                              </VBox>
+                              <Label text="Name" />
+                              <TextField fx:id="nameField" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Name">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
                            </children>
-                           <padding>
-                              <Insets left="40.0" right="100.0" top="30.0" />
-                           </padding>
+                           <VBox.margin>
+                              <Insets left="30.0" right="20.0" top="10.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox prefHeight="34.0" prefWidth="280.0" spacing="10.0">
+                           <children>
+                              <Label text="Last Name" />
+                              <TextField fx:id="lastNameField" alignment="CENTER" promptText="Last Name" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="30.0" right="20.0" top="10.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox prefHeight="8.0" prefWidth="420.0" spacing="10.0">
+                           <children>
+                              <Label text="Dni" />
+                              <TextField fx:id="dniField" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Dni">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="30.0" right="20.0" top="10.0" />
+                           </VBox.margin>
                         </VBox>
                      </children>
                   </VBox>
-                  <VBox prefHeight="459.0" prefWidth="480.0">
+                  <VBox prefHeight="459.0" prefWidth="480.0" spacing="40.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+                        <VBox prefHeight="57.0" prefWidth="393.0" spacing="10.0">
                            <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                              <Label text="Address" />
+                              <TextField fx:id="addressField" alignment="CENTER" prefHeight="25.0" prefWidth="399.0" promptText="Address" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="60.0" right="60.0" top="10.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox prefHeight="58.0" prefWidth="433.0" spacing="10.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="84.0" text="Driver Category" />
+                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="84.0" text="Driver Category" />
-                                    <ChoiceBox fx:id="driverMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
+                                    <ChoiceBox fx:id="driverMenu" prefHeight="31.0" prefWidth="319.0" stylesheets="@../style/carController.css">
                                        <styleClass>
                                           <String fx:value="choice-box-dropdown" />
                                           <String fx:value="arrow-button" />
@@ -91,29 +102,19 @@
                                           <String fx:value="list-view" />
                                        </styleClass>
                                     </ChoiceBox>
+                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #023e7d;">
+                                       <graphic>
+                                          <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
+                                       </graphic>
+                                    </Button>
                                  </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
-                                 <children>
-                                    <Label text="Address" />
-                                    <TextField fx:id="addressField" alignment="CENTER" promptText="Address" />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets right="80.0" />
-                                 </VBox.margin>
-                                 <padding>
-                                    <Insets right="14.0" />
-                                 </padding>
-                              </VBox>
+                              </HBox>
                            </children>
-                           <padding>
-                              <Insets top="30.0" />
-                           </padding>
+                           <VBox.margin>
+                              <Insets left="60.0" right="60.0" top="10.0" />
+                           </VBox.margin>
                         </VBox>
                      </children>
-                     <padding>
-                        <Insets right="100.0" />
-                     </padding>
                   </VBox>
                </children>
             </HBox>
@@ -127,11 +128,11 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-16.0" layoutY="580.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-16.0" AnchorPane.rightAnchor="16.0">
+      <AnchorPane layoutX="-16.0" layoutY="580.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Button fx:id="deleteButton" layoutX="60.0" layoutY="23.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Delete" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
             <Button fx:id="backButton" layoutX="611.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Back" textFill="WHITE" visible="false" AnchorPane.leftAnchor="625.0" />
-            <Button fx:id="newDriverButton" layoutX="781.0" layoutY="23.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="New Driver" textFill="WHITE" AnchorPane.leftAnchor="775.0" />
+            <Button fx:id="newDriverButton" layoutX="781.0" layoutY="23.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="New Driver" textFill="WHITE" AnchorPane.leftAnchor="750.0" />
             <Button fx:id="saveButton" layoutX="754.0" layoutY="23.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Save" textFill="WHITE" visible="false" AnchorPane.leftAnchor="775.0" />
             <Button fx:id="updateButton" layoutX="178.0" layoutY="23.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" />
          </children>

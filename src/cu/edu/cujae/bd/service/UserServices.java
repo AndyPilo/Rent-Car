@@ -19,7 +19,7 @@ public class UserServices {
 		try {
 			CallableStatement prepareFunction = connection.prepareCall(function);
 			prepareFunction.setString(1, user.getUsername());
-			prepareFunction.setString(2, user.getPassword());
+			prepareFunction.setString(2, Encription.getMd5(user.getPassword()));
 			prepareFunction.setInt(3, user.getRol().getCodRol());
 
 			prepareFunction.execute();
@@ -30,6 +30,19 @@ public class UserServices {
 			e.printStackTrace();
 		}
 	}
+
+	public void deleteUser(int userId) throws SQLException{
+    	String function = "{call delete_user(?)}";
+		
+		Connection connection = ServicesLocator.getConnection();		
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.setInt(1, userId);
+		
+		preparedFunction.execute();
+		
+		preparedFunction.close();
+		connection.close();
+    }
 
 	public UserDto getUserbyId(int id) throws SQLException {
 		String function = "{? = call load_user_by_id(?)}";

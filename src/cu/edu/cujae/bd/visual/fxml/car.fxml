@@ -35,7 +35,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="insertCarPane" layoutX="302.0" layoutY="260.0" prefHeight="499.0" prefWidth="900.0" style="-fx-background-color: #7d8597;" visible="false" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <AnchorPane fx:id="insertCarPane" layoutX="302.0" layoutY="260.0" prefHeight="499.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <children>
             <HBox layoutX="74.0" layoutY="51.0" prefHeight="459.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0">
                <children>
@@ -43,45 +43,42 @@
                      <children>
                         <VBox prefHeight="95.0" prefWidth="300.0" spacing="30.0">
                            <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                              <VBox prefHeight="200.0" prefWidth="420.0" spacing="15.0">
                                  <children>
-                                    <Label text="Plate :">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font></Label>
+                                    <Label text="Plate" />
                                     <TextField fx:id="plateField" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Plate">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
                                     </TextField>
                                  </children>
+                                 <padding>
+                                    <Insets left="80.0" right="40.0" top="50.0" />
+                                 </padding>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
-                                    <Label text="Color :">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font></Label>
+                                    <Label text="Color " />
                                     <TextField fx:id="colorField" alignment="CENTER" prefHeight="25.0" prefWidth="0.0" promptText="Color">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
                                     </TextField>
                                  </children>
+                                 <padding>
+                                    <Insets left="80.0" right="40.0" top="10.0" />
+                                 </padding>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
-                                    <Label text="Number of kilometers traveled :">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font></Label>
+                                    <Label text="Number of kilometers traveled " />
                                     <TextField fx:id="kmField" alignment="CENTER" promptText="Kilometers" />
                                  </children>
+                                 <padding>
+                                    <Insets left="80.0" right="40.0" top="10.0" />
+                                 </padding>
                               </VBox>
                            </children>
-                           <padding>
-                              <Insets left="40.0" right="100.0" top="30.0" />
-                           </padding>
                         </VBox>
                      </children>
                   </VBox>
@@ -91,38 +88,53 @@
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
-                                    <Label text="Situation of car : ">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font></Label>
-                                    <ChoiceBox fx:id="situationMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
-                                       <styleClass>
-                                          <String fx:value="arrow" />
-                                          <String fx:value="arrow-button" />
-                                          <String fx:value="choice-box-dropdown" />
-                                          <String fx:value="list-view" />
-                                       </styleClass>
-                                    </ChoiceBox>
+                                    <Label text="Situation of car " />
+                                    <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <ChoiceBox fx:id="situationMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
+                                             <styleClass>
+                                                <String fx:value="arrow" />
+                                                <String fx:value="arrow-button" />
+                                                <String fx:value="choice-box-dropdown" />
+                                                <String fx:value="list-view" />
+                                             </styleClass>
+                                          </ChoiceBox>
+                                          <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #7d8597;">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
                                  </children>
                                  <padding>
-                                    <Insets top="30.0" />
+                                    <Insets left="70.0" top="40.0" />
                                  </padding>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
-                                    <Label text="Model : ">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font></Label>
-                                    <ChoiceBox fx:id="modelMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
-                                       <styleClass>
-                                          <String fx:value="choice-box-dropdown" />
-                                          <String fx:value="arrow-button" />
-                                          <String fx:value="arrow-button" />
-                                          <String fx:value="list-view" />
-                                       </styleClass>
-                                    </ChoiceBox>
+                                    <Label text="Model " />
+                                    <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <ChoiceBox fx:id="modelMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
+                                             <styleClass>
+                                                <String fx:value="choice-box-dropdown" />
+                                                <String fx:value="arrow-button" />
+                                                <String fx:value="arrow-button" />
+                                                <String fx:value="list-view" />
+                                             </styleClass>
+                                          </ChoiceBox>
+                                          <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #7d8597;" textFill="WHITE">
+                                             <graphic>
+                                                <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
                                  </children>
+                                 <padding>
+                                    <Insets left="70.0" top="10.0" />
+                                 </padding>
                               </VBox>
                            </children>
                         </VBox>
@@ -130,9 +142,9 @@
                   </VBox>
                </children>
             </HBox>
-            <Label fx:id="carFormLabel" layoutX="44.0" layoutY="26.0" prefHeight="32.0" prefWidth="146.0">
+            <Label fx:id="carFormLabel" layoutX="111.0" layoutY="26.0" prefHeight="25.0" prefWidth="113.0">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
                <graphic>
                   <FontAwesomeIcon iconName="CAR" />
@@ -143,10 +155,10 @@
       <AnchorPane layoutX="-16.0" layoutY="580.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="580.0">
          <children>
             <Button fx:id="backButton" layoutX="611.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Back" textFill="WHITE" visible="false" AnchorPane.leftAnchor="625.0" />
-            <Button fx:id="newCarButton" layoutX="781.0" layoutY="23.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="New Car" textFill="WHITE" AnchorPane.leftAnchor="775.0" />
+            <Button fx:id="newCarButton" layoutX="778.0" layoutY="23.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="New Car" textFill="WHITE" AnchorPane.leftAnchor="750.0" />
             <Button fx:id="saveButton" layoutX="754.0" layoutY="23.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Save" textFill="WHITE" visible="false" AnchorPane.leftAnchor="775.0" />
-            <Button fx:id="deleteButton" layoutX="53.0" layoutY="23.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" styleClass="btn" stylesheets="@../style/style.css" text="Delete" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
-            <Button fx:id="updateButton" layoutX="194.0" layoutY="23.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" />
+            <Button fx:id="deleteButton" layoutX="53.0" layoutY="23.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" styleClass="btn" stylesheets="@../style/style.css" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="745.0" AnchorPane.topAnchor="23.0" />
+            <Button fx:id="updateButton" layoutX="194.0" layoutY="23.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="595.0" />
          </children>
       </AnchorPane>
       <TableView fx:id="carsTable" layoutY="70.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
@@ -155,7 +167,7 @@
             <TableColumn fx:id="modelColumn" minWidth="180.0" prefWidth="159.0" resizable="false" text="Model" />
             <TableColumn fx:id="situationColumn" minWidth="180.0" prefWidth="152.0" resizable="false" text="Situation" />
             <TableColumn fx:id="kmColumn" minWidth="180.0" prefWidth="139.0" resizable="false" text="Kilometros" />
-            <TableColumn fx:id="colorColumn" minWidth="83.0" prefWidth="179.0" resizable="false" text="Color" />
+            <TableColumn fx:id="colorColumn" minWidth="83.0" prefWidth="178.0" resizable="false" text="Color" />
         </columns>
       </TableView>
    </children>
