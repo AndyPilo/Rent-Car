@@ -1,9 +1,11 @@
 package cu.edu.cujae.bd.visual.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import cu.edu.cujae.bd.dto.BrandDto;
 import cu.edu.cujae.bd.dto.CarDto;
 import cu.edu.cujae.bd.dto.ModelDto;
 import cu.edu.cujae.bd.dto.SituationDto;
@@ -13,7 +15,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -25,7 +30,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.StringConverter;
 
 public class CarController implements Initializable {
@@ -33,6 +40,7 @@ public class CarController implements Initializable {
     public ObservableList<CarDto> cars = FXCollections.observableArrayList();
     private ObservableList<ModelDto> listModels = FXCollections.observableArrayList();
     private ObservableList<SituationDto> listSituation = FXCollections.observableArrayList();
+    private ObservableList<BrandDto> listBrands = FXCollections.observableArrayList();
     private CarDto selectedCar;
 
     @FXML
@@ -73,6 +81,40 @@ public class CarController implements Initializable {
     private Button closeButton;
     @FXML
     private Label carFormLabel;
+    @FXML
+    private Button addModelButton;
+    @FXML
+    private Button addSituationButton;
+    @FXML
+    private AnchorPane  brandPane;
+    @FXML
+    private AnchorPane  modelPane;
+    @FXML
+    private Button deleteModelButton;
+    @FXML
+    private Button deleteBrandButton;
+    @FXML
+    private Button updateModelButton;
+    @FXML
+    private Button updateBrandButton;
+    @FXML
+    private Button newModelButton;
+    @FXML
+    private Button newBrandButton;
+    @FXML
+    private AnchorPane carButtonPane;
+    @FXML
+    private TableView<ModelDto> modelTable;
+    @FXML
+    private TableView<BrandDto> brandTable;
+    @FXML
+    private TableColumn<ModelDto, String> colModelM;
+    @FXML
+    private TableColumn<ModelDto, String> colBrandM;
+    @FXML
+    private TableColumn<BrandDto, String> colBrandB;
+        
+
 
 /****************************    TABLAS Y CHOICEBOX     ****************************/
 
@@ -98,10 +140,42 @@ public class CarController implements Initializable {
 
     }
 
+    public void configurarTablaModel() {
+        colModelM.setCellValueFactory(new PropertyValueFactory<>("nameModel"));
+        
+        colBrandM.setCellValueFactory(cellData -> {
+            BrandDto brand = cellData.getValue().getBrand();
+            String nameBrand = brand != null ? brand.getNameBrand() : "";
+            return new SimpleStringProperty(nameBrand);
+        });
+        
+        modelTable.setItems(listModels);
+
+    }
+
+    public void configurarTablaBrand() {
+        colBrandB.setCellValueFactory(new PropertyValueFactory<>("nameBrand"));
+        
+        brandTable.setItems(listBrands);
+
+    }
+
     public void rellenarTablaCar() throws SQLException {
         cars.clear();
         ObservableList<CarDto> carsList = ServicesLocator.getCarServices().getAllCars();
         cars.setAll(carsList);
+    }
+
+    public void rellenarTablaModel() throws SQLException {
+        listModels.clear();
+        ObservableList<ModelDto> listaModelos = ServicesLocator.getModelServices().getAllModels();
+        listModels.setAll(listaModelos);
+    }
+
+    public void rellenarTablaBrand() throws SQLException {
+        listBrands.clear();
+        ObservableList<BrandDto> listaMarcas = ServicesLocator.getBrandServices().getAllBrand();
+        listBrands.setAll(listaMarcas);
     }
 
     public void configurarChoiceBoxModel() {
@@ -197,6 +271,44 @@ public class CarController implements Initializable {
             }
     }
 
+     //Se ejecuta al dar clic en el boton delete de model
+     public void onDeleteButtonModel() {
+        ModelDto selectedModelDto = modelTable.getSelectionModel().getSelectedItem();
+            if (selectedModelDto != null) {
+                try {
+                    ServicesLocator.getModelServices().deleteModel(selectedModelDto.getCodModel());;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                listModels.remove(selectedModelDto);
+                modelTable.refresh();
+            }else{
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("You must select a model");
+                alert.showAndWait();
+            }
+    }
+
+    //Se ejecuta al dar clic en el boton delete de brand
+     public void onDeleteButtonBrand() {
+        BrandDto selectedBrandDto = brandTable.getSelectionModel().getSelectedItem();
+            if (selectedBrandDto != null) {
+                try {
+                    ServicesLocator.getBrandServices().deleteBrand(selectedBrandDto.getCodBrand());;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                listBrands.remove(selectedBrandDto);
+                brandTable.refresh();
+            }else{
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("You must select a brand");
+                alert.showAndWait();
+            }
+    }
+
     //Se ejecuta al dar clic en el boton save
     public void onSaveButton() throws SQLException{
         boolean camposLLenos = validarCamposLLenos();
@@ -247,7 +359,68 @@ public class CarController implements Initializable {
             }
         }
     }
+
+    public void onAddModelButton(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../fxml/addModel.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent parent = loader.getRoot();
+        Stage stage = new Stage(StageStyle.UTILITY);
+        stage.setScene(new Scene(parent));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
+    public void onAddBrandButton(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../fxml/addBrand.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent parent = loader.getRoot();
+        Stage stage = new Stage(StageStyle.UTILITY);
+        stage.setScene(new Scene(parent));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
+    public void onModelButton(){
+        modelPane.setVisible(true);
+        carButtonPane.setVisible(false);
+        brandPane.setVisible(false);
+
+    }
+
+    public void onBrandButton(){
+        modelPane.setVisible(false);
+        carButtonPane.setVisible(false);
+        brandPane.setVisible(true);
+    }
     
+    public void onCarButton(){
+        modelPane.setVisible(false);
+        carButtonPane.setVisible(true);
+        brandPane.setVisible(false);
+    }
+
+    public void refresh(){
+        configurarTablaModel();
+        configurarTablaBrand();
+        try {
+            rellenarTablaBrand();
+            rellenarTablaModel();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+    }
 /***********************           VISTAS          *****************************/
     public void onBackButton() {
         System.out.println("Aqui en vista");
@@ -309,12 +482,16 @@ public class CarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        
+        configurarTablaCar();
+        configurarTablaModel();
+        configurarTablaBrand();
+        configurarChoiceBoxModel();
+        configurarChoiceBoxSituation();
+
         try {
-            configurarTablaCar();
             rellenarTablaCar();
-            configurarChoiceBoxModel();
-            configurarChoiceBoxSituation();
+            rellenarTablaModel();
+            rellenarTablaBrand();        
             rellenarChoiceBoxModel();
             rellenarChoiceBoxSituation();
 

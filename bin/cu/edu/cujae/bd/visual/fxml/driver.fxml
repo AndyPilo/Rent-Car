@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.DriverController">
    <children>
-      <AnchorPane layoutX="101.0" layoutY="49.0" prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: #023e7d;" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="101.0" layoutY="49.0" prefHeight="70.0" prefWidth="900.0" styleClass="paneDriver" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="1.0" prefHeight="70.0" prefWidth="198.0" text="Manage Drivers" textFill="WHITE">
                <font>
@@ -25,12 +25,12 @@
             </Label>
             <Button fx:id="closeButton" layoutX="855.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" styleClass="close" stylesheets="@../style/style.css" AnchorPane.leftAnchor="855.0">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="CLOSE" size="1.5em" styleClass="close" />
+                  <FontAwesomeIcon fill="#110000" iconName="CLOSE" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
             <Button fx:id="minimiceButton" layoutX="823.0" layoutY="20.0" mnemonicParsing="false" onAction="#minimice" prefHeight="30.0" prefWidth="30.0" styleClass="minimice" stylesheets="@../style/style.css" AnchorPane.leftAnchor="825.0">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="MINUS" size="1.5em" styleClass="close" />
+                  <FontAwesomeIcon fill="#110000" iconName="MINUS" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
          </children>

@@ -14,3 +14,11 @@
     -fx-border-width: 0px 0px 3px 0px;
 }
 
+.buttonCar{
+    -fx-background-color: #7d8597;
+}
+.menuCar:hover{
+    -fx-background-color: #002A78;
+}
+
+

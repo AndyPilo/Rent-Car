@@ -111,20 +111,6 @@
                   <FontAwesomeIcon fill="WHITE" iconName="CREDIT_CARD" wrappingWidth="19.0" />
                </graphic>
             </Button>
-            <Button fx:id="manageButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="slideItem" stylesheets="@../style/menu.css" text="Manage" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="LIST" wrappingWidth="20.0" />
-               </graphic>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets bottom="20.0" left="40.0" />
-               </padding>
-            </Button>
          </children>
       </VBox>
       <Button fx:id="logoutButton" layoutY="549.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="270.0" styleClass="slideLoginButton" stylesheets="@../style/menu.css" text="Logout" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="593.0">

@@ -16,22 +16,32 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.CarController">
    <children>
-      <AnchorPane layoutX="101.0" layoutY="49.0" prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: #7d8597;" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="101.0" layoutY="49.0" prefHeight="70.0" prefWidth="900.0" styleClass="paneCar" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" layoutX="1.0" prefHeight="70.0" prefWidth="198.0" text="Manage Car" textFill="WHITE" AnchorPane.rightAnchor="701.0">
+            <Label alignment="CENTER" layoutX="1.0" onMouseClicked="#onCarButton" prefHeight="70.0" prefWidth="212.0" styleClass="menuCar" stylesheets="@../style/menu.css" text="Manage Car" textFill="WHITE" AnchorPane.rightAnchor="689.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <Button fx:id="closeButton" layoutX="862.0" layoutY="20.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" styleClass="close" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="855.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="20.0">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="CLOSE" size="1.5em" styleClass="close" />
+                  <FontAwesomeIcon iconName="CLOSE" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
             <Button fx:id="closeButton1" layoutX="830.0" layoutY="20.0" mnemonicParsing="false" onAction="#minimice" prefHeight="30.0" prefWidth="30.0" styleClass="minimice" stylesheets="@../style/style.css" AnchorPane.leftAnchor="825.0" AnchorPane.rightAnchor="44.0">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="MINUS" size="1.5em" styleClass="close" />
+                  <FontAwesomeIcon iconName="MINUS" size="1.5em" styleClass="close" />
                </graphic>
+            </Button>
+            <Button layoutX="312.0" mnemonicParsing="false" onAction="#onBrandButton" prefHeight="67.0" prefWidth="100.0" styleClass="menuCar" stylesheets="@../style/menu.css" text="Brands" textFill="WHITE" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="212.0" layoutY="9.0" mnemonicParsing="false" onAction="#onModelButton" prefHeight="67.0" prefWidth="100.0" styleClass="menuCar" stylesheets="@../style/menu.css" text="Models" textFill="WHITE" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
          </children>
       </AnchorPane>
@@ -99,7 +109,7 @@
                                                 <String fx:value="list-view" />
                                              </styleClass>
                                           </ChoiceBox>
-                                          <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #7d8597;">
+                                          <Button fx:id="addSituationButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #7d8597;">
                                              <graphic>
                                                 <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
                                              </graphic>
@@ -124,7 +134,7 @@
                                                 <String fx:value="list-view" />
                                              </styleClass>
                                           </ChoiceBox>
-                                          <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #7d8597;" textFill="WHITE">
+                                          <Button fx:id="addModelButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #7d8597;" textFill="WHITE">
                                              <graphic>
                                                 <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
                                              </graphic>
@@ -152,13 +162,33 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-16.0" layoutY="580.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="580.0">
+      <AnchorPane fx:id="carButtonPane" layoutX="-16.0" layoutY="580.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="580.0">
          <children>
-            <Button fx:id="backButton" layoutX="611.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Back" textFill="WHITE" visible="false" AnchorPane.leftAnchor="625.0" />
-            <Button fx:id="newCarButton" layoutX="778.0" layoutY="23.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="New Car" textFill="WHITE" AnchorPane.leftAnchor="750.0" />
-            <Button fx:id="saveButton" layoutX="754.0" layoutY="23.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Save" textFill="WHITE" visible="false" AnchorPane.leftAnchor="775.0" />
-            <Button fx:id="deleteButton" layoutX="53.0" layoutY="23.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" styleClass="btn" stylesheets="@../style/style.css" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="745.0" AnchorPane.topAnchor="23.0" />
-            <Button fx:id="updateButton" layoutX="194.0" layoutY="23.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="595.0" />
+            <Button fx:id="backButton" layoutX="611.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Back" textFill="WHITE" visible="false" AnchorPane.leftAnchor="625.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass></Button>
+            <Button fx:id="newCarButton" layoutX="778.0" layoutY="23.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="New Car" textFill="WHITE" AnchorPane.leftAnchor="750.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass></Button>
+            <Button fx:id="saveButton" layoutX="754.0" layoutY="23.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Save" textFill="WHITE" visible="false" AnchorPane.leftAnchor="775.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass></Button>
+            <Button fx:id="deleteButton" layoutX="53.0" layoutY="23.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="745.0" AnchorPane.topAnchor="23.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass></Button>
+            <Button fx:id="updateButton" layoutX="194.0" layoutY="23.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="595.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass></Button>
          </children>
       </AnchorPane>
       <TableView fx:id="carsTable" layoutY="70.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
@@ -170,5 +200,72 @@
             <TableColumn fx:id="colorColumn" minWidth="83.0" prefWidth="178.0" resizable="false" text="Color" />
         </columns>
       </TableView>
+      <AnchorPane fx:id="brandPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <TableView fx:id="brandTable" layoutX="45.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="colBrandB" prefWidth="146.0" text="Brand" />
+              </columns>
+            </TableView>
+            <Button fx:id="deleteBrandButton" layoutX="54.0" layoutY="533.0" mnemonicParsing="false" onAction="#onDeleteButtonBrand" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete Brand" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="533.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass>
+            </Button>
+            <Button fx:id="updateBrandButton" layoutX="196.0" layoutY="533.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Update Brand" textFill="WHITE" AnchorPane.leftAnchor="200.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass>
+            </Button>
+            <Button fx:id="NewBrandButton" layoutX="752.0" layoutY="533.0" mnemonicParsing="false" onAction="#onAddBrandButton" prefWidth="105.0" stylesheets="@../style/menu.css" text="New Brand" textFill="WHITE" AnchorPane.leftAnchor="750.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass>
+            </Button>
+            <Button layoutX="345.0" layoutY="533.0" mnemonicParsing="false" onAction="#refresh" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="modelPane" layoutY="70.0" prefHeight="580.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <TableView fx:id="modelTable" layoutX="39.0" layoutY="23.0" prefHeight="510.0" prefWidth="900.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="colModelM" prefWidth="142.0" text="Model" />
+                <TableColumn fx:id="colBrandM" prefWidth="142.0" text="Brand" />
+              </columns>
+            </TableView>
+            <Button fx:id="deleteModelButton" layoutX="60.0" layoutY="533.0" mnemonicParsing="false" onAction="#onDeleteButtonModel" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete Model" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="533.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass>
+            </Button>
+            <Button fx:id="updateModelButton" layoutX="197.0" layoutY="533.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Update Model" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="533.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass>
+            </Button>
+            <Button layoutX="345.0" layoutY="533.0" mnemonicParsing="false" onAction="#refresh" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="350.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass>
+            </Button>
+            <Button fx:id="newModelButton" layoutX="744.0" layoutY="533.0" mnemonicParsing="false" onAction="#onAddModelButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="New Model" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="533.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

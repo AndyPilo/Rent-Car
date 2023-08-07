@@ -234,6 +234,11 @@ public boolean validarCamposLLenos(){
             }
             tourists.remove(selectedTouristDto);
             touristTable.refresh();
+        }else{
+            Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("You must select a tourist");
+                alert.showAndWait();
         }
     }
 

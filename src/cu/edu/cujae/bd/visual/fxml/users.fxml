@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.UserController">
    <children>
-      <AnchorPane layoutX="102.0" layoutY="119.0" prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: #7d8597;" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="102.0" layoutY="119.0" prefHeight="70.0" prefWidth="900.0" styleClass="paneUser" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="60.0" layoutY="27.0" prefHeight="70.0" prefWidth="198.0" text="Users" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="701.0" AnchorPane.topAnchor="0.0">
                <font>
@@ -31,8 +31,8 @@
       </AnchorPane>
       <TableView fx:id="usersTable" layoutY="70.0" prefHeight="511.0" prefWidth="900.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
         <columns>
-          <TableColumn fx:id="usernameCol" prefWidth="450.0" text="User Name" />
-            <TableColumn fx:id="rolCol" prefWidth="448.0" text="Rol" />
+          <TableColumn fx:id="usernameCol" prefWidth="172.0" text="User Name" />
+            <TableColumn fx:id="rolCol" prefWidth="185.0" text="Rol" />
         </columns>
       </TableView>
       <AnchorPane layoutX="27.0" layoutY="499.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="580.0">

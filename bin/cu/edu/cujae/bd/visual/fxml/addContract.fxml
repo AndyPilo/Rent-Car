@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #ECECE7;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.ContractController">
    <children>
-      <AnchorPane prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: #708d81;">
+      <AnchorPane prefHeight="70.0" prefWidth="900.0" styleClass="paneContract" stylesheets="@../style/style.css">
          <children>
             <Label alignment="CENTER" layoutX="11.0" layoutY="-1.0" prefHeight="70.0" prefWidth="171.0" text="Manage Contract" textFill="WHITE">
                <font>
@@ -26,12 +26,12 @@
             </Label>
             <Button fx:id="closeButton" layoutX="855.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" styleClass="close" stylesheets="@../style/style.css">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="CLOSE" size="1.5em" styleClass="close" />
+                  <FontAwesomeIcon iconName="CLOSE" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
             <Button fx:id="closeButton1" layoutX="823.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" styleClass="minimice" stylesheets="@../style/style.css">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="MINUS" size="1.5em" styleClass="close" />
+                  <FontAwesomeIcon iconName="MINUS" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
          </children>

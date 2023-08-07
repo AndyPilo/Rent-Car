@@ -156,6 +156,11 @@ public class DriverController implements Initializable{
             }
             drivers.remove(selectedDriverDto);
             driverTable.refresh();
+        }else{
+            Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("You must select a driver");
+                alert.showAndWait();
         }
     }
 

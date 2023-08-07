@@ -15,13 +15,10 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 public class MenuController implements Initializable{
-    boolean expande = false;
     @FXML
     private Button dashboardButton;
     @FXML
     private Button reportsButton;
-    @FXML
-    private Button manageButton;
     @FXML
     private Button usersButton;
     @FXML
@@ -46,7 +43,6 @@ public class MenuController implements Initializable{
         reportsButton.setOnAction(event -> onReports());
         usersButton.setOnAction(event -> onUsers());
         logoutButton.setOnAction(event -> onLogout());
-        manageButton.setOnAction(event -> onManage());
         contractButton.setOnAction(event -> onContract());
         carButton.setOnAction(event -> onCar());
         touristButton.setOnAction(event -> onTourist());

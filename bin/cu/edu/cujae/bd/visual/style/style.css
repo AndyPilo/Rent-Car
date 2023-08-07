@@ -39,6 +39,24 @@
     -fx-background-color: #ce4646;
 }
 
+.paneCar{
+    -fx-background-color: linear-gradient(to bottom right,  #062052 , #7d8597 );
+}
+.paneTourist{
+    -fx-background-color: linear-gradient(to bottom right,  #062052 , #0b65be );
+}
+.paneDriver{
+    -fx-background-color: linear-gradient(to bottom right,  #062052 , #0054F2);
+}
+.paneContract{
+    -fx-background-color: linear-gradient(to bottom right,  #062052 ,  #708d81 );
+}
+.paneUser{
+    -fx-background-color: linear-gradient(to bottom right,  #062052 , #34679b );
+}
+.paneDashboard{
+    -fx-background-color: linear-gradient(to bottom right,  #062052 , #0b65be );
+}
 
 
 
