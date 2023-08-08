@@ -4,8 +4,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import cu.edu.cujae.bd.dto.BrandDto;
-import cu.edu.cujae.bd.dto.ModelDto;
 import cu.edu.cujae.bd.dto.RolDto;
 import cu.edu.cujae.bd.dto.UserDto;
 import cu.edu.cujae.bd.service.ServicesLocator;

@@ -62,7 +62,7 @@ public class LoginController implements Initializable{
 			Model.getInstanse().getViewFactory().closeStage(stage);
 		}else if(rol.equals("user")){
 			Model.getInstanse().getViewFactory().closeStage(stage);
-			Model.getInstanse().getViewFactory().showApplicationWindow();
+			Model.getInstanse().getViewFactory().showAplicationUserWindow();
 		}			
 	}
 

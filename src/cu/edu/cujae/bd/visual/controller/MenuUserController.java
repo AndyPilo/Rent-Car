@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import cu.edu.cujae.bd.visual.models.Model;
-import cu.edu.cujae.bd.visual.views.AdminMenuOption;
+import cu.edu.cujae.bd.visual.views.UserMenuOption;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -14,13 +14,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
-public class MenuController implements Initializable{
+public class MenuUserController implements Initializable{
+
     @FXML
     private Button dashboardButton;
     @FXML
     private Button reportsButton;
-    @FXML
-    private Button usersButton;
     @FXML
     private Button logoutButton;
     @FXML
@@ -32,7 +31,6 @@ public class MenuController implements Initializable{
     @FXML
     private Button driverButton;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addListener();
@@ -41,7 +39,6 @@ public class MenuController implements Initializable{
    public void addListener(){
         dashboardButton.setOnAction(event -> onDashboard());
         reportsButton.setOnAction(event -> onReports());
-        usersButton.setOnAction(event -> onUsers());
         logoutButton.setOnAction(event -> onLogout());
         contractButton.setOnAction(event -> onContract());
         carButton.setOnAction(event -> onCar());
@@ -51,72 +48,56 @@ public class MenuController implements Initializable{
    }
 
    public void onDashboard(){   
-          Model.getInstanse().getViewFactory().getSelectedAdminMenu().set(AdminMenuOption.DASHBOARD);
+          Model.getInstanse().getViewFactory().getSelectedUserMenu().set(UserMenuOption.DASHBOARD);
           carButton.setStyle("-fx-background-color: transparent;");
           dashboardButton.setStyle("-fx-background-color: linear-gradient(to bottom right, #33415C ,#485C82 );");
           reportsButton.setStyle("-fx-background-color: transparent;");
-          usersButton.setStyle("-fx-background-color: transparent;");
           contractButton.setStyle("-fx-background-color: transparent;");
           touristButton.setStyle("-fx-background-color: transparent;");
           driverButton.setStyle("-fx-background-color: transparent;");
    }
    public void onReports(){
-          Model.getInstanse().getViewFactory().getSelectedAdminMenu().set(AdminMenuOption.REPORTS);
+          Model.getInstanse().getViewFactory().getSelectedUserMenu().set(UserMenuOption.REPORTS);
           carButton.setStyle("-fx-background-color: transparent;");
           dashboardButton.setStyle("-fx-background-color: transparent;");
           reportsButton.setStyle("-fx-background-color: linear-gradient(to bottom right, #33415C ,#485C82 );");
-          usersButton.setStyle("-fx-background-color: transparent;");
-          contractButton.setStyle("-fx-background-color: transparent;");
-          touristButton.setStyle("-fx-background-color: transparent;");
-          driverButton.setStyle("-fx-background-color: transparent;");
-   }
-   public void onUsers(){
-          Model.getInstanse().getViewFactory().getSelectedAdminMenu().set(AdminMenuOption.USERS);
-          carButton.setStyle("-fx-background-color: transparent;");
-          dashboardButton.setStyle("-fx-background-color: transparent;");
-          reportsButton.setStyle("-fx-background-color: transparent;");
-          usersButton.setStyle("-fx-background-color: linear-gradient(to bottom right, #33415C ,#485C82 );");
           contractButton.setStyle("-fx-background-color: transparent;");
           touristButton.setStyle("-fx-background-color: transparent;");
           driverButton.setStyle("-fx-background-color: transparent;");
    }
    public void onContract(){
-          Model.getInstanse().getViewFactory().getSelectedAdminMenu().set(AdminMenuOption.CONTRACTS);
+          Model.getInstanse().getViewFactory().getSelectedUserMenu().set(UserMenuOption.CONTRACTS);
           carButton.setStyle("-fx-background-color: transparent;");
           dashboardButton.setStyle("-fx-background-color: transparent;");
           reportsButton.setStyle("-fx-background-color: transparent;");
-          usersButton.setStyle("-fx-background-color: transparent;");
           contractButton.setStyle("-fx-background-color: linear-gradient(to bottom right, #33415C ,#485C82 );");
           touristButton.setStyle("-fx-background-color: transparent;");
           driverButton.setStyle("-fx-background-color: transparent;");
    }
    public void onCar(){
-          Model.getInstanse().getViewFactory().getSelectedAdminMenu().set(AdminMenuOption.CARS);
+          Model.getInstanse().getViewFactory().getSelectedUserMenu().set(UserMenuOption.CARS);
           carButton.setStyle("-fx-background-color: linear-gradient(to bottom right, #33415C ,#485C82 );");
           dashboardButton.setStyle("-fx-background-color: transparent;");
           reportsButton.setStyle("-fx-background-color: transparent;");
-          usersButton.setStyle("-fx-background-color: transparent;");
           contractButton.setStyle("-fx-background-color: transparent;");
           touristButton.setStyle("-fx-background-color: transparent;");
           driverButton.setStyle("-fx-background-color: transparent;");
 
    }
    public void onTourist(){
-          Model.getInstanse().getViewFactory().getSelectedAdminMenu().set(AdminMenuOption.TOURIST);
+          Model.getInstanse().getViewFactory().getSelectedUserMenu().set(UserMenuOption.TOURIST);
           carButton.setStyle("-fx-background-color: transparent;");
           dashboardButton.setStyle("-fx-background-color: transparent;");
           reportsButton.setStyle("-fx-background-color: transparent;");
-          usersButton.setStyle("-fx-background-color: transparent;");
           contractButton.setStyle("-fx-background-color: transparent;");
           touristButton.setStyle("-fx-background-color: linear-gradient(to bottom right, #33415C ,#485C82 );");
           driverButton.setStyle("-fx-background-color: transparent;"); 
    }
    public void onDriver(){
-          Model.getInstanse().getViewFactory().getSelectedAdminMenu().set(AdminMenuOption.DRIVER);
+          Model.getInstanse().getViewFactory().getSelectedUserMenu().set(UserMenuOption.DRIVER);
           carButton.setStyle("-fx-background-color: transparent;");
           dashboardButton.setStyle("-fx-background-color: transparent;");
           reportsButton.setStyle("-fx-background-color: transparent;");
-          usersButton.setStyle("-fx-background-color: transparent;");
           contractButton.setStyle("-fx-background-color: transparent;");
           touristButton.setStyle("-fx-background-color: transparent;");
           driverButton.setStyle("-fx-background-color: linear-gradient(to bottom right, #33415C ,#485C82 );");

@@ -13,17 +13,21 @@ import javafx.stage.StageStyle;
 
 public class ViewFactory {
 
+    //ADMIN
     private final ObjectProperty<AdminMenuOption> selectedMenu;
 
-    //MENU
-    private AnchorPane dashboardView;
-    private AnchorPane usersView;
+    //USER
+    private final ObjectProperty<UserMenuOption> selectedMenuUser;
 
-    //MANAGE MENU
+    //MENU ADMIN
+    private AnchorPane usersView;
+    //MENU USER
+    private AnchorPane dashboardView;
     private AnchorPane contractView;
     private AnchorPane carView;
     private AnchorPane touristView;
     private AnchorPane driverView;
+
 
     //POSITION OF THE APPLICATION
     private double xOffSet = 0;
@@ -31,10 +35,15 @@ public class ViewFactory {
 
     public ViewFactory(){
         this.selectedMenu = new SimpleObjectProperty<>();
+        this.selectedMenuUser = new SimpleObjectProperty<>();
     }
 
-    public ObjectProperty<AdminMenuOption>  getSelectedMenu(){
+    public ObjectProperty<AdminMenuOption>  getSelectedAdminMenu(){
         return this.selectedMenu;
+    }
+
+     public ObjectProperty<UserMenuOption>  getSelectedUserMenu(){
+        return this.selectedMenuUser;
     }
 
     public AnchorPane getDashboard(){
@@ -118,6 +127,14 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/application.fxml"));
         this.selectedMenu.set(AdminMenuOption.DASHBOARD);
         createStage(loader);
+    }
+
+    public void showAplicationUserWindow(){
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/applicationUser.fxml"));
+        this.selectedMenuUser.set(UserMenuOption.DASHBOARD);
+        createStage(loader);
+
     }
 
     public void createStage(FXMLLoader loader){
