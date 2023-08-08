@@ -7,6 +7,7 @@ public class CarDto {
 	private int km;
 	private ModelDto model;
 	private SituationDto situation;
+	private String brand;
 	
 	public CarDto( String plate, String color,
 			int km, ModelDto model,SituationDto situation) {
@@ -16,6 +17,8 @@ public class CarDto {
 		this.km = km;
 		this.model = model;
 		this.situation = situation;
+		setBrand();
+		
 	}
 	
 	public CarDto( int codCar,String plate, String color,
@@ -27,6 +30,7 @@ public class CarDto {
 		this.km = km;
 		this.model = model;
 		this.situation = situation;
+		setBrand();
 	}
 
 	public CarDto(){
@@ -79,6 +83,14 @@ public class CarDto {
 
 	public void setSituation(SituationDto situation) {
 		this.situation = situation;
+	}
+
+	public String getBrand() {
+		return this.brand;
+	}
+
+	public void setBrand() {
+		this.brand = getModel().getBrand().getNameBrand();
 	}
 	
 }

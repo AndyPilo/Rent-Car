@@ -33,12 +33,12 @@
                   <FontAwesomeIcon iconName="MINUS" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
-            <Button layoutX="312.0" mnemonicParsing="false" onAction="#onBrandButton" prefHeight="67.0" prefWidth="100.0" styleClass="menuCar" stylesheets="@../style/menu.css" text="Brands" textFill="WHITE" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="0.0">
+            <Button layoutX="312.0" mnemonicParsing="false" onAction="#onBrandButton" prefHeight="67.0" prefWidth="100.0" styleClass="menuCar" stylesheets="@../style/menu.css" text="Brands" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="212.0" layoutY="9.0" mnemonicParsing="false" onAction="#onModelButton" prefHeight="67.0" prefWidth="100.0" styleClass="menuCar" stylesheets="@../style/menu.css" text="Models" textFill="WHITE" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="0.0">
+            <Button layoutX="212.0" layoutY="9.0" mnemonicParsing="false" onAction="#onModelButton" prefHeight="67.0" prefWidth="100.0" styleClass="menuCar" stylesheets="@../style/menu.css" text="Models" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -99,23 +99,14 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Label text="Situation of car " />
-                                    <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                       <children>
-                                          <ChoiceBox fx:id="situationMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
-                                             <styleClass>
-                                                <String fx:value="arrow" />
-                                                <String fx:value="arrow-button" />
-                                                <String fx:value="choice-box-dropdown" />
-                                                <String fx:value="list-view" />
-                                             </styleClass>
-                                          </ChoiceBox>
-                                          <Button fx:id="addSituationButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #7d8597;">
-                                             <graphic>
-                                                <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
-                                             </graphic>
-                                          </Button>
-                                       </children>
-                                    </HBox>
+                                    <ChoiceBox fx:id="situationMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
+                                       <styleClass>
+                                          <String fx:value="arrow" />
+                                          <String fx:value="arrow-button" />
+                                          <String fx:value="choice-box-dropdown" />
+                                          <String fx:value="list-view" />
+                                       </styleClass>
+                                    </ChoiceBox>
                                  </children>
                                  <padding>
                                     <Insets left="70.0" top="40.0" />
@@ -124,23 +115,14 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Label text="Model " />
-                                    <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                       <children>
-                                          <ChoiceBox fx:id="modelMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
-                                             <styleClass>
-                                                <String fx:value="choice-box-dropdown" />
-                                                <String fx:value="arrow-button" />
-                                                <String fx:value="arrow-button" />
-                                                <String fx:value="list-view" />
-                                             </styleClass>
-                                          </ChoiceBox>
-                                          <Button fx:id="addModelButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #7d8597;" textFill="WHITE">
-                                             <graphic>
-                                                <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
-                                             </graphic>
-                                          </Button>
-                                       </children>
-                                    </HBox>
+                                    <ChoiceBox fx:id="modelMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
+                                       <styleClass>
+                                          <String fx:value="arrow" />
+                                          <String fx:value="arrow-button" />
+                                          <String fx:value="choice-box-dropdown" />
+                                          <String fx:value="list-view" />
+                                       </styleClass>
+                                    </ChoiceBox>
                                  </children>
                                  <padding>
                                     <Insets left="70.0" top="10.0" />
@@ -193,18 +175,19 @@
       </AnchorPane>
       <TableView fx:id="carsTable" layoutY="70.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
         <columns>
-          <TableColumn fx:id="plateColumn" minWidth="180.0" prefWidth="164.0" resizable="false" text="Plate" />
-            <TableColumn fx:id="modelColumn" minWidth="180.0" prefWidth="159.0" resizable="false" text="Model" />
-            <TableColumn fx:id="situationColumn" minWidth="180.0" prefWidth="152.0" resizable="false" text="Situation" />
-            <TableColumn fx:id="kmColumn" minWidth="180.0" prefWidth="139.0" resizable="false" text="Kilometros" />
-            <TableColumn fx:id="colorColumn" minWidth="83.0" prefWidth="178.0" resizable="false" text="Color" />
+          <TableColumn fx:id="plateColumn" minWidth="152.0" prefWidth="152.0" resizable="false" text="Plate" />
+            <TableColumn fx:id="modelColumn" minWidth="107.0" prefWidth="162.0" resizable="false" text="Model" />
+            <TableColumn fx:id="brandColumn" prefWidth="151.0" resizable="false" text="Brand" />
+            <TableColumn fx:id="situationColumn" minWidth="103.0" prefWidth="130.0" resizable="false" text="Situation" />
+            <TableColumn fx:id="kmColumn" minWidth="144.0" prefWidth="144.0" resizable="false" text="Kilometros" />
+            <TableColumn fx:id="colorColumn" minWidth="48.0" prefWidth="159.0" resizable="false" text="Color" />
         </columns>
       </TableView>
       <AnchorPane fx:id="brandPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <children>
             <TableView fx:id="brandTable" layoutX="45.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="colBrandB" prefWidth="146.0" text="Brand" />
+                <TableColumn fx:id="colBrandB" prefWidth="146.0" resizable="false" text="Brand" />
               </columns>
             </TableView>
             <Button fx:id="deleteBrandButton" layoutX="54.0" layoutY="533.0" mnemonicParsing="false" onAction="#onDeleteButtonBrand" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete Brand" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="533.0">
@@ -225,7 +208,7 @@
                   <String fx:value="menuCar" />
                </styleClass>
             </Button>
-            <Button layoutX="345.0" layoutY="533.0" mnemonicParsing="false" onAction="#refresh" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE">
+            <Button layoutX="345.0" layoutY="533.0" mnemonicParsing="false" onAction="#refresh" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="350.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
@@ -237,8 +220,8 @@
          <children>
             <TableView fx:id="modelTable" layoutX="39.0" layoutY="23.0" prefHeight="510.0" prefWidth="900.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="colModelM" prefWidth="142.0" text="Model" />
-                <TableColumn fx:id="colBrandM" prefWidth="142.0" text="Brand" />
+                <TableColumn fx:id="colModelM" prefWidth="142.0" resizable="false" text="Model" />
+                <TableColumn fx:id="colBrandM" prefWidth="142.0" resizable="false" text="Brand" />
               </columns>
             </TableView>
             <Button fx:id="deleteModelButton" layoutX="60.0" layoutY="533.0" mnemonicParsing="false" onAction="#onDeleteButtonModel" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete Model" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="533.0">

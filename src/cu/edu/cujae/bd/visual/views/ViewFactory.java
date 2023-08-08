@@ -72,7 +72,7 @@ public class ViewFactory {
     public AnchorPane getContractView(){
         if(contractView == null){
             try{
-                contractView = new FXMLLoader(getClass().getResource("../fxml/addContract.fxml")).load(); 
+                contractView = new FXMLLoader(getClass().getResource("../fxml/Contract.fxml")).load(); 
             }catch(Exception e){
                 e.printStackTrace();
             }

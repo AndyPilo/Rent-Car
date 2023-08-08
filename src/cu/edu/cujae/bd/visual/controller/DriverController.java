@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import cu.edu.cujae.bd.dto.DriverCategoryDto;
 import cu.edu.cujae.bd.dto.DriverDto;
+import cu.edu.cujae.bd.dto.SituationDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
 import cu.edu.cujae.bd.visual.models.Model;
 import javafx.beans.property.SimpleStringProperty;
@@ -136,6 +137,13 @@ public class DriverController implements Initializable{
             nameField.setText(selectedDriver.getNameDriver());
             lastNameField.setText(selectedDriver.getLastName());
             addressField.setText(selectedDriver.getAddress());
+            DriverCategoryDto category = null;
+            for(int i = 0;i<listCategorys.size();i++){
+                if(this.selectedDriver.getCategory().getCategory().equals(listCategorys.get(i).getCategory())){
+                    category = listCategorys.get(i);
+                }
+            }
+            driverMenu.setValue(category);
             onDriverForm();
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);

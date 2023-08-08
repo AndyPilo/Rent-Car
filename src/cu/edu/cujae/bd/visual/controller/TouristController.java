@@ -214,6 +214,14 @@ public boolean validarCamposLLenos(){
             lastNameField.setText(selectedTourist.getLastName());
             ageField.setText(Integer.toString(selectedTourist.getAge()));
             contactField.setText(selectedTourist.getContact());
+            CountryDto country = null;
+            for(int i = 0;i<listcountry.size();i++){
+                if(this.selectedTourist.getCountry().getName().equals(listcountry.get(i).getName())){
+                    country = listcountry.get(i);
+                }
+            }
+            countryMenu.setValue(country);
+            sexMenu.setValue(this.selectedTourist.getSex()+"");
             onTouristForm();
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);

@@ -92,23 +92,14 @@
                         <VBox prefHeight="58.0" prefWidth="433.0" spacing="10.0">
                            <children>
                               <Label prefHeight="17.0" prefWidth="84.0" text="Driver Category" />
-                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                 <children>
-                                    <ChoiceBox fx:id="driverMenu" prefHeight="31.0" prefWidth="319.0" stylesheets="@../style/carController.css">
-                                       <styleClass>
-                                          <String fx:value="choice-box-dropdown" />
-                                          <String fx:value="arrow-button" />
-                                          <String fx:value="arrow-button" />
-                                          <String fx:value="list-view" />
-                                       </styleClass>
-                                    </ChoiceBox>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #023e7d;">
-                                       <graphic>
-                                          <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
-                                       </graphic>
-                                    </Button>
-                                 </children>
-                              </HBox>
+                              <ChoiceBox fx:id="driverMenu" prefHeight="31.0" prefWidth="319.0" stylesheets="@../style/carController.css">
+                                 <styleClass>
+                                    <String fx:value="choice-box-dropdown" />
+                                    <String fx:value="arrow-button" />
+                                    <String fx:value="arrow-button" />
+                                    <String fx:value="list-view" />
+                                 </styleClass>
+                              </ChoiceBox>
                            </children>
                            <VBox.margin>
                               <Insets left="60.0" right="60.0" top="10.0" />
@@ -118,7 +109,7 @@
                   </VBox>
                </children>
             </HBox>
-            <Label fx:id="driverFormLabel" layoutX="83.0" layoutY="28.0" prefHeight="25.0" prefWidth="113.0" text="New Driver">
+            <Label fx:id="driverFormLabel" layoutX="83.0" layoutY="28.0" prefHeight="25.0" prefWidth="181.0" text="New Driver">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

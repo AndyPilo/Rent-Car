@@ -58,6 +58,8 @@ public class CarController implements Initializable {
     @FXML
     private TableColumn<CarDto, String> modelColumn;
     @FXML
+    private TableColumn<CarDto, String> brandColumn;
+    @FXML
     private Button newCarButton;
     @FXML
     private AnchorPane insertCarPane;
@@ -123,6 +125,7 @@ public class CarController implements Initializable {
     public void configurarTablaCar() {
         plateColumn.setCellValueFactory(new PropertyValueFactory<>("Plate"));
         colorColumn.setCellValueFactory(new PropertyValueFactory<>("Color"));
+        brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
         modelColumn.setCellValueFactory(cellData -> {
             ModelDto model = cellData.getValue().getModel();
             String nameModel = model != null ? model.getNameModel() : "";
@@ -245,6 +248,20 @@ public class CarController implements Initializable {
             plateField.setText(selectedCar.getPlate());
             colorField.setText(selectedCar.getColor());
             kmField.setText(String.valueOf(selectedCar.getKm()));
+            ModelDto model = new ModelDto();
+            for(int i = 0;i<listModels.size();i++){
+                if(this.selectedCar.getModel().getNameModel().equals(listModels.get(i).getNameModel())){
+                    model = listModels.get(i);
+                }
+            }
+            modelMenu.setValue(model);
+            SituationDto situation = null;
+            for(int i = 0;i<listSituation.size();i++){
+                if(this.selectedCar.getSituation().getSituation().equals(listSituation.get(i).getSituation())){
+                    situation = listSituation.get(i);
+                }
+            }
+            situationMenu.setValue(situation);
             onCarForm();
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);
