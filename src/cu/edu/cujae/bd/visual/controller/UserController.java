@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import cu.edu.cujae.bd.dto.RolDto;
 import cu.edu.cujae.bd.dto.UserDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
@@ -29,6 +28,7 @@ import javafx.stage.StageStyle;
 public class UserController implements Initializable{
 
     public ObservableList<UserDto> users = FXCollections.observableArrayList();
+    private UserDto selectedUser;
 
     @FXML
     private TableView<UserDto> usersTable;
@@ -57,22 +57,31 @@ public class UserController implements Initializable{
         users.setAll(userList);
     }
     
-/****************************    BOTONES     ****************************/
+/****************************    BOTONES     
+ * @throws IOException
+ * @throws SQLException****************************/
 
-    //se ejecuta al pulsar el boton new car
-    public void openNew() {
+    //se ejecuta al pulsar el boton new user
+    public void openNew() throws IOException, SQLException {
+        this.selectedUser = usersTable.getSelectionModel().getSelectedItem();
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../fxml/addUser.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        loader.load();
+        AddUserController controller = loader.getController();
+            
+        controller.initAtributes();
+
         Parent parent = loader.getRoot();
         Stage stage = new Stage(StageStyle.UTILITY);
         stage.setScene(new Scene(parent));
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+        stage.showAndWait();
+                
+        UserDto user = controller.getSelectedUser();
+        ServicesLocator.getUserServices().insertUser(user); 
+                
+        rellenarTablaUser(); 
     }
 
      public void onDeleteButton() {
@@ -94,32 +103,35 @@ public class UserController implements Initializable{
     }
 
     //Se ejecuta al dar clic en el boton update
-	public void openForEdit() {
-		UserDto selectedUser = usersTable.getSelectionModel().getSelectedItem();
+	public void openForEdit() throws SQLException, IOException {
+        /* 
+		this.selectedUser = usersTable.getSelectionModel().getSelectedItem();
 
-        if(selectedUser != null){
+        if(this.selectedUser != null){
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../fxml/addUser.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            AddUserController addUserController = loader.getController();
-            addUserController.setUpdate(true);
-            addUserController.setTextField(selectedUser.getUsername());
+            loader.load();
+            AddUserController controller = loader.getController();
+            
+            controller.initAtributes();
 
             Parent parent = loader.getRoot();
             Stage stage = new Stage(StageStyle.UTILITY);
             stage.setScene(new Scene(parent));
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
+            stage.showAndWait();
+                
+            UserDto user = controller.getSelectedUser();
+            ServicesLocator.getUserServices().insertUser(user); 
+                
+            rellenarTablaUser();
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText(null);
-            alert.setContentText("You must select a car");
+            alert.setContentText("You must select a user");
             alert.showAndWait();
-        }        
+        } 
+        */       
 	}
 
     public void close() {

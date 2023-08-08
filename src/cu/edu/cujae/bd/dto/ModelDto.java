@@ -17,6 +17,8 @@ public class ModelDto {
 		this.brand = brand;
 		this.codModel = codModel;
 	}
+
+	public ModelDto(){}
 	
 	public int getCodModel() {
 		return codModel;

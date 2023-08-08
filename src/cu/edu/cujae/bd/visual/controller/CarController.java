@@ -42,6 +42,8 @@ public class CarController implements Initializable {
     private ObservableList<SituationDto> listSituation = FXCollections.observableArrayList();
     private ObservableList<BrandDto> listBrands = FXCollections.observableArrayList();
     private CarDto selectedCar;
+    private BrandDto selectedBrand;
+    private ModelDto selectedModel;
 
     @FXML
     private TableView<CarDto> carsTable;
@@ -360,34 +362,113 @@ public class CarController implements Initializable {
         }
     }
 
-    public void onAddModelButton(){
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../fxml/addModel.fxml"));
-        try {
+    public void onAddModelButton() throws SQLException, IOException{
+        
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../fxml/addModel.fxml"));
             loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Parent parent = loader.getRoot();
-        Stage stage = new Stage(StageStyle.UTILITY);
-        stage.setScene(new Scene(parent));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+            AddModelController controller = loader.getController();
+            controller.initAtributes();
+
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage(StageStyle.UTILITY);
+            stage.setScene(new Scene(parent));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+            ModelDto model = controller.getSelectedModel();
+
+            ServicesLocator.getModelServices().insertModel(model);
+            rellenarTablaModel();             
     }
 
     public void onAddBrandButton(){
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../fxml/addBrand.fxml"));
-        try {
+         try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../fxml/addBrand.fxml"));
             loader.load();
+            AddBrandController controller = loader.getController();
+            controller.initAtributes();
+
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage(StageStyle.UTILITY);
+            stage.setScene(new Scene(parent));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+            BrandDto brand = controller.getSelectedBrand();
+            try {
+                ServicesLocator.getBrandServices().insertBrand(brand);
+                rellenarTablaBrand();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } catch (IOException e) {
             e.printStackTrace();
+        }   
+    }
+
+    public void onUpdModelButton() throws IOException, SQLException{
+        this.selectedModel = modelTable.getSelectionModel().getSelectedItem();
+
+        if(selectedModel!=null){
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../fxml/addModel.fxml"));
+                loader.load();
+                AddModelController controller = loader.getController();
+
+                controller.initAtributes(selectedModel);
+
+                Parent parent = loader.getRoot();
+                Stage stage = new Stage(StageStyle.UTILITY);
+                stage.setScene(new Scene(parent));
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+                
+                ModelDto model = controller.getSelectedModel();
+                ServicesLocator.getModelServices().updateModel(model); 
+                
+                rellenarTablaBrand();
+                
+        }else{
+            Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Info");
+                alert.setHeaderText(null);
+                alert.setContentText("You must select a model");
+                alert.showAndWait();
         }
-        Parent parent = loader.getRoot();
-        Stage stage = new Stage(StageStyle.UTILITY);
-        stage.setScene(new Scene(parent));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+    }
+
+    public void onUpdBrandButton() throws SQLException, IOException{
+        this.selectedBrand = brandTable.getSelectionModel().getSelectedItem();
+
+        if(selectedBrand!=null){
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../fxml/addBrand.fxml"));
+                loader.load();
+                AddBrandController controller = loader.getController();
+
+                controller.initAtributes(selectedBrand);
+
+                Parent parent = loader.getRoot();
+                Stage stage = new Stage(StageStyle.UTILITY);
+                stage.setScene(new Scene(parent));
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+                
+                BrandDto brand = controller.getSelectedBrand();
+                System.out.println(brand.getCodBrand());
+                ServicesLocator.getBrandServices().updateBrand(brand); 
+                
+                rellenarTablaBrand();
+                
+        }else{
+            Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Info");
+                alert.setHeaderText(null);
+                alert.setContentText("You must select a brand");
+                alert.showAndWait();
+        }
     }
 
     public void onModelButton(){

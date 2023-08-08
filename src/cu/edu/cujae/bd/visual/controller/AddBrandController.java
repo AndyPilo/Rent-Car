@@ -1,10 +1,6 @@
 package cu.edu.cujae.bd.visual.controller;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 import cu.edu.cujae.bd.dto.BrandDto;
-import cu.edu.cujae.bd.service.ServicesLocator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -12,31 +8,56 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class AddBrandController {
-    private boolean update = false;
+    private BrandDto selectedBrand;
 
     @FXML
     private TextField brandNameField;
 
-    public void saveBrand() throws IOException,SQLException{
-        if(update){
+    public void initAtributes(){
+        this.selectedBrand = new BrandDto();
+    }
 
+    public void initAtributes(BrandDto brand){
+        this.selectedBrand = brand;
+        this.brandNameField.setText(brand.getNameBrand());
+    }
+
+    public void saveBrand(){
+
+        if(brandNameField.getText().equals("")){  
+            Alert alert2 = new Alert(AlertType.INFORMATION);
+                alert2.setHeaderText(null);
+                alert2.setContentText("You must fill in all fields");
+                alert2.showAndWait();
         }else{
-            if(brandNameField.getText().equals("")){
+            String nameBrand = brandNameField.getText();
+            
+            if(this.selectedBrand != null){
+                this.selectedBrand.setNameBrand(nameBrand);
                 Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Éxito");
                 alert.setHeaderText(null);
-                alert.setContentText("You must fill in all fields");
+                alert.setContentText("The new brand has been updated successfully.");
                 alert.showAndWait();
-            }else{
-                ServicesLocator.getBrandServices().insertBrand(new BrandDto(brandNameField.getText()));             
                 closeBrandWindows();
-            }  
-            
-            
+            }else{                   
+                this.selectedBrand.setNameBrand(brandNameField.getText());
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Éxito");
+                alert.setHeaderText(null);
+                alert.setContentText("The brand has been inserted successfully.");
+                alert.showAndWait();                      
+                closeBrandWindows();   
+            } 
         }
     }
 
      public void closeBrandWindows(){
         Stage stage = (Stage) brandNameField.getScene().getWindow();
         stage.close();
+    }
+
+    public BrandDto getSelectedBrand(){
+        return this.selectedBrand;
     }
 }

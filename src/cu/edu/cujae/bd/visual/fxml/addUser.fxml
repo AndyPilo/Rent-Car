@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.AddUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" styleClass="paneUser" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.AddUserController">
    <children>
       <VBox layoutX="109.0" layoutY="107.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Label text="Username">
+                  <Label text="Username" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="160.0" />
                      </HBox.margin>
@@ -33,7 +33,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Label text="Rol">
+                  <Label text="Rol" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="190.0" right="10.0" />
                      </HBox.margin>
@@ -52,7 +52,7 @@
                   <Insets />
                </VBox.margin>
                <children>
-                  <Label text="Password">
+                  <Label text="Password" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="160.0" />
                      </HBox.margin>
@@ -65,7 +65,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Label text="Confirm Password">
+                  <Label text="Confirm Password" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="100.0" />
                      </HBox.margin>
@@ -76,7 +76,7 @@
                   <PasswordField fx:id="confPassField" alignment="CENTER" prefWidth="200.0" promptText="confirm password" />
                </children>
             </HBox>
-            <AnchorPane prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #f8f1f1;">
+            <AnchorPane prefHeight="60.0" prefWidth="500.0">
                <children>
                   <Button fx:id="cancelButton" layoutX="60.0" layoutY="18.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="18.0" />
                   <Button fx:id="saveButton" layoutX="347.0" layoutY="18.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="17.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="18.0" />
@@ -84,7 +84,7 @@
             </AnchorPane>
          </children>
       </VBox>
-      <AnchorPane layoutX="-28.0" layoutY="-53.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7d8597;" AnchorPane.bottomAnchor="440.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="-28.0" layoutY="-53.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="440.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" prefHeight="47.0" prefWidth="151.0" text="Add New User" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0">
                <font>

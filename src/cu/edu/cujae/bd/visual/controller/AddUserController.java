@@ -4,6 +4,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import cu.edu.cujae.bd.dto.BrandDto;
+import cu.edu.cujae.bd.dto.ModelDto;
 import cu.edu.cujae.bd.dto.RolDto;
 import cu.edu.cujae.bd.dto.UserDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
@@ -21,8 +23,8 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 public class AddUserController implements Initializable{
-    private boolean update = false;
     private ObservableList<RolDto> roles = FXCollections.observableArrayList();
+    private UserDto selectedUser;
     
     @FXML
     private Button cancelButton;
@@ -37,12 +39,13 @@ public class AddUserController implements Initializable{
     @FXML
     private TextField userField;
 
-    public void setUpdate(boolean update){
-        this.update = update;
+    public void initAtributes(){
+        this.selectedUser = new UserDto();
     }
 
-    public void setTextField(String user){
-        userField.setText(user);
+    public void initAtributes(UserDto user){
+        this.selectedUser = user;
+        this.userField.setText(user.getUsername());
     }
 
     public void configurarChoiceBoxSituation() {
@@ -70,31 +73,34 @@ public class AddUserController implements Initializable{
     }
 
     public void save () throws SQLException{
-        if(this.update){
-            //logica para el update
-        }else{
-            String user = userField.getText();
-            String pass = passField.getText();
-            String confirmPass = confPassField.getText();
-            RolDto rol = rolMenu.getValue();
+        if(userField.getText().equals("") || passField.getText().equals("") 
+        || confPassField.getText().equals("") || rolMenu.getValue()==null){
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("You must fill in all fields");
+            alert.showAndWait();
+        }else if(!passField.getText().equals(confPassField.getText())){
 
-            if(userField.getText()=="" || passField.getText()=="" || confPassField.getText()=="" 
-            || rolMenu.getValue()==null){
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText("You must fill in all fields");
-                alert.showAndWait();
-            }else if(!pass.equals(confirmPass)){
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText("Las contraseñas no coinciden");
-                alert.showAndWait();
-            }else{
-                ServicesLocator.getUserServices().insertUser(new UserDto(user,pass,rol));
-                close();
-            }
-            
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Las contraseñas no coinciden");
+            alert.showAndWait();
+        }else if(this.selectedUser.getCodUser()==0){
+            selectedUser.setUsername(userField.getText());
+            selectedUser.setPassword(passField.getText());
+            selectedUser.setRol(rolMenu.getValue());
+            close();
+        }else{
+            selectedUser.setUsername(userField.getText());
+            selectedUser.setPassword(passField.getText());
+            selectedUser.setRol(rolMenu.getValue()); 
+            close();
         }
+      
+    }
+    
+    public UserDto getSelectedUser(){
+        return this.selectedUser;
     }
 
     public void close(){
