@@ -22,12 +22,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="717.0" layoutY="19.0" prefHeight="32.0" prefWidth="70.0" text="Total :" textFill="WHITE">
+            <Label layoutX="658.0" layoutY="20.0" prefHeight="32.0" prefWidth="70.0" text="Total :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="783.0" layoutY="14.0" prefHeight="40.0" prefWidth="84.0" text="\$0.0" textFill="WHITE">
+            <Label fx:id="priceTotalLbl" alignment="CENTER" layoutX="724.0" layoutY="15.0" prefHeight="40.0" prefWidth="172.0" text="\$0.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="28.0" />
                </font>
@@ -62,49 +62,49 @@
             </AnchorPane>
             <AnchorPane layoutX="19.0" layoutY="15.0" prefHeight="303.0" prefWidth="860.0" style="-fx-background-color: #979DAC;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
                <children>
-                  <TableView fx:id="AvailableCarTable" layoutX="10.0" layoutY="81.0" prefHeight="181.0" prefWidth="840.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="81.0">
+                  <TableView fx:id="touristTable" layoutX="29.0" layoutY="97.0" prefHeight="165.0" prefWidth="380.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="451.0" AnchorPane.topAnchor="97.0">
                      <columns>
-                        <TableColumn fx:id="brandCol" prefWidth="293.0" text="Brand" />
-                        <TableColumn fx:id="modelCol" prefWidth="280.0" text="Model" />
-                        <TableColumn fx:id="priceCol" prefWidth="265.0" text="Price ($)" />
+                        <TableColumn fx:id="nameCol" prefWidth="129.0" resizable="false" text="Name Tourist" />
+                        <TableColumn fx:id="lastNameCol" prefWidth="133.0" resizable="false" text="Last Name " />
+                        <TableColumn fx:id="passportCol" prefWidth="115.0" resizable="false" text="Passport" />
                      </columns>
                   </TableView>
-                  <Label layoutX="14.0" layoutY="57.0" prefHeight="25.0" prefWidth="121.0" text="Available Cars" textFill="WHITE">
+                  <Label layoutX="29.0" layoutY="66.0" prefHeight="25.0" prefWidth="121.0" text="Tourist" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
                   <Button layoutX="741.0" layoutY="277.0" mnemonicParsing="false" onAction="#onSelected" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #868C99;" text="Select " textFill="WHITE" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="10.0" />
-                  <Label layoutX="14.0" layoutY="18.0" prefHeight="25.0" prefWidth="150.0" text="Tourist Passport" textFill="WHITE">
+                  <Label fx:id="nameLbl" layoutX="101.0" layoutY="20.0" prefHeight="27.0" prefWidth="184.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="AvailableCarTable" layoutX="444.0" layoutY="97.0" prefHeight="165.0" prefWidth="380.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="444.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="97.0">
+                     <columns>
+                        <TableColumn fx:id="brandCol" prefWidth="120.0" resizable="false" text="Brand" />
+                        <TableColumn fx:id="modelCol" prefWidth="127.0" resizable="false" text="Model" />
+                        <TableColumn fx:id="priceCol" prefWidth="131.0" resizable="false" text="Price ($)" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="444.0" layoutY="66.0" prefHeight="25.0" prefWidth="121.0" text="Available Cars" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="touristMenu" layoutX="150.0" layoutY="17.0" prefWidth="150.0" stylesheets="@../style/carController.css">
-                     <styleClass>
-                        <String fx:value="arrow" />
-                        <String fx:value="arrow-button" />
-                        <String fx:value="list-view" />
-                     </styleClass>
-                  </ChoiceBox>
-                  <Label layoutX="343.0" layoutY="18.0" text="Name" textFill="WHITE">
+                  <Label fx:id="rentLbl" layoutX="524.0" layoutY="20.0" prefHeight="27.0" prefWidth="172.0" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="596.0" layoutY="18.0" text="Last Name" textFill="WHITE">
+                  <Label layoutX="38.0" layoutY="21.0" prefHeight="25.0" prefWidth="63.0" text="Tourist :">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nameLbl" alignment="CENTER" layoutX="409.0" layoutY="18.0" prefHeight="25.0" prefWidth="121.0" text="Tourist">
+                  <Label layoutX="444.0" layoutY="25.0" prefHeight="17.0" prefWidth="70.0" text="Rent Car :">
                      <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="LastNameLbl" alignment="CENTER" layoutX="694.0" layoutY="17.0" prefHeight="25.0" prefWidth="121.0" text="Tourist">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -157,7 +157,8 @@
          </children>
       </AnchorPane>
       <Button fx:id="rentBtn" disable="true" layoutX="781.0" layoutY="611.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Rent" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" />
-      <Button layoutX="33.0" layoutY="611.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" />
-      <Button layoutX="643.0" layoutY="610.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Calcular" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="160.0" />
+      <Button layoutX="33.0" layoutY="611.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" />
+      <Button layoutX="643.0" layoutY="610.0" mnemonicParsing="false" onAction="#onCalcular" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Calcular" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="160.0" />
+      <Button layoutX="160.0" layoutY="610.0" mnemonicParsing="false" onAction="#onClear" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Clear" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="165.0" />
    </children>
 </AnchorPane>

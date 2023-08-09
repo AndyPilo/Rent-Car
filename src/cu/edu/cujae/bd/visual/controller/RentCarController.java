@@ -3,7 +3,7 @@ package cu.edu.cujae.bd.visual.controller;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
 import cu.edu.cujae.bd.dto.CarDto;
@@ -12,6 +12,7 @@ import cu.edu.cujae.bd.dto.ModelDto;
 import cu.edu.cujae.bd.dto.PaymentDto;
 import cu.edu.cujae.bd.dto.TouristDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
+import cu.edu.cujae.bd.visual.models.Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,6 +28,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 public class RentCarController implements Initializable{
@@ -36,13 +38,16 @@ public class RentCarController implements Initializable{
     private ObservableList<DriverDto> driverList = FXCollections.observableArrayList();
     private ObservableList<CarDto> carsAvailable = FXCollections.observableArrayList();
     private CarDto selectedCar;
+    private TouristDto selectedTourist;
 
     @FXML
     private ChoiceBox<TouristDto> touristMenu;
     @FXML
-    private Label LastNameLbl;
-    @FXML
     private Label nameLbl;
+    @FXML
+    private Label rentLbl;
+    @FXML
+    private Label priceTotalLbl;
     @FXML
     private TableView<CarDto> AvailableCarTable;
     @FXML
@@ -51,6 +56,14 @@ public class RentCarController implements Initializable{
     private TableColumn<CarDto, String> modelCol;
     @FXML
     private TableColumn<CarDto, String> priceCol;
+    @FXML
+    private TableView<TouristDto> touristTable;
+    @FXML
+    private TableColumn<TouristDto, String> nameCol;
+    @FXML
+    private TableColumn<TouristDto, String> lastNameCol;
+    @FXML
+    private TableColumn<TouristDto, String> passportCol;
     @FXML
     private Button rentBtn;
     @FXML
@@ -77,6 +90,35 @@ public class RentCarController implements Initializable{
 
         AvailableCarTable.setItems(carsAvailable);
 
+        AvailableCarTable.setOnMouseClicked(event ->{
+            this.selectedCar = AvailableCarTable.getSelectionModel().getSelectedItem();
+            if(this.selectedCar != null){
+                rentLbl.setText(selectedCar.getBrand() + " " + selectedCar.getModel().getNameModel());     
+            }else{
+               rentLbl.setText("");
+            }
+        });
+
+    }
+
+    public void configurarTablaTourist() {
+
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        passportCol.setCellValueFactory(new PropertyValueFactory<>("passport"));
+
+        touristTable.setItems(touristList);
+
+        touristTable.setOnMouseClicked(event ->{
+            this.selectedTourist = touristTable.getSelectionModel().getSelectedItem();
+            if(this.selectedTourist != null){
+                nameLbl.setText(this.selectedTourist.getName() + " " + this.selectedTourist.getLastName());
+            }else{
+                nameLbl.setText("");
+            }
+        });
+
+
     }
 
     public void rellenarTablaCar(){
@@ -91,7 +133,18 @@ public class RentCarController implements Initializable{
         carsAvailable.setAll(carsList);
     }
 
-    public void configurarChoiceBoxTourist() {
+    public void rellenarTablaTourist(){
+        touristList.clear();
+        ObservableList<TouristDto> list = FXCollections.observableArrayList();
+        try {
+            list = ServicesLocator.getTouristServices().getAllTourist();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        touristList.setAll(list);
+    }
+
+    /*public void configurarChoiceBoxTourist() {
         touristMenu.setConverter(new StringConverter<TouristDto>() {
             @Override
             public String toString(TouristDto tourist) {
@@ -117,7 +170,7 @@ public class RentCarController implements Initializable{
             }
         });
 
-    }
+    }*/
 
     public void configurarChoiceBoxPayment() {
         paymentMenu.setConverter(new StringConverter<PaymentDto>() {
@@ -147,15 +200,6 @@ public class RentCarController implements Initializable{
         });
     }
 
-    public void rellenarChoiceBoxTourist() {
-        try {
-            touristList = ServicesLocator.getTouristServices().getAllTourist();
-            touristMenu.setItems(touristList);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void rellenarChoiceBoxPayment() {
         try {
             paymentList = ServicesLocator.getPaymentServices().getAllPayment();
@@ -178,12 +222,15 @@ public class RentCarController implements Initializable{
         
         this.selectedCar = AvailableCarTable.getSelectionModel().getSelectedItem();
 
-        if(this.selectedCar!=null && touristMenu.getValue()!= null){
+        if(this.selectedCar!=null && this.selectedTourist!=null){
             paymentMenu.setDisable(false);
             driverMenu.setDisable(false);
             priceExtField.setDisable(false);
             startDate.setDisable(false);
             finalDate.setDisable(false);
+            touristTable.setDisable(true);
+            AvailableCarTable.setDisable(true);
+
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText(null);
@@ -193,34 +240,66 @@ public class RentCarController implements Initializable{
     }
 
     public void onCalcular(){
-        if(touristMenu.getValue()==null && this.selectedCar==null && paymentMenu.getValue()==null && driverMenu.getValue()== null
-                                && (priceExtField.getText().equals("")) 
-                                && startDate.getValue()== null 
-                                && finalDate.getValue()== null){
+        if(this.selectedCar==null || paymentMenu.getValue() == null || (priceExtField.getText().equals("")) || startDate.getValue()== null || finalDate.getValue()== null || this.selectedTourist == null){
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText(null);
-                alert.setContentText("You must select a car and a tourist");
+                alert.setContentText("todos los campos deben estar llenos");
                 alert.showAndWait();
+        }else if(startDate.getValue().isAfter(finalDate.getValue())){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("The start date cannot be more recent than the end date.");
+                alert.showAndWait();
+        }else if(startDate.getValue().isBefore(LocalDate.now())){
+               Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("La fecha de inicio de contrato no puede ser de antes de la fecha de hoy");
+                alert.showAndWait(); 
+        }else{
+            int daysDifference = Long.valueOf(ChronoUnit.DAYS.between(startDate.getValue(), finalDate.getValue())).intValue();
+            int price = daysDifference * this.selectedCar.getPrice();
+            priceTotalLbl.setText("$" + price);
+            rentBtn.setDisable(false);
+        }
+    }
 
-            }else if(startDate.getValue().isAfter(finalDate.getValue())){
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText("You must select a car and a tourist");
-                alert.showAndWait();
-            }else{
-                int dayStart = startDate.getValue().getDayOfMonth();
-                int dayFinal = startDate.getValue().getDayOfMonth();
-               
-            }
+    public void onClear(){
+        this.selectedCar = null;
+        this.selectedTourist = null;
+        startDate.setValue(null);
+        finalDate.setValue(null);
+        driverMenu.setValue(null);
+        paymentMenu.setValue(null);
+        priceExtField.setText("");
+
+        paymentMenu.setDisable(true);
+        driverMenu.setDisable(true);
+        priceExtField.setDisable(true);
+        startDate.setDisable(true);
+        finalDate.setDisable(true);
+        touristTable.setDisable(false);
+        AvailableCarTable.setDisable(false);
+        rentBtn.setDisable(true);
+        priceTotalLbl.setText("$0.0");
+        nameLbl.setText(null);
+        rentLbl.setText(null);
+
+    }
+
+    public void close() {
+        Stage stage = (Stage) rentBtn.getScene().getWindow();
+        Model.getInstanse().getViewFactory().closeStage(stage);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        configurarChoiceBoxTourist();
+        //configurarChoiceBoxTourist();
         configurarChoiceBoxDriver();
         configurarChoiceBoxPayment();
         configurarTablaCar();
-        rellenarChoiceBoxTourist();
+        configurarTablaTourist();
+        //rellenarChoiceBoxTourist();
+        rellenarTablaTourist();
         rellenarChoiceBoxDriver();
         rellenarChoiceBoxPayment();
         rellenarTablaCar();

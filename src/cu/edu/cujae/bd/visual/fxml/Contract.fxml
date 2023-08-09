@@ -111,17 +111,17 @@
             </HBox>
          </children>
       </AnchorPane>
-      <TableView layoutX="12.0" layoutY="72.0" prefHeight="508.0" prefWidth="900.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <TableView fx:id="contractTable" layoutX="12.0" layoutY="72.0" prefHeight="508.0" prefWidth="900.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <columns>
-            <TableColumn minWidth="100.0" prefWidth="75.0" text="Tourist" />
-            <TableColumn minWidth="100.0" prefWidth="75.0" text="Car" />
-            <TableColumn minWidth="100.0" prefWidth="75.0" text="Driver" />
-            <TableColumn minWidth="100.0" prefWidth="75.0" text="Payment" />
-            <TableColumn minWidth="100.0" prefWidth="75.0" text="Bill" />
-            <TableColumn minWidth="100.0" prefWidth="75.0" text="SpecialBill" />
-            <TableColumn minWidth="100.0" prefWidth="75.0" text="Extension" />
-            <TableColumn minWidth="100.0" prefWidth="75.0" text="StartDate" />
-            <TableColumn minWidth="100.0" prefWidth="75.0" text="FinalDate" />
+            <TableColumn fx:id="colTourist" minWidth="100.0" prefWidth="75.0" text="Tourist" />
+            <TableColumn fx:id="colCar" minWidth="100.0" prefWidth="75.0" text="Car" />
+            <TableColumn fx:id="colDriver" minWidth="100.0" prefWidth="75.0" text="Driver" />
+            <TableColumn fx:id="colPayment" minWidth="100.0" prefWidth="75.0" text="Payment" />
+            <TableColumn fx:id="colSBill" minWidth="100.0" prefWidth="75.0" text="SpecialBill" />
+            <TableColumn fx:id="colExtension" minWidth="100.0" prefWidth="75.0" text="Extension" />
+            <TableColumn fx:id="colSDate" minWidth="100.0" prefWidth="75.0" text="StartDate" />
+            <TableColumn fx:id="colFDate" minWidth="100.0" prefWidth="104.0" text="FinalDate" />
+            <TableColumn fx:id="colPrice" prefWidth="92.0" text="Price Total" />
          </columns>
       </TableView>
    </children>

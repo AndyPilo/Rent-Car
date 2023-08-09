@@ -1,34 +1,45 @@
 package cu.edu.cujae.bd.dto;
 
-import java.sql.Date;
-
 public class ContractDto {
 	private int codContract;
 	private TouristDto tourist;
 	private CarDto car;
 	private DriverDto driver;
 	private PaymentDto paymentType;
-	private int bill;
 	private int billSpecial;
 	private int extension;
-	private Date startDate;
-	private Date finalDate;
+	private DateDto date;
+	private int priceTotal;	
 	
 	
-	public ContractDto(TouristDto tourist, CarDto car,
-			Date starDate, Date finalDate, int extension, int bill,
-			int billSpecial, DriverDto driver, PaymentDto paymentType) {
+	public ContractDto(TouristDto tourist, CarDto car,DriverDto driver,PaymentDto paymentType,
+			int billSpecial , int extension, DateDto date, int priceTotal) {
 		super();
 		this.tourist = tourist;
 		this.car = car;
-		this.startDate = starDate;
-		this.finalDate = finalDate;
-		this.extension = extension;
-		this.bill = bill;
-		this.billSpecial = billSpecial;
 		this.driver = driver;
 		this.paymentType = paymentType;
+		this.billSpecial = billSpecial;	
+		this.extension = extension;
+		this.date = date;
+		this.priceTotal = priceTotal;		
 	}
+
+	public ContractDto(int codContract,TouristDto tourist, CarDto car,DriverDto driver,PaymentDto paymentType,
+			int billSpecial , int extension, DateDto date, int priceTotal) {
+		super();
+		this.codContract = codContract;
+		this.tourist = tourist;
+		this.car = car;
+		this.driver = driver;
+		this.paymentType = paymentType;
+		this.billSpecial = billSpecial;	
+		this.extension = extension;
+		this.date = date;
+		this.priceTotal = priceTotal;		
+	}
+
+
 	
 	public int getCodContract() {
 		return codContract;
@@ -48,29 +59,11 @@ public class ContractDto {
 	public void setCar(CarDto car) {
 		this.car = car;
 	}
-	public Date getStarDate() {
-		return startDate;
-	}
-	public void setStarDate(Date starDate) {
-		this.startDate = starDate;
-	}
-	public Date getFinalDate() {
-		return finalDate;
-	}
-	public void setFinalDate(Date finalDate) {
-		this.finalDate = finalDate;
-	}
 	public int getExtension() {
 		return extension;
 	}
 	public void setExtension(int extension) {
 		this.extension = extension;
-	}
-	public int getBill() {
-		return bill;
-	}
-	public void setBill(int bill) {
-		this.bill = bill;
 	}
 	public int getBillSpecial() {
 		return billSpecial;
@@ -89,6 +82,22 @@ public class ContractDto {
 	}
 	public void setPaymentType(PaymentDto paymentType) {
 		this.paymentType = paymentType;
+	}
+
+	public DateDto getDate() {
+		return date;
+	}
+
+	public void setDate(DateDto date) {
+		this.date = date;
+	}
+
+	public int getPriceTotal() {
+		return priceTotal;
+	}
+
+	public void setPriceTotal(int priceTotal) {
+		this.priceTotal = priceTotal;
 	}
 	
 	

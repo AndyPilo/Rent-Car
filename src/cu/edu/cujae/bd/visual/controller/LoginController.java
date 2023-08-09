@@ -1,12 +1,15 @@
 package cu.edu.cujae.bd.visual.controller;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import cu.edu.cujae.bd.dto.ContractDto;
 import cu.edu.cujae.bd.dto.UserDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
 import cu.edu.cujae.bd.service.UserServices;
 import cu.edu.cujae.bd.visual.models.Model;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -40,6 +43,18 @@ public class LoginController implements Initializable{
 	}
 
 	public void onLoginButton(){
+
+
+		try {
+			ObservableList<ContractDto> lista = ServicesLocator.getContractServices().getAllContract();
+			for(int i = 0;i<lista.size();i++){
+				System.out.println(lista.get(i));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		Stage stage = (Stage) lblMessage.getScene().getWindow(); // PARA OBTENER LA VENTANA DEL LOGIN Y LUEGO CERRARLA
 		
 		UserDto userAuth = userServices.getLoginUser(userField.getText(),passField.getText());
@@ -67,6 +82,7 @@ public class LoginController implements Initializable{
 	}
 
 	public void close() {
+
         Stage stage = (Stage) closeButton.getScene().getWindow();
         Model.getInstanse().getViewFactory().closeStage(stage);
     }

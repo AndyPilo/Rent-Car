@@ -106,6 +106,12 @@ public class AddUserController implements Initializable{
         stage.close();
     }
 
+    public void onCloseButton(){
+        this.selectedUser = null;
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         configurarChoiceBoxSituation();

@@ -57,9 +57,7 @@ public class UserController implements Initializable{
         users.setAll(userList);
     }
     
-/****************************    BOTONES     
- * @throws IOException
- * @throws SQLException****************************/
+/****************************    BOTONES    ****************************/
 
     //se ejecuta al pulsar el boton new user
     public void openNew() throws IOException, SQLException {
@@ -78,10 +76,12 @@ public class UserController implements Initializable{
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
                 
+        
         UserDto user = controller.getSelectedUser();
-        ServicesLocator.getUserServices().insertUser(user); 
-                
-        rellenarTablaUser(); 
+        if(user!=null){
+            ServicesLocator.getUserServices().insertUser(user); 
+            rellenarTablaUser();
+        }        
     }
 
      public void onDeleteButton() {
@@ -100,6 +100,7 @@ public class UserController implements Initializable{
                 alert.setContentText("You must select a user");
                 alert.showAndWait();
             }
+            usersTable.setFocusTraversable(false);
     }
 
     //Se ejecuta al dar clic en el boton update

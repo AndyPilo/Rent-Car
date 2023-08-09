@@ -78,7 +78,7 @@
             </HBox>
             <AnchorPane prefHeight="60.0" prefWidth="500.0">
                <children>
-                  <Button fx:id="cancelButton" layoutX="60.0" layoutY="18.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="18.0" />
+                  <Button fx:id="cancelButton" layoutX="60.0" layoutY="18.0" mnemonicParsing="false" onAction="#onCloseButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="18.0" />
                   <Button fx:id="saveButton" layoutX="347.0" layoutY="18.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="17.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="18.0" />
                </children>
             </AnchorPane>
