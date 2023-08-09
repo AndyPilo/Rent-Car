@@ -7,22 +7,24 @@ public class CarDto {
 	private int km;
 	private ModelDto model;
 	private SituationDto situation;
+	private int price;
 	private String brand;
 	
 	public CarDto( String plate, String color,
-			int km, ModelDto model,SituationDto situation) {
+			int km, ModelDto model,SituationDto situation,int price) {
 		super();
 		this.plate = plate;
 		this.color = color;
 		this.km = km;
 		this.model = model;
 		this.situation = situation;
+		this.price = price;
 		setBrand();
 		
 	}
 	
 	public CarDto( int codCar,String plate, String color,
-			int km, ModelDto model,SituationDto situation) {
+			int km, ModelDto model,SituationDto situation,int price) {
 		super();
 		this.codCar = codCar;
 		this.plate = plate;
@@ -30,6 +32,7 @@ public class CarDto {
 		this.km = km;
 		this.model = model;
 		this.situation = situation;
+		this.price = price;
 		setBrand();
 	}
 
@@ -83,6 +86,14 @@ public class CarDto {
 
 	public void setSituation(SituationDto situation) {
 		this.situation = situation;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	public String getBrand() {

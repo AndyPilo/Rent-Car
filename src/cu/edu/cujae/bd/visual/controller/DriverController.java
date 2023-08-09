@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import cu.edu.cujae.bd.dto.DriverCategoryDto;
 import cu.edu.cujae.bd.dto.DriverDto;
-import cu.edu.cujae.bd.dto.SituationDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
 import cu.edu.cujae.bd.visual.models.Model;
 import javafx.beans.property.SimpleStringProperty;

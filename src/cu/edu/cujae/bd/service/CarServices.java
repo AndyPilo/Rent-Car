@@ -17,7 +17,7 @@ public class CarServices {
 	private SituationServices situationServices = ServicesLocator.getSituationServices();
 	
     public void insertCar(CarDto car) throws SQLException{
-    	String function = "{call insert_car(?,?,?,?,?)}";
+    	String function = "{call insert_car(?,?,?,?,?,?)}";
 		
 		Connection connection = ServicesLocator.getConnection();		
 		CallableStatement preparedFunction = connection.prepareCall(function);
@@ -26,6 +26,7 @@ public class CarServices {
 		preparedFunction.setString(3, car.getColor());
 		preparedFunction.setInt(4,car.getKm());
 		preparedFunction.setInt(5, car.getSituation().getCodSituation());
+		preparedFunction.setInt(6,car.getPrice());
 		
 		preparedFunction.execute();
 		
@@ -34,7 +35,7 @@ public class CarServices {
     }
     
     public void updateCar(CarDto car) throws SQLException{
-    	String function = "{call update_car(?,?,?,?,?,?)}";
+    	String function = "{call update_car(?,?,?,?,?,?,?)}";
 		
 		Connection connection = ServicesLocator.getConnection();		
 		CallableStatement preparedFunction = connection.prepareCall(function);
@@ -44,6 +45,7 @@ public class CarServices {
 		preparedFunction.setString(4, car.getColor());
 		preparedFunction.setInt(5,car.getKm());
 		preparedFunction.setInt(6, car.getSituation().getCodSituation());
+		preparedFunction.setInt(7, car.getPrice());
 		
 		preparedFunction.execute();
 		
@@ -88,6 +90,7 @@ public class CarServices {
 			ModelDto model = null;
 			int codSituation = resultSet.getInt(6);
 			SituationDto situation = null;
+			int price = resultSet.getInt(7);
 
 			for(int i = 0;i < models.size();i++){
 				if(codModel == models.get(i).getCodModel()){
@@ -100,7 +103,48 @@ public class CarServices {
 				}
 			}
 
-			lista.add(new CarDto(codCar,plate,color,km,model,situation));
+			lista.add(new CarDto(codCar,plate,color,km,model,situation,price));
+		}
+
+		resultSet.close();
+		preparedFunction.close();
+		connection.close();
+		return lista;
+	}
+
+	public ObservableList<CarDto> getAllCarsAvailable() throws SQLException {
+		
+		ObservableList<CarDto> lista = FXCollections.observableArrayList();
+		ObservableList<ModelDto> models = modelServices.getAllModels();
+
+		String function = "{?= call list_carsavailable()}";
+		Connection connection = ServicesLocator.getConnection();
+		connection.setAutoCommit(false);
+		
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.registerOutParameter(1,java.sql.Types.OTHER);
+		preparedFunction.execute();	
+		ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
+		
+		while(resultSet.next()){
+			int codCar = resultSet.getInt(1);
+			String plate = resultSet.getString(2);
+			String color = resultSet.getString(4);
+			int km = resultSet.getInt(5);
+			int codModel = resultSet.getInt(3);
+			ModelDto model = null;
+
+			SituationDto situation = new SituationDto(1, "disponible");
+			int price = resultSet.getInt(7);
+
+			for(int i = 0;i < models.size();i++){
+				if(codModel == models.get(i).getCodModel()){
+					 model = models.get(i);
+				}
+			}
+			
+
+			lista.add(new CarDto(codCar,plate,color,km,model,situation,price));
 		}
 
 		resultSet.close();

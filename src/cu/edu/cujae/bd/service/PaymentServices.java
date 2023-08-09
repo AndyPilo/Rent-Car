@@ -2,9 +2,13 @@ package cu.edu.cujae.bd.service;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import cu.edu.cujae.bd.dto.BrandDto;
 import cu.edu.cujae.bd.dto.PaymentDto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class PaymentServices {
 	
@@ -46,5 +50,29 @@ public class PaymentServices {
 
         preparedFunction.close();
         connection.close();
+    }
+
+	public ObservableList<PaymentDto> getAllPayment() throws SQLException{
+        ObservableList<PaymentDto> lista = FXCollections.observableArrayList();
+		String function = "{?= call list_payments()}";
+
+        Connection connection = ServicesLocator.getConnection();
+		connection.setAutoCommit(false);
+		
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.registerOutParameter(1,java.sql.Types.OTHER);
+		preparedFunction.execute();	
+		ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
+
+        while(resultSet.next()){	
+			lista.add(new PaymentDto(resultSet.getInt(1),
+                                   resultSet.getString(2)));
+		}
+		
+		resultSet.close();
+		preparedFunction.close();
+		connection.close();
+
+        return lista;
     }
 }

@@ -99,7 +99,7 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Label text="Situation of car " />
-                                    <ChoiceBox fx:id="situationMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
+                                    <ChoiceBox fx:id="situationMenu" prefHeight="31.0" prefWidth="322.0" stylesheets="@../style/carController.css">
                                        <styleClass>
                                           <String fx:value="arrow" />
                                           <String fx:value="arrow-button" />
@@ -115,7 +115,7 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Label text="Model " />
-                                    <ChoiceBox fx:id="modelMenu" prefHeight="25.0" prefWidth="283.0" stylesheets="@../style/carController.css">
+                                    <ChoiceBox fx:id="modelMenu" prefHeight="31.0" prefWidth="322.0" stylesheets="@../style/carController.css">
                                        <styleClass>
                                           <String fx:value="arrow" />
                                           <String fx:value="arrow-button" />
@@ -126,6 +126,15 @@
                                  </children>
                                  <padding>
                                     <Insets left="70.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                                 <children>
+                                    <Label text="Price" />
+                                    <TextField fx:id="priceField" alignment="CENTER" prefHeight="25.0" prefWidth="323.0" promptText="Price" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="70.0" right="90.0" top="10.0" />
                                  </padding>
                               </VBox>
                            </children>
@@ -175,12 +184,13 @@
       </AnchorPane>
       <TableView fx:id="carsTable" layoutY="70.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
         <columns>
-          <TableColumn fx:id="plateColumn" minWidth="152.0" prefWidth="152.0" resizable="false" text="Plate" />
-            <TableColumn fx:id="modelColumn" minWidth="107.0" prefWidth="162.0" resizable="false" text="Model" />
-            <TableColumn fx:id="brandColumn" prefWidth="151.0" resizable="false" text="Brand" />
-            <TableColumn fx:id="situationColumn" minWidth="103.0" prefWidth="130.0" resizable="false" text="Situation" />
-            <TableColumn fx:id="kmColumn" minWidth="144.0" prefWidth="144.0" resizable="false" text="Kilometros" />
-            <TableColumn fx:id="colorColumn" minWidth="48.0" prefWidth="159.0" resizable="false" text="Color" />
+          <TableColumn fx:id="plateColumn" minWidth="128.0" prefWidth="28.0" resizable="false" text="Plate" />
+            <TableColumn fx:id="modelColumn" minWidth="128.0" prefWidth="162.0" resizable="false" text="Model" />
+            <TableColumn fx:id="brandColumn" minWidth="128.0" prefWidth="151.0" resizable="false" text="Brand" />
+            <TableColumn fx:id="situationColumn" minWidth="128.0" prefWidth="114.0" resizable="false" text="Situation" />
+            <TableColumn fx:id="kmColumn" minWidth="99.0" prefWidth="122.0" resizable="false" text="Kilometros" />
+            <TableColumn fx:id="colorColumn" minWidth="76.0" prefWidth="109.0" resizable="false" text="Color" />
+            <TableColumn fx:id="priceColumn" minWidth="20.0" prefWidth="98.0" resizable="false" text="Price ($)" />
         </columns>
       </TableView>
       <AnchorPane fx:id="brandPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">

@@ -10,6 +10,11 @@ public class PaymentDto {
 		this.payment = namePayment;
 	}
 
+	public PaymentDto(int codPayment,String namePayment){
+		this.codPayment = codPayment;
+		this.payment = namePayment;
+	}
+
 
 	public int getCodPayment() {
 		return codPayment;

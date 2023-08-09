@@ -60,6 +60,8 @@ public class CarController implements Initializable {
     @FXML
     private TableColumn<CarDto, String> brandColumn;
     @FXML
+    private TableColumn<CarDto, String> priceColumn;
+    @FXML
     private Button newCarButton;
     @FXML
     private AnchorPane insertCarPane;
@@ -67,6 +69,8 @@ public class CarController implements Initializable {
     private TextField colorField;
     @FXML
     private TextField plateField;
+    @FXML
+    private TextField priceField;
     @FXML
     private ChoiceBox<ModelDto> modelMenu;
     @FXML
@@ -126,6 +130,7 @@ public class CarController implements Initializable {
         plateColumn.setCellValueFactory(new PropertyValueFactory<>("Plate"));
         colorColumn.setCellValueFactory(new PropertyValueFactory<>("Color"));
         brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
         modelColumn.setCellValueFactory(cellData -> {
             ModelDto model = cellData.getValue().getModel();
             String nameModel = model != null ? model.getNameModel() : "";
@@ -248,6 +253,7 @@ public class CarController implements Initializable {
             plateField.setText(selectedCar.getPlate());
             colorField.setText(selectedCar.getColor());
             kmField.setText(String.valueOf(selectedCar.getKm()));
+            priceField.setText(String.valueOf(selectedCar.getPrice()));
             ModelDto model = new ModelDto();
             for(int i = 0;i<listModels.size();i++){
                 if(this.selectedCar.getModel().getNameModel().equals(listModels.get(i).getNameModel())){
@@ -338,7 +344,8 @@ public class CarController implements Initializable {
                                         colorField.getText(), 
                                         Integer.parseInt(kmField.getText()),  
                                         modelMenu.getValue(), 
-                                        situationMenu.getValue());
+                                        situationMenu.getValue(),
+                                        Integer.parseInt(priceField.getText()));
                     
                     ServicesLocator.getCarServices().insertCar(carDto);
                     
@@ -360,7 +367,8 @@ public class CarController implements Initializable {
                             , colorField.getText() 
                             , Integer.parseInt(kmField.getText())
                             , modelMenu.getValue()
-                            , situationMenu.getValue());
+                            , situationMenu.getValue()
+                            , Integer.parseInt(priceField.getText()));
                 
                     ServicesLocator.getCarServices().updateCar(carUpdate);
 
@@ -549,6 +557,7 @@ public class CarController implements Initializable {
         kmField.setText("");
         modelMenu.setValue(null);
         situationMenu.setValue(null);
+        priceField.setText("");
     }
 
     public boolean validarCamposLLenos(){
