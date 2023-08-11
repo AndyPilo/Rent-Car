@@ -43,18 +43,6 @@ public class LoginController implements Initializable{
 	}
 
 	public void onLoginButton(){
-
-
-		try {
-			ObservableList<ContractDto> lista = ServicesLocator.getContractServices().getAllContract();
-			for(int i = 0;i<lista.size();i++){
-				System.out.println(lista.get(i));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		Stage stage = (Stage) lblMessage.getScene().getWindow(); // PARA OBTENER LA VENTANA DEL LOGIN Y LUEGO CERRARLA
 		
 		UserDto userAuth = userServices.getLoginUser(userField.getText(),passField.getText());

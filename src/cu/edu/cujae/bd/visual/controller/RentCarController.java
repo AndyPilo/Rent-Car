@@ -1,16 +1,22 @@
 package cu.edu.cujae.bd.visual.controller;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
 import cu.edu.cujae.bd.dto.CarDto;
+import cu.edu.cujae.bd.dto.ContractDto;
+import cu.edu.cujae.bd.dto.DateDto;
 import cu.edu.cujae.bd.dto.DriverDto;
 import cu.edu.cujae.bd.dto.ModelDto;
 import cu.edu.cujae.bd.dto.PaymentDto;
+import cu.edu.cujae.bd.dto.SituationDto;
 import cu.edu.cujae.bd.dto.TouristDto;
+import cu.edu.cujae.bd.dto.UserDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
 import cu.edu.cujae.bd.visual.models.Model;
 import javafx.beans.property.SimpleStringProperty;
@@ -37,6 +43,7 @@ public class RentCarController implements Initializable{
     private ObservableList<PaymentDto> paymentList = FXCollections.observableArrayList();
     private ObservableList<DriverDto> driverList = FXCollections.observableArrayList();
     private ObservableList<CarDto> carsAvailable = FXCollections.observableArrayList();
+    private ContractDto newContract;
     private CarDto selectedCar;
     private TouristDto selectedTourist;
 
@@ -143,34 +150,6 @@ public class RentCarController implements Initializable{
         }
         touristList.setAll(list);
     }
-
-    /*public void configurarChoiceBoxTourist() {
-        touristMenu.setConverter(new StringConverter<TouristDto>() {
-            @Override
-            public String toString(TouristDto tourist) {
-                return tourist.getPassport(); // Devuelve el nombre del modelo como cadena
-            }
-
-            @Override
-            public TouristDto fromString(String string) {
-                return null; // No es necesario implementar este método para ChoiceBox
-            }
-        });
-
-        touristMenu.setOnAction(event ->{
-            TouristDto touristDto = new TouristDto();
-
-            if(touristMenu.getValue()!=null){
-                touristDto = touristMenu.getValue();
-                nameLbl.setText(touristDto.getName());
-                LastNameLbl.setText(touristDto.getLastName());
-            }else{
-                nameLbl.setText("");
-                LastNameLbl.setText("");
-            }
-        });
-
-    }*/
 
     public void configurarChoiceBoxPayment() {
         paymentMenu.setConverter(new StringConverter<PaymentDto>() {
@@ -286,7 +265,63 @@ public class RentCarController implements Initializable{
 
     }
 
+    public void onRentButton(){
+ 
+        DriverDto driver = driverMenu.getValue();      
+        PaymentDto payment = paymentMenu.getValue();
+        int billSpecial = Integer.parseInt(priceExtField.getText());
+        int extension =0;
+
+        //Calcular el precio total del contrato a partir del costo de alquiler por dia y la contidad de dias de prorroga
+        int daysDifference = Long.valueOf(ChronoUnit.DAYS.between(startDate.getValue(), finalDate.getValue())).intValue();
+        int priceTotal = (daysDifference * this.selectedCar.getPrice()) + (billSpecial * extension); 
+
+        // Obtener la fecha de la clase LocalDate y convertirla en java.sql.Date 
+        Date starD =  Date.valueOf(startDate.getValue());    
+        Date finalD = Date.valueOf(finalDate.getValue());
+        DateDto date = new DateDto(starD,finalD); 
+        try {
+            ServicesLocator.getDateServices().insertDate(date);
+            date = ServicesLocator.getDateServices().getLastDate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+
+        //Crear contrato
+        ContractDto contractDto = new ContractDto(selectedTourist, selectedCar, driver, payment, billSpecial, extension, date, priceTotal);
+        this.newContract = contractDto;
+
+        //cambiar estado del carro
+        try {
+            selectedCar.setSituation(new SituationDto(3, "alquilado"));
+            ServicesLocator.getCarServices().updateCar(selectedCar);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        //Cerrar ventana
+        Stage stage = (Stage) rentBtn.getScene().getWindow();
+        Model.getInstanse().getViewFactory().closeStage(stage);
+    }
+
+    //insert
+     public void initAtributes(){
+        this.newContract = new ContractDto();
+    }
+
+    //update
+    public void initAtributes(ContractDto contract){
+        this.newContract = contract;
+        //this.userField.setText(contract.getUsername());
+    }
+
+    public ContractDto getNewContract(){
+        return this.newContract;
+    }
+
     public void close() {
+        this.newContract = null;
         Stage stage = (Stage) rentBtn.getScene().getWindow();
         Model.getInstanse().getViewFactory().closeStage(stage);
     }

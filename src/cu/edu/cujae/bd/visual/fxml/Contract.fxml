@@ -41,11 +41,12 @@
             <Button fx:id="rentButton" layoutX="752.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #014B10;" text="Rent" textFill="WHITE" visible="false" />
             <Button fx:id="backButton" layoutX="110.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: #014B10;" text="Back" textFill="WHITE" visible="false" />
             <Button fx:id="refreshButton" layoutX="604.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #014B10;" text="Refresh" textFill="WHITE" visible="false" />
-            <Button fx:id="rentCarBtn" layoutX="752.0" layoutY="23.0" mnemonicParsing="false" onAction="#showRentCarWindow" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #708d81;" text="Rent Car" textFill="WHITE">
+            <Button fx:id="rentCarBtn" layoutX="752.0" layoutY="23.0" mnemonicParsing="false" onAction="#insertRent" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #708d81;" text="Rent Car" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" iconName="PLUS" />
                </graphic>
             </Button>
+            <Button fx:id="rentCarBtn1" layoutX="36.0" layoutY="23.0" mnemonicParsing="false" onAction="#deleteContract" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #708d81;" text="Delete" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="40.0" layoutY="100.0" prefHeight="420.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">

@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.RentCarController">
    <children>
       <AnchorPane layoutX="69.0" layoutY="8.0" prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: #776777;" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -156,7 +155,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Button fx:id="rentBtn" disable="true" layoutX="781.0" layoutY="611.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Rent" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="rentBtn" disable="true" layoutX="781.0" layoutY="611.0" mnemonicParsing="false" onAction="#onRentButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Rent" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" />
       <Button layoutX="33.0" layoutY="611.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" />
       <Button layoutX="643.0" layoutY="610.0" mnemonicParsing="false" onAction="#onCalcular" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Calcular" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="160.0" />
       <Button layoutX="160.0" layoutY="610.0" mnemonicParsing="false" onAction="#onClear" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Clear" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="165.0" />

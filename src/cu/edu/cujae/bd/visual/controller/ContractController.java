@@ -7,8 +7,8 @@ import java.util.ResourceBundle;
 
 import cu.edu.cujae.bd.dto.CarDto;
 import cu.edu.cujae.bd.dto.ContractDto;
+import cu.edu.cujae.bd.dto.DateDto;
 import cu.edu.cujae.bd.dto.DriverDto;
-import cu.edu.cujae.bd.dto.ModelDto;
 import cu.edu.cujae.bd.dto.PaymentDto;
 import cu.edu.cujae.bd.dto.SituationDto;
 import cu.edu.cujae.bd.dto.TouristDto;
@@ -22,6 +22,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -59,12 +61,9 @@ public class ContractController implements Initializable{
 
 
     public void configurarTablaContract() {
-        System.out.println("hola 1");
         colSBill.setCellValueFactory(new PropertyValueFactory<>("billSpecial"));
-        colSDate.setCellValueFactory(new PropertyValueFactory<>("codContract"));
-        colFDate.setCellValueFactory(new PropertyValueFactory<>("codContract"));
-        colPrice.setCellValueFactory(new PropertyValueFactory<>("codContract"));
-        colExtension.setCellValueFactory(new PropertyValueFactory<>("codContract"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<>("priceTotal"));
+        colExtension.setCellValueFactory(new PropertyValueFactory<>("extension"));
         colTourist.setCellValueFactory(cellData -> {
             TouristDto tourist = cellData.getValue().getTourist();
             String nameTourist = tourist != null ? tourist.getName() : "";
@@ -77,7 +76,7 @@ public class ContractController implements Initializable{
         }); 
         colDriver.setCellValueFactory(cellData -> {
             DriverDto driver = cellData.getValue().getDriver();
-            String nameDriver = driver != null ? driver.getNameDriver() : "";
+            String nameDriver = driver != null ? driver.getNameDriver() : "No Driver";
             return new SimpleStringProperty(nameDriver);
         }); 
         colPayment.setCellValueFactory(cellData -> {
@@ -85,13 +84,22 @@ public class ContractController implements Initializable{
             String typePayment = payment != null ? payment.getPayment() : "";
             return new SimpleStringProperty(typePayment);
         }); 
+        colSDate.setCellValueFactory(cellData -> {
+            DateDto sdDto = cellData.getValue().getDate();
+            String startDate = sdDto != null ? sdDto.getStarDate().toString() : "";
+            return new SimpleStringProperty(startDate);
+        });
+        colFDate.setCellValueFactory(cellData -> {
+            DateDto fdDto = cellData.getValue().getDate();
+            String finalDate = fdDto != null ? fdDto.getFinalDate().toString() : "";
+            return new SimpleStringProperty(finalDate);
+        });
+         
         
         contractTable.setItems(contracts);
-        System.out.println("hola 2");
     }
 
     public void rellenarTablaContract(){
-        System.out.println("hola 3");
         contracts.clear();
         ObservableList<ContractDto> contractList = FXCollections.observableArrayList();
         try {
@@ -101,34 +109,63 @@ public class ContractController implements Initializable{
             e.printStackTrace();
         }
         contracts.setAll(contractList);
-        System.out.println("hola 4");
     }
 
 
-    public void showRentCarWindow() throws IOException{
+    public void insertRent() throws IOException, SQLException{
         FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../fxml/rentCar.fxml"));
-            loader.load();
-            //AddModelController controller = loader.getController();
-            //controller.initAtributes();
+        loader.setLocation(getClass().getResource("../fxml/rentCar.fxml"));
+        loader.load();
 
-            Parent parent = loader.getRoot();
-            Stage stage = new Stage(StageStyle.UTILITY);
-            stage.setScene(new Scene(parent));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
+        RentCarController controller = loader.getController();
+        controller.initAtributes();
+
+        Parent parent = loader.getRoot();
+        Stage stage = new Stage(StageStyle.UTILITY);
+        stage.setScene(new Scene(parent));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+
+        ContractDto contract = controller.getNewContract();
+        if(contract!=null){
+        ServicesLocator.getContractServices().insertContract(contract);; 
+        rellenarTablaContract();
+        }  
     }
 
     public void updateContract(){
 
     }
 
-    public void insertContract(){
-
-    }
-
     public void deleteContract(){
+        ContractDto selectedContract = contractTable.getSelectionModel().getSelectedItem();
+            if (selectedContract != null) {
+                try {
+                    ServicesLocator.getContractServices().deleteContract(selectedContract.getCodContract());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                contracts.remove(selectedContract);
+                contractTable.refresh();
 
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("Succefully");
+                alert.showAndWait();
+
+                CarDto updateCar = selectedContract.getCar();
+                updateCar.setSituation(new SituationDto(1,"disponible"));
+                try {
+                    ServicesLocator.getCarServices().updateCar(updateCar);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("You must select a contract");
+                alert.showAndWait();
+            }
     }
 
     public void close() {

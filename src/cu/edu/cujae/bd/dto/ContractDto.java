@@ -39,6 +39,10 @@ public class ContractDto {
 		this.priceTotal = priceTotal;		
 	}
 
+	public ContractDto(){
+		
+	}
+
 
 	
 	public int getCodContract() {

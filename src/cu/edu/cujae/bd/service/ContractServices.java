@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 
 import cu.edu.cujae.bd.dto.CarDto;
 import cu.edu.cujae.bd.dto.ContractDto;
@@ -25,12 +26,17 @@ public class ContractServices {
 		CallableStatement preparedFunction = connection.prepareCall(function);
 		preparedFunction.setInt(1, contract.getTourist().getCodTourist());
 		preparedFunction.setInt(2, contract.getCar().getCodCar());
-		preparedFunction.setInt(3, contract.getDriver().getCodDriver());
 		preparedFunction.setInt(4, contract.getPaymentType().getCodPayment());
 		preparedFunction.setInt(5, contract.getBillSpecial());
 		preparedFunction.setInt(6, contract.getExtension());
 		preparedFunction.setInt(7, contract.getDate().getCodDate());
 		preparedFunction.setInt(8, contract.getPriceTotal());
+
+		if(contract.getDriver() != null){
+			preparedFunction.setInt(3, contract.getDriver().getCodDriver());
+		}else{
+			preparedFunction.setNull(3, Types.INTEGER);
+		}
 		
 		preparedFunction.execute();
 

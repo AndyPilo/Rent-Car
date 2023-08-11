@@ -2,9 +2,11 @@ package cu.edu.cujae.bd.service;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import cu.edu.cujae.bd.dto.BrandDto;
 import cu.edu.cujae.bd.dto.DateDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -68,5 +70,33 @@ public class DateServices {
 
         return lista;
     }
+
+    public DateDto getLastDate() throws SQLException{
+		DateDto date = null;  	
+		String function = "{?= call ultima_fecha()}";
+		Connection connection = ServicesLocator.getConnection();
+		connection.setAutoCommit(false);
+		
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
+		preparedFunction.execute();
+		
+		ResultSet resultSet = (ResultSet) preparedFunction.getObject(1);
+		if(resultSet.next()){
+		int codFecha = resultSet.getInt(1);	
+		Date startDate = resultSet.getDate(2);
+		Date finalDate = resultSet.getDate(3);
+
+        date = new DateDto(codFecha, startDate, finalDate);
+		}
+        	
+		resultSet.close();
+		preparedFunction.close();
+		connection.close();
+		
+		return date;
+	}
+
+    
 
 }
