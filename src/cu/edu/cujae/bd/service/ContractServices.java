@@ -79,7 +79,7 @@ public class ContractServices {
 		ObservableList<CarDto> cars = ServicesLocator.getCarServices().getAllCars();
 		ObservableList<DriverDto> drivers = ServicesLocator.getDriverServices().getAllDrivers();
 		ObservableList<PaymentDto> payments = ServicesLocator.getPaymentServices().getAllPayment();
-		//ObservableList<DateDto> dates = ServicesLocator.getDateServices().getAllDate();
+		ObservableList<DateDto> dates = ServicesLocator.getDateServices().getAllDate();
 
 		String function = "{?= call list_contracts()}";
 		Connection connection = ServicesLocator.getConnection();
@@ -131,13 +131,12 @@ public class ContractServices {
 					paymentDto = payments.get(i);
 				}
 			}
-			/* 
+			
 			for(int i = 0;i < dates.size();i++){
 				if(codDate == dates.get(i).getCodDate()){
 					dateDto = dates.get(i);
 				}
 			}
-			*/
 
 			lista.add(new ContractDto(codContract,touristDto,carDto,driverDto,paymentDto,billSpecial,extension,dateDto,priceTotal));
 		}

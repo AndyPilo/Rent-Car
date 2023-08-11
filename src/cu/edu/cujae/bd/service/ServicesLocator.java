@@ -18,6 +18,7 @@ public class ServicesLocator {
 	private static UserServices userServices = null;
 	private static SituationServices situationServices = null;
 	private static RolServices rolServices = null;
+	private static DateServices dateServices = null;
 	
 	public static java.sql.Connection getConnection(){
 
@@ -115,5 +116,12 @@ public class ServicesLocator {
 			rolServices = new RolServices();
 		}
 		return rolServices;
+	}
+
+	public static DateServices getDateServices(){
+		if(dateServices == null){
+			dateServices = new DateServices();
+		}
+		return dateServices;
 	}
 }

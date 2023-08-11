@@ -1,6 +1,6 @@
 package cu.edu.cujae.bd.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class DateDto {
     private int codDate;
@@ -8,6 +8,11 @@ public class DateDto {
     private Date finalDate;
 
     public DateDto(Date starDate,Date finalDate){
+        this.starDate = starDate;
+        this.finalDate = finalDate;
+    }
+    public DateDto(int codDate,Date starDate,Date finalDate){
+        this.codDate = codDate;
         this.starDate = starDate;
         this.finalDate = finalDate;
     }
