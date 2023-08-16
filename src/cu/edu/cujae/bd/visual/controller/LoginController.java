@@ -1,15 +1,12 @@
 package cu.edu.cujae.bd.visual.controller;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import cu.edu.cujae.bd.dto.ContractDto;
 import cu.edu.cujae.bd.dto.UserDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
 import cu.edu.cujae.bd.service.UserServices;
 import cu.edu.cujae.bd.visual.models.Model;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;

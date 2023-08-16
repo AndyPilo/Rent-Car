@@ -1,11 +1,11 @@
 package cu.edu.cujae.bd.dto;
 
-import javafx.collections.ObservableList;
+//import javafx.collections.ObservableList;
 
 public class BrandDto {
 	private int codBrand;
 	private String nameBrand;
-	private ObservableList<ModelDto> models;
+	//private ObservableList<ModelDto> models;
 	
 	public BrandDto(String nameBrand){
 		this.nameBrand = nameBrand;

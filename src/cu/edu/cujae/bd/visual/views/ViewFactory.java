@@ -27,6 +27,7 @@ public class ViewFactory {
     private AnchorPane carView;
     private AnchorPane touristView;
     private AnchorPane driverView;
+    private AnchorPane reportView;
 
 
     //POSITION OF THE APPLICATION
@@ -55,6 +56,17 @@ public class ViewFactory {
             }
         }
         return dashboardView;
+    }
+
+    public AnchorPane getReport(){
+        if(reportView == null){
+            try{
+                reportView = new FXMLLoader(getClass().getResource("../fxml/report.fxml")).load();  
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        return reportView;
     }
 
     public AnchorPane getUsersView(){

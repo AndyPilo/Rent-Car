@@ -1,6 +1,6 @@
 package cu.edu.cujae.bd.dto;
 
-import javafx.collections.ObservableList;
+//import javafx.collections.ObservableList;
 
 public class TouristDto {
 	private int codTourist;
@@ -11,7 +11,7 @@ public class TouristDto {
 	private char sex;
 	private String contact;
 	private CountryDto country;
-	private ObservableList<CarDto> cars;
+	//private ObservableList<CarDto> cars;
 	
 	
 	public TouristDto(String passport, String name, String last_name, int age,

@@ -38,6 +38,9 @@
     -fx-cursor: hand;
     -fx-background-color: #ce4646;
 }
+.reportButton:hover{
+    -fx-background-color: #717E99;
+}
 
 .paneCar{
     -fx-background-color: linear-gradient(to bottom right,  #062052 , #7d8597 );

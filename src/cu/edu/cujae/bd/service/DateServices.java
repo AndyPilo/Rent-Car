@@ -6,7 +6,6 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import cu.edu.cujae.bd.dto.BrandDto;
 import cu.edu.cujae.bd.dto.DateDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

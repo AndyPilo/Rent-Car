@@ -29,7 +29,7 @@
                   <FontAwesomeIcon iconName="CLOSE" size="1.5em" styleClass="close" />
                </graphic>
             </Button>
-            <Button fx:id="closeButton1" layoutX="823.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" prefHeight="30.0" prefWidth="30.0" styleClass="minimice" stylesheets="@../style/style.css">
+            <Button fx:id="closeButton1" layoutX="823.0" layoutY="19.0" mnemonicParsing="false" onAction="#minimice" prefHeight="30.0" prefWidth="30.0" styleClass="minimice" stylesheets="@../style/style.css">
                <graphic>
                   <FontAwesomeIcon iconName="MINUS" size="1.5em" styleClass="close" />
                </graphic>

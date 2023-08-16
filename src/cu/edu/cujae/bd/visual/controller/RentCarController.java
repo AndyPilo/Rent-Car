@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.GregorianCalendar;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import cu.edu.cujae.bd.dto.CarDto;
@@ -16,7 +16,6 @@ import cu.edu.cujae.bd.dto.ModelDto;
 import cu.edu.cujae.bd.dto.PaymentDto;
 import cu.edu.cujae.bd.dto.SituationDto;
 import cu.edu.cujae.bd.dto.TouristDto;
-import cu.edu.cujae.bd.dto.UserDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
 import cu.edu.cujae.bd.visual.models.Model;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,6 +26,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -266,43 +266,58 @@ public class RentCarController implements Initializable{
     }
 
     public void onRentButton(){
- 
-        DriverDto driver = driverMenu.getValue();      
-        PaymentDto payment = paymentMenu.getValue();
-        int billSpecial = Integer.parseInt(priceExtField.getText());
-        int extension =0;
 
-        //Calcular el precio total del contrato a partir del costo de alquiler por dia y la contidad de dias de prorroga
-        int daysDifference = Long.valueOf(ChronoUnit.DAYS.between(startDate.getValue(), finalDate.getValue())).intValue();
-        int priceTotal = (daysDifference * this.selectedCar.getPrice()) + (billSpecial * extension); 
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("Confirmation Message");
+        alert.setContentText("Are you sure ");
+        Optional<ButtonType> option = alert.showAndWait();
 
-        // Obtener la fecha de la clase LocalDate y convertirla en java.sql.Date 
-        Date starD =  Date.valueOf(startDate.getValue());    
-        Date finalD = Date.valueOf(finalDate.getValue());
-        DateDto date = new DateDto(starD,finalD); 
-        try {
-            ServicesLocator.getDateServices().insertDate(date);
-            date = ServicesLocator.getDateServices().getLastDate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } 
+        if(option.get().equals(ButtonType.OK)){
+            DriverDto driver = driverMenu.getValue();      
+            PaymentDto payment = paymentMenu.getValue();
+            int billSpecial = Integer.parseInt(priceExtField.getText());
+            int extension =0;
 
-        //Crear contrato
-        ContractDto contractDto = new ContractDto(selectedTourist, selectedCar, driver, payment, billSpecial, extension, date, priceTotal);
-        this.newContract = contractDto;
+            //Calcular el precio total del contrato a partir del costo de alquiler por dia y la contidad de dias de prorroga
+            int daysDifference = Long.valueOf(ChronoUnit.DAYS.between(startDate.getValue(), finalDate.getValue())).intValue();
+            int priceTotal = (daysDifference * this.selectedCar.getPrice()) + (billSpecial * extension); 
 
-        //cambiar estado del carro
-        try {
-            selectedCar.setSituation(new SituationDto(3, "alquilado"));
-            ServicesLocator.getCarServices().updateCar(selectedCar);
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+            // Obtener la fecha de la clase LocalDate y convertirla en java.sql.Date 
+            Date starD =  Date.valueOf(startDate.getValue());    
+            Date finalD = Date.valueOf(finalDate.getValue());
+            DateDto date = new DateDto(starD,finalD); 
+            try {
+                ServicesLocator.getDateServices().insertDate(date);
+                date = ServicesLocator.getDateServices().getLastDate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } 
 
-        //Cerrar ventana
-        Stage stage = (Stage) rentBtn.getScene().getWindow();
-        Model.getInstanse().getViewFactory().closeStage(stage);
+            //Crear contrato
+            ContractDto contractDto = new ContractDto(selectedTourist, selectedCar, driver, payment, billSpecial, extension, date, priceTotal);
+            this.newContract = contractDto;
+
+            //cambiar estado del carro
+            try {
+                selectedCar.setSituation(new SituationDto(3, "alquilado"));
+                ServicesLocator.getCarServices().updateCar(selectedCar);
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            Alert succes = new Alert(AlertType.CONFIRMATION);
+            succes.setHeaderText(null);
+            succes.setTitle("Confirmation Message");
+            succes.setContentText("Succesfully ");
+            succes.showAndWait();
+
+            //Cerrar ventana
+            Stage stage = (Stage) rentBtn.getScene().getWindow();
+            Model.getInstanse().getViewFactory().closeStage(stage);
+        }     
+     
     }
 
     //insert

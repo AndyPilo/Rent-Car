@@ -131,6 +131,7 @@ public class ContractController implements Initializable{
         ServicesLocator.getContractServices().insertContract(contract);; 
         rellenarTablaContract();
         }  
+
     }
 
     public void updateContract(){
@@ -171,6 +172,11 @@ public class ContractController implements Initializable{
     public void close() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         Model.getInstanse().getViewFactory().closeStage(stage);
+    }
+
+    public void minimice(){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.setIconified(true);
     }
 
     @Override

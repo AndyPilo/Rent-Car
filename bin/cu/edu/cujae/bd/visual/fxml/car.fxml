@@ -180,6 +180,12 @@
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass></Button>
+            <Button fx:id="updateButton1" layoutX="345.0" layoutY="23.0" mnemonicParsing="false" onAction="#rellenarTablaCar" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="350.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass>
+            </Button>
          </children>
       </AnchorPane>
       <TableView fx:id="carsTable" layoutY="70.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">

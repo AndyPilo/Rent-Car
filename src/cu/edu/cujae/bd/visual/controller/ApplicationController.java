@@ -33,6 +33,9 @@ public class ApplicationController implements Initializable{
                 case USERS:
                     applicationId.setCenter(Model.getInstanse().getViewFactory().getUsersView());
                     break;
+                case REPORTS:
+                    applicationId.setCenter(Model.getInstanse().getViewFactory().getReport());
+                    break;    
                 default:
                     applicationId.setCenter(Model.getInstanse().getViewFactory().getDashboard());
                     break;
