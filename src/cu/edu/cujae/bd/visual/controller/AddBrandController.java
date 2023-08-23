@@ -39,7 +39,8 @@ public class AddBrandController {
                 alert.setHeaderText(null);
                 alert.setContentText("The new brand has been updated successfully.");
                 alert.showAndWait();
-                closeBrandWindows();
+                Stage stage = (Stage) brandNameField.getScene().getWindow();
+                stage.close();
             }else{                   
                 this.selectedBrand.setNameBrand(brandNameField.getText());
                 Alert alert = new Alert(AlertType.INFORMATION);
@@ -47,12 +48,14 @@ public class AddBrandController {
                 alert.setHeaderText(null);
                 alert.setContentText("The brand has been inserted successfully.");
                 alert.showAndWait();                      
-                closeBrandWindows();   
+                Stage stage = (Stage) brandNameField.getScene().getWindow();
+                stage.close();
             } 
         }
     }
 
      public void closeBrandWindows(){
+        this.selectedBrand = null;
         Stage stage = (Stage) brandNameField.getScene().getWindow();
         stage.close();
     }

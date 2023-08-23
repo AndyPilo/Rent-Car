@@ -167,7 +167,6 @@ public class CarController implements Initializable {
         colBrandB.setCellValueFactory(new PropertyValueFactory<>("nameBrand"));
         
         brandTable.setItems(listBrands);
-
     }
 
     public void rellenarTablaCar() throws SQLException {
@@ -396,19 +395,21 @@ public class CarController implements Initializable {
             controller.initAtributes();
 
             Parent parent = loader.getRoot();
-            Stage stage = new Stage(StageStyle.UTILITY);
+            Stage stage = new Stage(StageStyle.UNDECORATED);
             stage.setScene(new Scene(parent));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
 
             ModelDto model = controller.getSelectedModel();
 
-            ServicesLocator.getModelServices().insertModel(model);
-            rellenarTablaModel();             
+            if(model != null){
+                ServicesLocator.getModelServices().insertModel(model);
+                rellenarTablaModel();
+            }                   
     }
 
-    public void onAddBrandButton(){
-         try {
+    public void onAddBrandButton() throws SQLException, IOException{
+         
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../fxml/addBrand.fxml"));
             loader.load();
@@ -416,51 +417,46 @@ public class CarController implements Initializable {
             controller.initAtributes();
 
             Parent parent = loader.getRoot();
-            Stage stage = new Stage(StageStyle.UTILITY);
+            Stage stage = new Stage(StageStyle.UNDECORATED);
             stage.setScene(new Scene(parent));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
 
             BrandDto brand = controller.getSelectedBrand();
-            try {
+            if(brand != null){
                 ServicesLocator.getBrandServices().insertBrand(brand);
                 rellenarTablaBrand();
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }   
     }
 
     public void onUpdModelButton() throws IOException, SQLException{
         this.selectedModel = modelTable.getSelectionModel().getSelectedItem();
 
         if(selectedModel!=null){
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("../fxml/addModel.fxml"));
-                loader.load();
-                AddModelController controller = loader.getController();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../fxml/addModel.fxml"));
+            loader.load();
+            AddModelController controller = loader.getController();
 
-                controller.initAtributes(selectedModel);
+            controller.initAtributes(selectedModel);
 
-                Parent parent = loader.getRoot();
-                Stage stage = new Stage(StageStyle.UTILITY);
-                stage.setScene(new Scene(parent));
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.showAndWait();
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(parent));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
                 
-                ModelDto model = controller.getSelectedModel();
+            ModelDto model = controller.getSelectedModel();
+            if(model != null){
                 ServicesLocator.getModelServices().updateModel(model); 
-                
                 rellenarTablaBrand();
-                
+            }        
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Info");
-                alert.setHeaderText(null);
-                alert.setContentText("You must select a model");
-                alert.showAndWait();
+            alert.setTitle("Info");
+            alert.setHeaderText(null);
+            alert.setContentText("You must select a model");
+            alert.showAndWait();
         }
     }
 
@@ -468,31 +464,30 @@ public class CarController implements Initializable {
         this.selectedBrand = brandTable.getSelectionModel().getSelectedItem();
 
         if(selectedBrand!=null){
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("../fxml/addBrand.fxml"));
-                loader.load();
-                AddBrandController controller = loader.getController();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../fxml/addBrand.fxml"));
+            loader.load();
+            AddBrandController controller = loader.getController();
 
-                controller.initAtributes(selectedBrand);
+            controller.initAtributes(selectedBrand);
 
-                Parent parent = loader.getRoot();
-                Stage stage = new Stage(StageStyle.UTILITY);
-                stage.setScene(new Scene(parent));
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.showAndWait();
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage(StageStyle.TRANSPARENT);
+            stage.setScene(new Scene(parent));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
                 
-                BrandDto brand = controller.getSelectedBrand();
-                System.out.println(brand.getCodBrand());
-                ServicesLocator.getBrandServices().updateBrand(brand); 
-                
+            BrandDto brand = controller.getSelectedBrand();
+            if(brand != null){ 
+                ServicesLocator.getBrandServices().updateBrand(brand);
                 rellenarTablaBrand();
-                
+            }          
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Info");
-                alert.setHeaderText(null);
-                alert.setContentText("You must select a brand");
-                alert.showAndWait();
+            alert.setTitle("Info");
+            alert.setHeaderText(null);
+            alert.setContentText("You must select a brand");
+            alert.showAndWait();
         }
     }
 
@@ -573,6 +568,11 @@ public class CarController implements Initializable {
                 camposLLenos = false;
             }
             return camposLLenos;
+    }
+
+    public TableView<CarDto> getTableView(){
+        carsTable.refresh();
+        return carsTable;
     }
 
     public void close() {

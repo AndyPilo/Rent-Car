@@ -71,7 +71,7 @@ public class UserController implements Initializable{
         controller.initAtributes();
 
         Parent parent = loader.getRoot();
-        Stage stage = new Stage(StageStyle.UTILITY);
+        Stage stage = new Stage(StageStyle.UNDECORATED);
         stage.setScene(new Scene(parent));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();

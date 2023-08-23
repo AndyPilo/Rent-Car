@@ -155,32 +155,32 @@
       </AnchorPane>
       <AnchorPane fx:id="carButtonPane" layoutX="-16.0" layoutY="580.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="580.0">
          <children>
-            <Button fx:id="backButton" layoutX="611.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Back" textFill="WHITE" visible="false" AnchorPane.leftAnchor="625.0">
+            <Button fx:id="backButton" layoutX="622.0" layoutY="21.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Back" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="20.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass></Button>
-            <Button fx:id="newCarButton" layoutX="778.0" layoutY="23.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="New Car" textFill="WHITE" AnchorPane.leftAnchor="750.0">
+            <Button fx:id="newCarButton" layoutX="745.0" layoutY="19.0" mnemonicParsing="false" onAction="#openNew" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="New Car" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="20.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass></Button>
-            <Button fx:id="saveButton" layoutX="754.0" layoutY="23.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Save" textFill="WHITE" visible="false" AnchorPane.leftAnchor="775.0">
+            <Button fx:id="saveButton" layoutX="772.0" layoutY="21.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Save" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="20.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass></Button>
-            <Button fx:id="deleteButton" layoutX="53.0" layoutY="23.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="745.0" AnchorPane.topAnchor="23.0">
+            <Button fx:id="deleteButton" layoutX="45.0" layoutY="19.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="745.0" AnchorPane.topAnchor="20.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass></Button>
-            <Button fx:id="updateButton" layoutX="194.0" layoutY="23.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="595.0">
+            <Button fx:id="updateButton" layoutX="195.0" layoutY="19.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Update" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="595.0" AnchorPane.topAnchor="20.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass></Button>
-            <Button fx:id="updateButton1" layoutX="345.0" layoutY="23.0" mnemonicParsing="false" onAction="#rellenarTablaCar" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="350.0">
+            <Button fx:id="updateButton1" layoutX="345.0" layoutY="19.0" mnemonicParsing="false" onAction="#rellenarTablaCar" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="20.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
@@ -203,28 +203,28 @@
          <children>
             <TableView fx:id="brandTable" layoutX="45.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="colBrandB" prefWidth="146.0" resizable="false" text="Brand" />
+                <TableColumn fx:id="colBrandB" prefWidth="896.0" resizable="false" text="Brand" />
               </columns>
             </TableView>
-            <Button fx:id="deleteBrandButton" layoutX="54.0" layoutY="533.0" mnemonicParsing="false" onAction="#onDeleteButtonBrand" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete Brand" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="533.0">
+            <Button fx:id="deleteBrandButton" layoutX="54.0" layoutY="533.0" mnemonicParsing="false" onAction="#onDeleteButtonBrand" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete Brand" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="530.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass>
             </Button>
-            <Button fx:id="updateBrandButton" layoutX="196.0" layoutY="533.0" mnemonicParsing="false" onAction="#onUpdBrandButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Update Brand" textFill="WHITE" AnchorPane.leftAnchor="200.0">
+            <Button fx:id="updateBrandButton" layoutX="196.0" layoutY="533.0" mnemonicParsing="false" onAction="#onUpdBrandButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Update Brand" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="530.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass>
             </Button>
-            <Button fx:id="NewBrandButton" layoutX="752.0" layoutY="533.0" mnemonicParsing="false" onAction="#onAddBrandButton" prefWidth="105.0" stylesheets="@../style/menu.css" text="New Brand" textFill="WHITE" AnchorPane.leftAnchor="750.0">
+            <Button fx:id="NewBrandButton" layoutX="752.0" layoutY="533.0" mnemonicParsing="false" onAction="#onAddBrandButton" prefWidth="105.0" stylesheets="@../style/menu.css" text="New Brand" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="530.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass>
             </Button>
-            <Button layoutX="345.0" layoutY="533.0" mnemonicParsing="false" onAction="#refresh" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="350.0">
+            <Button layoutX="345.0" layoutY="533.0" mnemonicParsing="false" onAction="#refresh" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="530.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
@@ -236,29 +236,29 @@
          <children>
             <TableView fx:id="modelTable" layoutX="39.0" layoutY="23.0" prefHeight="510.0" prefWidth="900.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="colModelM" prefWidth="142.0" resizable="false" text="Model" />
-                <TableColumn fx:id="colBrandM" prefWidth="142.0" resizable="false" text="Brand" />
+                <TableColumn fx:id="colModelM" prefWidth="452.0" resizable="false" text="Model" />
+                <TableColumn fx:id="colBrandM" prefWidth="444.0" resizable="false" text="Brand" />
               </columns>
             </TableView>
-            <Button fx:id="deleteModelButton" layoutX="60.0" layoutY="533.0" mnemonicParsing="false" onAction="#onDeleteButtonModel" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete Model" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="533.0">
+            <Button fx:id="deleteModelButton" layoutX="60.0" layoutY="533.0" mnemonicParsing="false" onAction="#onDeleteButtonModel" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete Model" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="530.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass>
             </Button>
-            <Button fx:id="updateModelButton" layoutX="197.0" layoutY="533.0" mnemonicParsing="false" onAction="#onUpdModelButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Update Model" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="533.0">
+            <Button fx:id="updateModelButton" layoutX="197.0" layoutY="533.0" mnemonicParsing="false" onAction="#onUpdModelButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Update Model" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="530.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass>
             </Button>
-            <Button layoutX="345.0" layoutY="533.0" mnemonicParsing="false" onAction="#refresh" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.leftAnchor="350.0">
+            <Button layoutX="345.0" layoutY="533.0" mnemonicParsing="false" onAction="#refresh" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="530.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass>
             </Button>
-            <Button fx:id="newModelButton" layoutX="744.0" layoutY="533.0" mnemonicParsing="false" onAction="#onAddModelButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="New Model" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="533.0">
+            <Button fx:id="newModelButton" layoutX="744.0" layoutY="533.0" mnemonicParsing="false" onAction="#onAddModelButton" prefHeight="25.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="New Model" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="530.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />

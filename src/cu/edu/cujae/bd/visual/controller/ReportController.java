@@ -17,10 +17,25 @@ public class ReportController {
     @FXML
     private Button closeButton;
 
-    public void onReport(){
+    public void onReportCar(){
         try {
         JasperReport report = null;
-        String path = "src\\cu\\edu\\cujae\\bd\\visual\\controller\\rptCars.jasper";
+        String path = "src\\cu\\edu\\cujae\\bd\\reports\\rptCars.jasper";
+        report = (JasperReport) JRLoader.loadObjectFromFile(path);
+        JasperPrint jPrint = JasperFillManager.fillReport(report, null, ServicesLocator.getConnection());
+        JasperViewer view = new JasperViewer(jPrint,false);
+        view.setDefaultCloseOperation(0);
+        view.setVisible(true);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void onReportContract(){
+        try {
+        JasperReport report = null;
+        String path = "src\\cu\\edu\\cujae\\bd\\reports\\rptContract.jasper";
         report = (JasperReport) JRLoader.loadObjectFromFile(path);
         JasperPrint jPrint = JasperFillManager.fillReport(report, null, ServicesLocator.getConnection());
         JasperViewer view = new JasperViewer(jPrint,false);

@@ -72,7 +72,8 @@ public class AddModelController implements Initializable{
                 alert.setHeaderText(null);
                 alert.setContentText("The new model has been inserted successfully.");
                 alert.showAndWait();                      
-                close();  
+                Stage stage = (Stage) brandMenu.getScene().getWindow();
+                stage.close();  
             }else{
                 this.selectedModel.setNameModel(nameModel);
                 this.selectedModel.setBrand(brandMenu.getValue());
@@ -82,7 +83,8 @@ public class AddModelController implements Initializable{
                 alert.setHeaderText(null);
                 alert.setContentText("The model has been updated successfully.");
                 alert.showAndWait();                     
-                close();  
+                Stage stage = (Stage) brandMenu.getScene().getWindow();
+                stage.close(); 
             }
         }
     }
@@ -94,9 +96,17 @@ public class AddModelController implements Initializable{
     public void initAtributes(ModelDto model){
         this.selectedModel = model;
         this.modelNameField.setText(model.getNameModel());
+        BrandDto brandDto = null;
+        for (BrandDto brand : listBrands) {
+            if(model.getBrand().getCodBrand() == brand.getCodBrand()){
+                brandDto = brand;       
+            }
+        }
+        brandMenu.setValue(brandDto);
     }
 
     public void close(){
+        this.selectedModel = null;
         Stage stage = (Stage) brandMenu.getScene().getWindow();
         stage.close();
     }

@@ -29,7 +29,7 @@ public class ModelServices {
     }
 
     public void updateModel(ModelDto model) throws SQLException{
-        String function ="{call update_model(?,?)}";
+        String function ="{call update_model(?,?,?)}";
 		
 		Connection connection = ServicesLocator.getConnection();
 		CallableStatement preparedFunction = connection.prepareCall(function);

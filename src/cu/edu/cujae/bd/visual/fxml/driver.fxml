@@ -121,11 +121,12 @@
       </AnchorPane>
       <AnchorPane layoutX="-16.0" layoutY="580.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button fx:id="deleteButton" layoutX="60.0" layoutY="23.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Delete" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
-            <Button fx:id="backButton" layoutX="611.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Back" textFill="WHITE" visible="false" AnchorPane.leftAnchor="625.0" />
-            <Button fx:id="newDriverButton" layoutX="781.0" layoutY="23.0" mnemonicParsing="false" onAction="#openNew" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="New Driver" textFill="WHITE" AnchorPane.leftAnchor="750.0" />
-            <Button fx:id="saveButton" layoutX="754.0" layoutY="23.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Save" textFill="WHITE" visible="false" AnchorPane.leftAnchor="775.0" />
-            <Button fx:id="updateButton" layoutX="178.0" layoutY="23.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Update" textFill="WHITE" AnchorPane.leftAnchor="200.0" />
+            <Button fx:id="deleteButton" layoutX="50.0" layoutY="20.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="backButton" layoutX="625.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Back" textFill="WHITE" visible="false" AnchorPane.leftAnchor="625.0" />
+            <Button fx:id="newDriverButton" layoutX="750.0" layoutY="20.0" mnemonicParsing="false" onAction="#openNew" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="New Driver" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="saveButton" layoutX="775.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Save" textFill="WHITE" visible="false" AnchorPane.leftAnchor="775.0" />
+            <Button fx:id="updateButton" layoutX="200.0" layoutY="20.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Update" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="20.0" />
+            <Button layoutX="350.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #023e7d;" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
       <TableView fx:id="driverTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
