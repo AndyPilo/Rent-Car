@@ -44,8 +44,6 @@ public class MenuController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addListener();
-        initControllers();
-        setDashboard();
     }
 
    public void addListener(){
@@ -68,7 +66,7 @@ public class MenuController implements Initializable{
           usersButton.setStyle("-fx-background-color: transparent;");
           contractButton.setStyle("-fx-background-color: transparent;");
           touristButton.setStyle("-fx-background-color: transparent;");
-          driverButton.setStyle("-fx-background-color: transparent;");      
+          driverButton.setStyle("-fx-background-color: transparent;");     
    }
    public void onReports(){
           Model.getInstanse().getViewFactory().getSelectedAdminMenu().set(AdminMenuOption.REPORTS);
@@ -133,25 +131,30 @@ public class MenuController implements Initializable{
    }  
  
    //Se instancian los controladores para cambiar componentes en otros xxx.fxml
-   public void initControllers(){
+   public void initDashboardController(){
        FXMLLoader loader = new FXMLLoader();
-       FXMLLoader loader2 = new FXMLLoader();
        try {
               loader.setLocation(getClass().getResource("../fxml/dashboard.fxml"));
               loader.load();
               this.dashboardController = loader.getController();
-
-              loader2.setLocation(getClass().getResource("../fxml/car.fxml"));
-              loader2.load();
-              this.carController = loader2.getController();
-
        }catch(IOException e) {
               e.printStackTrace();
        }
    }
 
-   public void setDashboard(){
-       ObservableList<CarDto> listCars = carController.getTableView().getItems();
+   public void initCarController(){
+       FXMLLoader loader2 = new FXMLLoader();
+       try {
+              loader2.setLocation(getClass().getResource("../fxml/car.fxml"));
+              loader2.load();
+              this.carController = loader2.getController();
+       }catch(IOException e) {
+              e.printStackTrace();
+       }
+   }
+
+   public void setDashboard(){    
+       ObservableList<CarDto> listCars = carController.getCarList();
        System.out.println(listCars.size());
        dashboardController.setAlqCarsLbl(listCars);
        dashboardController.setAvailableCarsLbl(listCars);

@@ -38,6 +38,7 @@ import javafx.util.StringConverter;
 public class CarController implements Initializable {
 
     public ObservableList<CarDto> cars = FXCollections.observableArrayList();
+    private ObservableList<CarDto> carsList = FXCollections.observableArrayList();
     private ObservableList<ModelDto> listModels = FXCollections.observableArrayList();
     private ObservableList<SituationDto> listSituation = FXCollections.observableArrayList();
     private ObservableList<BrandDto> listBrands = FXCollections.observableArrayList();
@@ -171,7 +172,7 @@ public class CarController implements Initializable {
 
     public void rellenarTablaCar() throws SQLException {
         cars.clear();
-        ObservableList<CarDto> carsList = ServicesLocator.getCarServices().getAllCars();
+        this.carsList = ServicesLocator.getCarServices().getAllCars();
         cars.setAll(carsList);
     }
 
@@ -570,9 +571,8 @@ public class CarController implements Initializable {
             return camposLLenos;
     }
 
-    public TableView<CarDto> getTableView(){
-        carsTable.refresh();
-        return carsTable;
+    public ObservableList<CarDto> getCarList(){  
+        return this.carsList;
     }
 
     public void close() {

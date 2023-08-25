@@ -67,7 +67,6 @@ public class LoginController implements Initializable{
 	}
 
 	public void close() {
-
         Stage stage = (Stage) closeButton.getScene().getWindow();
         Model.getInstanse().getViewFactory().closeStage(stage);
     }

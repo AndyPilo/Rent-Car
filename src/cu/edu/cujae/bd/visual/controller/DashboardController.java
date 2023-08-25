@@ -12,10 +12,13 @@ public class DashboardController{
 
     @FXML
     private Button closeButton;
+
     @FXML
     private Label alqCars;
+
     @FXML
     private Label availableCars;
+
     @FXML
     private Label tallerCars;
 
@@ -27,7 +30,8 @@ public class DashboardController{
             }              
         }
         System.out.println(count);
-        availableCars.setText(count + "");
+        int i = count;
+        availableCars.setText(i + "");
     }
 
     public void setTallerCarsLbl(ObservableList<CarDto> listCars){
@@ -38,8 +42,8 @@ public class DashboardController{
             }
         }
         System.out.println(count);
-        tallerCars.setText("hola");
-        System.out.println(tallerCars.getText());
+        int i = count;
+        tallerCars.setText(i+"");
     }
 
     public void setAlqCarsLbl(ObservableList<CarDto> listCars){
@@ -61,4 +65,5 @@ public class DashboardController{
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.setIconified(true);
     }
+
 }
