@@ -21,4 +21,26 @@
     -fx-background-color: #3d5683;
 }
 
+.buttonTourist{
+    -fx-background-color: #1e6091;
+}
 
+.buttonTourist:hover{
+    -fx-background-color: #0f77c2;
+}
+
+.buttonDriver{
+    -fx-background-color:  #023e7d;
+}
+
+.buttonDriver:hover{
+    -fx-background-color:  #0556ac;
+}
+
+.buttonContract{
+    -fx-background-color:  #708d81;
+}
+
+.buttonContract:hover{
+    -fx-background-color: #577568;
+}

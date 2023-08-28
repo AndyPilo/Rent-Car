@@ -3,6 +3,7 @@ package cu.edu.cujae.bd.visual.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import cu.edu.cujae.bd.dto.BrandDto;
@@ -21,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -88,6 +90,8 @@ public class CarController implements Initializable {
     private Button updateButton;
     @FXML
     private Button closeButton;
+    @FXML
+    private Button refreshButton;
     @FXML
     private Label carFormLabel;
     @FXML
@@ -281,13 +285,27 @@ public class CarController implements Initializable {
     public void onDeleteButton() {
         CarDto selectedCarDto = carsTable.getSelectionModel().getSelectedItem();
             if (selectedCarDto != null) {
-                try {
+
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Confirmation Message");
+                alert.setContentText("Are you sure you want to delete ?");
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if(option.get().equals(ButtonType.OK)){
+                    try {
                     ServicesLocator.getCarServices().deleteCar(selectedCarDto.getCodCar());
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    cars.remove(selectedCarDto);
+                    carsTable.refresh();
+
+                    Alert alert2 = new Alert(AlertType.INFORMATION);
+                    alert2.setHeaderText(null);
+                    alert2.setContentText("Successfuly");
+                    alert2.showAndWait();
                 }
-                cars.remove(selectedCarDto);
-                carsTable.refresh();
             }else{
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText(null);
@@ -525,7 +543,6 @@ public class CarController implements Initializable {
     }
 /***********************           VISTAS          *****************************/
     public void onBackButton() {
-        System.out.println("Aqui en vista");
         carsTable.setVisible(true);
         newCarButton.setVisible(true);
         deleteButton.setVisible(true);
@@ -533,7 +550,7 @@ public class CarController implements Initializable {
         insertCarPane.setVisible(false);
         backButton.setVisible(false);
         saveButton.setVisible(false);
-        System.out.println("Saliendo de vista");
+        refreshButton.setVisible(true);
         cleanFields();
     }
 
@@ -545,6 +562,7 @@ public class CarController implements Initializable {
         insertCarPane.setVisible(true);
         backButton.setVisible(true);
         saveButton.setVisible(true);
+        refreshButton.setVisible(false);
     }
 
     public void cleanFields(){

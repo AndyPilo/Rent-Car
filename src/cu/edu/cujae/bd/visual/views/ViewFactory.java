@@ -171,6 +171,15 @@ public class ViewFactory {
             public void handle(MouseEvent event){
                 stage.setX(event.getScreenX() - xOffSet);
                 stage.setY(event.getScreenY() - yOffSet);
+
+                stage.setOpacity(.8);
+            }
+        });
+
+        scene.setOnMouseReleased(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setOpacity(1);
             }
         });
 

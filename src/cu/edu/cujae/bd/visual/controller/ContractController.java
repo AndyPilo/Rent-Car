@@ -3,6 +3,7 @@ package cu.edu.cujae.bd.visual.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import cu.edu.cujae.bd.dto.CarDto;
@@ -25,6 +26,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -121,7 +123,7 @@ public class ContractController implements Initializable{
         controller.initAtributes();
 
         Parent parent = loader.getRoot();
-        Stage stage = new Stage(StageStyle.UTILITY);
+        Stage stage = new Stage(StageStyle.UNDECORATED);
         stage.setScene(new Scene(parent));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
@@ -134,32 +136,37 @@ public class ContractController implements Initializable{
 
     }
 
-    public void updateContract(){
-
-    }
-
     public void deleteContract(){
         ContractDto selectedContract = contractTable.getSelectionModel().getSelectedItem();
             if (selectedContract != null) {
-                try {
-                    ServicesLocator.getContractServices().deleteContract(selectedContract.getCodContract());
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                contracts.remove(selectedContract);
-                contractTable.refresh();
 
-                Alert alert = new Alert(AlertType.INFORMATION);
+                Alert alert = new Alert(AlertType.CONFIRMATION);
                 alert.setHeaderText(null);
-                alert.setContentText("Succefully");
-                alert.showAndWait();
+                alert.setTitle("Confirmation Message");
+                alert.setContentText("Are you sure you want to delete ?");
+                Optional<ButtonType> option = alert.showAndWait();
 
-                CarDto updateCar = selectedContract.getCar();
-                updateCar.setSituation(new SituationDto(1,"disponible"));
-                try {
-                    ServicesLocator.getCarServices().updateCar(updateCar);
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                if(option.get().equals(ButtonType.OK)){
+                    try {
+                    ServicesLocator.getContractServices().deleteContract(selectedContract.getCodContract());
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    contracts.remove(selectedContract);
+                    contractTable.refresh();
+
+                    CarDto updateCar = selectedContract.getCar();
+                    updateCar.setSituation(new SituationDto(1,"disponible"));
+                    try {
+                        ServicesLocator.getCarServices().updateCar(updateCar);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    Alert alert2 = new Alert(AlertType.INFORMATION);
+                    alert2.setHeaderText(null);
+                    alert2.setContentText("Successfuly");
+                    alert2.showAndWait();
                 }
             }else{
                 Alert alert = new Alert(AlertType.INFORMATION);

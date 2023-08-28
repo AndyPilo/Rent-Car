@@ -35,9 +35,9 @@
       </AnchorPane>
       <AnchorPane layoutX="91.0" layoutY="153.0" prefHeight="526.0" prefWidth="900.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <children>
-            <AnchorPane layoutX="460.0" layoutY="341.0" prefHeight="181.0" prefWidth="420.0" style="-fx-background-color: #979DAC;" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="341.0">
+            <AnchorPane layoutX="460.0" layoutY="341.0" prefHeight="181.0" prefWidth="420.0" style="-fx-background-color: #33415c;" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="341.0">
                <children>
-                  <Label layoutX="86.0" layoutY="64.0" prefHeight="17.0" prefWidth="63.0" text="Start Date">
+                  <Label layoutX="86.0" layoutY="64.0" prefHeight="17.0" prefWidth="63.0" text="Start Date" textFill="#fefff7">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -47,7 +47,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="86.0" layoutY="113.0" prefHeight="17.0" prefWidth="63.0" text="Final Date">
+                  <Label layoutX="86.0" layoutY="113.0" prefHeight="17.0" prefWidth="63.0" text="Final Date" textFill="#fefff7">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -59,9 +59,9 @@
                   <DropShadow />
                </effect>
             </AnchorPane>
-            <AnchorPane layoutX="19.0" layoutY="15.0" prefHeight="303.0" prefWidth="860.0" style="-fx-background-color: #979DAC;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+            <AnchorPane layoutX="19.0" layoutY="15.0" prefHeight="310.0" prefWidth="860.0" style="-fx-background-color: #33415c#979DAC;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
                <children>
-                  <TableView fx:id="touristTable" layoutX="29.0" layoutY="97.0" prefHeight="165.0" prefWidth="380.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="451.0" AnchorPane.topAnchor="97.0">
+                  <TableView fx:id="touristTable" layoutX="29.0" layoutY="97.0" prefHeight="157.0" prefWidth="380.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="451.0" AnchorPane.topAnchor="97.0">
                      <columns>
                         <TableColumn fx:id="nameCol" prefWidth="129.0" resizable="false" text="Name Tourist" />
                         <TableColumn fx:id="lastNameCol" prefWidth="133.0" resizable="false" text="Last Name " />
@@ -73,13 +73,13 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Button layoutX="741.0" layoutY="277.0" mnemonicParsing="false" onAction="#onSelected" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #868C99;" text="Select " textFill="WHITE" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="10.0" />
+                  <Button layoutX="741.0" layoutY="271.0" mnemonicParsing="false" onAction="#onSelected" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #776777;" text="Select " textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
                   <Label fx:id="nameLbl" layoutX="101.0" layoutY="20.0" prefHeight="27.0" prefWidth="184.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="AvailableCarTable" layoutX="444.0" layoutY="97.0" prefHeight="165.0" prefWidth="380.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="444.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="97.0">
+                  <TableView fx:id="AvailableCarTable" layoutX="444.0" layoutY="97.0" prefHeight="157.0" prefWidth="380.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="444.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="97.0">
                      <columns>
                         <TableColumn fx:id="brandCol" prefWidth="120.0" resizable="false" text="Brand" />
                         <TableColumn fx:id="modelCol" prefWidth="127.0" resizable="false" text="Model" />
@@ -96,12 +96,12 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="38.0" layoutY="21.0" prefHeight="25.0" prefWidth="63.0" text="Tourist :">
+                  <Label layoutX="38.0" layoutY="21.0" prefHeight="25.0" prefWidth="63.0" text="Tourist :" textFill="#070101">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="444.0" layoutY="25.0" prefHeight="17.0" prefWidth="70.0" text="Rent Car :">
+                  <Label layoutX="444.0" layoutY="25.0" prefHeight="17.0" prefWidth="70.0" text="Rent Car :" textFill="#110606">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -111,9 +111,9 @@
                   <DropShadow />
                </effect>
             </AnchorPane>
-            <AnchorPane layoutX="20.0" layoutY="341.0" prefHeight="181.0" prefWidth="420.0" style="-fx-background-color: #979DAC;" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="460.0" AnchorPane.topAnchor="341.0">
+            <AnchorPane layoutX="20.0" layoutY="341.0" prefHeight="181.0" prefWidth="420.0" style="-fx-background-color: #33415c;" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="460.0" AnchorPane.topAnchor="341.0">
                <children>
-                  <Label layoutX="64.0" layoutY="46.0" prefHeight="20.0" prefWidth="105.0" text="Type Payment">
+                  <Label layoutX="64.0" layoutY="46.0" prefHeight="20.0" prefWidth="105.0" text="Type Payment" textFill="#fefff7">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -123,7 +123,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="43.0" layoutY="86.0" prefHeight="20.0" prefWidth="121.0" text="Price for extension">
+                  <Label layoutX="43.0" layoutY="86.0" prefHeight="20.0" prefWidth="121.0" text="Price for extension" textFill="#fefff7">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -136,7 +136,7 @@
                      </styleClass>
                   </ChoiceBox>
                   <TextField fx:id="priceExtField" disable="true" layoutX="177.0" layoutY="84.0" prefHeight="25.0" prefWidth="200.0" />
-                  <Label layoutX="51.0" layoutY="129.0" prefHeight="20.0" prefWidth="105.0" text="Driver (Optional)">
+                  <Label layoutX="51.0" layoutY="129.0" prefHeight="20.0" prefWidth="105.0" text="Driver (Optional)" textFill="#fefff7">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -155,9 +155,9 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Button fx:id="rentBtn" disable="true" layoutX="781.0" layoutY="611.0" mnemonicParsing="false" onAction="#onRentButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Rent" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" />
-      <Button layoutX="33.0" layoutY="611.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" />
-      <Button layoutX="643.0" layoutY="610.0" mnemonicParsing="false" onAction="#onCalcular" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Calcular" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="160.0" />
-      <Button layoutX="160.0" layoutY="610.0" mnemonicParsing="false" onAction="#onClear" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #979DAC;" text="Clear" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="165.0" />
+      <Button fx:id="rentBtn" disable="true" layoutX="781.0" layoutY="611.0" mnemonicParsing="false" onAction="#onRentButton" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #776777;" text="Rent" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="33.0" layoutY="611.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #776777;" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" />
+      <Button layoutX="643.0" layoutY="610.0" mnemonicParsing="false" onAction="#onCalcular" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #776777;" text="Calcular" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="160.0" />
+      <Button layoutX="160.0" layoutY="610.0" mnemonicParsing="false" onAction="#onClear" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #776777;" text="Clear" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="165.0" />
    </children>
 </AnchorPane>

@@ -29,6 +29,9 @@ public class AplicationUserController implements Initializable{
                 case DRIVER:
                     applicationId.setCenter(Model.getInstanse().getViewFactory().getDriverView());
                     break;
+                case REPORTS:
+                    applicationId.setCenter(Model.getInstanse().getViewFactory().getReport());
+                    break;
                 default:
                     applicationId.setCenter(Model.getInstanse().getViewFactory().getDashboard());
                     break;

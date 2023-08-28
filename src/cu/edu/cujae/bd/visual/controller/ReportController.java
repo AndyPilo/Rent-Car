@@ -47,6 +47,51 @@ public class ReportController {
 
     }
 
+    public void onReportTourist(){
+        try {
+        JasperReport report = null;
+        String path = "src\\cu\\edu\\cujae\\bd\\reports\\rptTourist.jasper";
+        report = (JasperReport) JRLoader.loadObjectFromFile(path);
+        JasperPrint jPrint = JasperFillManager.fillReport(report, null, ServicesLocator.getConnection());
+        JasperViewer view = new JasperViewer(jPrint,false);
+        view.setDefaultCloseOperation(0);
+        view.setVisible(true);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void onReportCarSituation(){
+        try {
+        JasperReport report = null;
+        String path = "src\\cu\\edu\\cujae\\bd\\reports\\rptCarRent.jasper";
+        report = (JasperReport) JRLoader.loadObjectFromFile(path);
+        JasperPrint jPrint = JasperFillManager.fillReport(report, null, ServicesLocator.getConnection());
+        JasperViewer view = new JasperViewer(jPrint,false);
+        view.setDefaultCloseOperation(0);
+        view.setVisible(true);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void onReportDriver(){
+        try {
+        JasperReport report = null;
+        String path = "src\\cu\\edu\\cujae\\bd\\reports\\rptDriver.jasper";
+        report = (JasperReport) JRLoader.loadObjectFromFile(path);
+        JasperPrint jPrint = JasperFillManager.fillReport(report, null, ServicesLocator.getConnection());
+        JasperViewer view = new JasperViewer(jPrint,false);
+        view.setDefaultCloseOperation(0);
+        view.setVisible(true);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void close() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         Model.getInstanse().getViewFactory().closeStage(stage);

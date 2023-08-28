@@ -307,7 +307,7 @@ public class RentCarController implements Initializable{
                 e.printStackTrace();
             }
 
-            Alert succes = new Alert(AlertType.CONFIRMATION);
+            Alert succes = new Alert(AlertType.INFORMATION);
             succes.setHeaderText(null);
             succes.setTitle("Confirmation Message");
             succes.setContentText("Succesfully ");

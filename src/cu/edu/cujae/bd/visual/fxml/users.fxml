@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -37,10 +38,26 @@
       </TableView>
       <AnchorPane layoutX="27.0" layoutY="499.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="580.0">
          <children>
-            <Button fx:id="deleteButton" layoutX="48.0" layoutY="21.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="745.0" AnchorPane.topAnchor="20.0" />
-            <Button fx:id="updateButton" layoutX="198.0" layoutY="21.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Update" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="595.0" AnchorPane.topAnchor="20.0" />
-            <Button fx:id="newButton" layoutX="748.0" layoutY="19.0" mnemonicParsing="false" onAction="#openNew" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="New User" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="20.0" />
-            <Button fx:id="refreshButton" layoutX="348.0" layoutY="21.0" mnemonicParsing="false" onAction="#rellenarTablaUser" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #7d8597;" text="Resfresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="deleteButton" layoutX="48.0" layoutY="21.0" mnemonicParsing="false" onAction="#onDeleteButton" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="745.0" AnchorPane.topAnchor="20.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass></Button>
+            <Button fx:id="updateButton" layoutX="198.0" layoutY="21.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Update" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="595.0" AnchorPane.topAnchor="20.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass></Button>
+            <Button fx:id="newButton" layoutX="748.0" layoutY="19.0" mnemonicParsing="false" onAction="#openNew" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="New User" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="20.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass></Button>
+            <Button fx:id="refreshButton" layoutX="348.0" layoutY="21.0" mnemonicParsing="false" onAction="#rellenarTablaUser" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Resfresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="20.0">
+               <styleClass>
+                  <String fx:value="buttonCar" />
+                  <String fx:value="menuCar" />
+               </styleClass></Button>
          </children>
       </AnchorPane>
    </children>

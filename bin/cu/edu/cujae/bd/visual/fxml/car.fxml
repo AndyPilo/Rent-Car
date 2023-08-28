@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.CarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.CarController">
    <children>
       <AnchorPane layoutX="101.0" layoutY="49.0" prefHeight="70.0" prefWidth="900.0" styleClass="paneCar" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -99,13 +100,17 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Label text="Situation of car " />
-                                    <ChoiceBox fx:id="situationMenu" prefHeight="31.0" prefWidth="322.0" stylesheets="@../style/carController.css">
+                                    <ChoiceBox fx:id="situationMenu" prefHeight="31.0" prefWidth="322.0">
                                        <styleClass>
                                           <String fx:value="arrow" />
                                           <String fx:value="arrow-button" />
                                           <String fx:value="choice-box-dropdown" />
                                           <String fx:value="list-view" />
                                        </styleClass>
+                                       <stylesheets>
+                                          <URL value="@../style/carController.css" />
+                                          <URL value="@../style/menu.css" />
+                                       </stylesheets>
                                     </ChoiceBox>
                                  </children>
                                  <padding>
@@ -180,7 +185,7 @@
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />
                </styleClass></Button>
-            <Button fx:id="updateButton1" layoutX="345.0" layoutY="19.0" mnemonicParsing="false" onAction="#rellenarTablaCar" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="20.0">
+            <Button fx:id="refreshButton" layoutX="345.0" layoutY="19.0" mnemonicParsing="false" onAction="#rellenarTablaCar" prefHeight="30.0" prefWidth="105.0" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="20.0">
                <styleClass>
                   <String fx:value="buttonCar" />
                   <String fx:value="menuCar" />

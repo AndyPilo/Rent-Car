@@ -38,9 +38,9 @@
       </AnchorPane>
       <AnchorPane layoutX="7.0" layoutY="512.0" prefHeight="70.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button fx:id="refreshButton" layoutX="188.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #708d81;" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="200.0" />
-            <Button fx:id="rentCarBtn" layoutX="749.0" layoutY="20.0" mnemonicParsing="false" onAction="#insertRent" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #708d81;" text="Rent Car" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" />
-            <Button fx:id="rentCarBtn1" layoutX="47.0" layoutY="20.0" mnemonicParsing="false" onAction="#deleteContract" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #708d81;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="refreshButton" layoutX="188.0" layoutY="20.0" mnemonicParsing="false" onAction="#rellenarTablaContract" prefHeight="30.0" prefWidth="105.0" styleClass="buttonContract" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="200.0" />
+            <Button fx:id="rentCarBtn" layoutX="749.0" layoutY="20.0" mnemonicParsing="false" onAction="#insertRent" prefHeight="30.0" prefWidth="105.0" styleClass="buttonContract" stylesheets="@../style/menu.css" text="Rent Car" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" />
+            <Button fx:id="rentCarBtn1" layoutX="47.0" layoutY="20.0" mnemonicParsing="false" onAction="#deleteContract" prefHeight="30.0" prefWidth="105.0" styleClass="buttonContract" stylesheets="@../style/menu.css" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="40.0" layoutY="100.0" prefHeight="420.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">

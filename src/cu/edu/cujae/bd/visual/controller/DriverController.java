@@ -2,10 +2,13 @@ package cu.edu.cujae.bd.visual.controller;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
+import cu.edu.cujae.bd.dto.CarDto;
 import cu.edu.cujae.bd.dto.DriverCategoryDto;
 import cu.edu.cujae.bd.dto.DriverDto;
+import cu.edu.cujae.bd.dto.SituationDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
 import cu.edu.cujae.bd.visual.models.Model;
 import javafx.beans.property.SimpleStringProperty;
@@ -16,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -156,13 +160,27 @@ public class DriverController implements Initializable{
     public void onDeleteButton() {
         DriverDto selectedDriverDto = driverTable.getSelectionModel().getSelectedItem();
         if (selectedDriverDto != null) {
-            try {
+        
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setHeaderText(null);
+            alert.setTitle("Confirmation Message");
+            alert.setContentText("Are you sure you want to delete ?");
+            Optional<ButtonType> option = alert.showAndWait();
+
+            if(option.get().equals(ButtonType.OK)){
+                try {
                 ServicesLocator.getDriverServices().deleteDriver(selectedDriverDto.getCodDriver());
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            drivers.remove(selectedDriverDto);
-            driverTable.refresh();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                drivers.remove(selectedDriverDto);
+                driverTable.refresh();
+                }
+
+                Alert alert2 = new Alert(AlertType.INFORMATION);
+                alert2.setHeaderText(null);
+                alert2.setContentText("Successfuly");
+                alert2.showAndWait();
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText(null);

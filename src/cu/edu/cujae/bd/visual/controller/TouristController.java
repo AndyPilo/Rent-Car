@@ -2,6 +2,7 @@ package cu.edu.cujae.bd.visual.controller;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import cu.edu.cujae.bd.dto.CountryDto;
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -235,18 +237,32 @@ public boolean validarCamposLLenos(){
     public void onDeleteButton() {
         TouristDto selectedTouristDto = touristTable.getSelectionModel().getSelectedItem();
         if (selectedTouristDto != null) {
-            try {
+
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setHeaderText(null);
+            alert.setTitle("Confirmation Message");
+            alert.setContentText("Are you sure you want to delete ?");
+            Optional<ButtonType> option = alert.showAndWait();
+
+            if(option.get().equals(ButtonType.OK)){
+                try {
                 ServicesLocator.getTouristServices().deleteTourist(selectedTouristDto.getCodTourist());
-            } catch (SQLException e) {
-                e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                tourists.remove(selectedTouristDto);
+                touristTable.refresh();
+
+                Alert alert2 = new Alert(AlertType.INFORMATION);
+                alert2.setHeaderText(null);
+                alert2.setContentText("Successfuly");
+                alert2.showAndWait();
             }
-            tourists.remove(selectedTouristDto);
-            touristTable.refresh();
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText("You must select a tourist");
-                alert.showAndWait();
+            alert.setHeaderText(null);
+            alert.setContentText("You must select a tourist");
+            alert.showAndWait();
         }
     }
 

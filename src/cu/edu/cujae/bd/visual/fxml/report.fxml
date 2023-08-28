@@ -30,27 +30,27 @@
       </AnchorPane>
       <VBox layoutX="98.0" layoutY="140.0" spacing="35.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#onReportCar" prefHeight="57.0" prefWidth="669.0" styleClass="reportButton" stylesheets="@../style/style.css" text="Report Cars" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#onReportCar" prefHeight="57.0" prefWidth="669.0" styleClass="reportButton" stylesheets="@../style/style.css" text=" Car Report" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#onReportContract" prefHeight="57.0" prefWidth="669.0" styleClass="reportButton" stylesheets="@../style/style.css" text="Report Contracts" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#onReportCarSituation" prefHeight="57.0" prefWidth="669.0" styleClass="reportButton" stylesheets="@../style/style.css" text="Car Situation Report" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="669.0" styleClass="reportButton" stylesheets="@../style/style.css" text="Report Tourists" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#onReportContract" prefHeight="57.0" prefWidth="669.0" styleClass="reportButton" stylesheets="@../style/style.css" text=" Contract Report" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="669.0" styleClass="reportButton" stylesheets="@../style/style.css" text="Report Drivers" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#onReportTourist" prefHeight="57.0" prefWidth="669.0" styleClass="reportButton" stylesheets="@../style/style.css" text=" Tourist Report" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="669.0" styleClass="reportButton" stylesheets="@../style/style.css" text="Report Users" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#onReportDriver" prefHeight="57.0" prefWidth="669.0" styleClass="reportButton" stylesheets="@../style/style.css" text=" Driver Report" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
