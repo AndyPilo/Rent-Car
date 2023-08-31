@@ -41,11 +41,6 @@
             <Button fx:id="refreshButton" layoutX="188.0" layoutY="20.0" mnemonicParsing="false" onAction="#onRefresh" prefHeight="30.0" prefWidth="105.0" styleClass="buttonContract" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="200.0" />
             <Button fx:id="rentCarBtn" layoutX="749.0" layoutY="20.0" mnemonicParsing="false" onAction="#insertRent" prefHeight="30.0" prefWidth="105.0" styleClass="buttonContract" stylesheets="@../style/menu.css" text="Rent Car" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" />
             <Button fx:id="rentCarBtn1" layoutX="47.0" layoutY="20.0" mnemonicParsing="false" onAction="#deleteContract" prefHeight="30.0" prefWidth="105.0" styleClass="buttonContract" stylesheets="@../style/menu.css" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0" />
-            <Label fx:id="lblprueba" layoutX="372.0" layoutY="20.0" prefHeight="17.0" prefWidth="182.0" text="0">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="40.0" layoutY="100.0" prefHeight="420.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">
@@ -113,15 +108,17 @@
       </AnchorPane>
       <TableView fx:id="contractTable" layoutX="12.0" layoutY="72.0" prefHeight="508.0" prefWidth="900.0" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <columns>
-            <TableColumn fx:id="colTourist" minWidth="100.0" prefWidth="75.0" text="Tourist" />
-            <TableColumn fx:id="colCar" minWidth="100.0" prefWidth="75.0" text="Car" />
-            <TableColumn fx:id="colDriver" minWidth="100.0" prefWidth="75.0" text="Driver" />
-            <TableColumn fx:id="colPayment" minWidth="100.0" prefWidth="75.0" text="Payment" />
-            <TableColumn fx:id="colSBill" minWidth="100.0" prefWidth="75.0" text="SpecialBill" />
-            <TableColumn fx:id="colExtension" minWidth="100.0" prefWidth="75.0" text="Extension" />
-            <TableColumn fx:id="colSDate" minWidth="100.0" prefWidth="75.0" text="StartDate" />
-            <TableColumn fx:id="colFDate" minWidth="100.0" prefWidth="104.0" text="FinalDate" />
-            <TableColumn fx:id="colPrice" prefWidth="92.0" text="Price Total" />
+            <TableColumn fx:id="colTourist" minWidth="86.0" prefWidth="86.0" text="Tourist" />
+            <TableColumn fx:id="colCar" minWidth="94.0" prefWidth="94.0" text="Car" />
+            <TableColumn fx:id="colDriver" minWidth="89.0" prefWidth="89.0" text="Driver" />
+            <TableColumn fx:id="colPayment" minWidth="92.0" prefWidth="92.0" text="Payment" />
+            <TableColumn fx:id="colSBill" minWidth="72.0" prefWidth="77.0" text="SpecialBill" />
+            <TableColumn fx:id="colExtension" minWidth="51.0" prefWidth="75.0" text="Extension" />
+            <TableColumn fx:id="colSDate" minWidth="84.0" prefWidth="84.0" text="StartDate" />
+            <TableColumn fx:id="colFDate" minWidth="69.0" prefWidth="91.0" text="FinalDate" />
+            <TableColumn fx:id="colDebt" prefWidth="63.0" text="Debt" />
+            <TableColumn fx:id="colPriceC" prefWidth="73.0" text="Price" />
+            <TableColumn fx:id="colPrice" prefWidth="73.0" text="Price Total" />
          </columns>
       </TableView>
    </children>

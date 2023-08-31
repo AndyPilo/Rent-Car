@@ -158,7 +158,7 @@
             <Button fx:id="newTouristButton" layoutX="749.0" layoutY="20.0" mnemonicParsing="false" onAction="#openNew" prefHeight="30.0" prefWidth="105.0" styleClass="buttonTourist" stylesheets="@../style/menu.css" text="New Tourist" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="20.0" />
             <Button fx:id="saveButton" layoutX="774.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="105.0" styleClass="buttonTourist" stylesheets="@../style/menu.css" text="Save" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="20.0" />
             <Button fx:id="updateButton" layoutX="199.0" layoutY="20.0" mnemonicParsing="false" onAction="#openForEdit" prefHeight="30.0" prefWidth="105.0" styleClass="buttonTourist" stylesheets="@../style/menu.css" text="Update" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="20.0" />
-            <Button layoutX="349.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" styleClass="buttonTourist" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="refreshBtn" layoutX="349.0" layoutY="20.0" mnemonicParsing="false" onAction="#rellenarTablaTourist" prefHeight="30.0" prefWidth="105.0" styleClass="buttonTourist" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
       <TableView fx:id="touristTable" prefHeight="200.0" prefWidth="200.0" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
@@ -166,10 +166,11 @@
           <TableColumn fx:id="passportColumn" editable="false" minWidth="30.0" prefWidth="163.0" resizable="false" text="Passport" />
             <TableColumn fx:id="nameColumn" editable="false" prefWidth="134.0" resizable="false" text="Name" />
             <TableColumn fx:id="lastNameColumn" editable="false" prefWidth="116.0" resizable="false" text="LastName" />
-            <TableColumn fx:id="ageColumn" editable="false" prefWidth="105.0" resizable="false" text="Age" />
-            <TableColumn fx:id="sexColumn" editable="false" prefWidth="128.0" resizable="false" text="Sex" />
-            <TableColumn fx:id="contactNumberColumn" editable="false" prefWidth="131.0" text="Contact" />
-            <TableColumn fx:id="countryColumn" editable="false" prefWidth="121.0" text="Country" />
+            <TableColumn fx:id="ageColumn" editable="false" prefWidth="67.0" resizable="false" text="Age" />
+            <TableColumn fx:id="sexColumn" editable="false" prefWidth="74.0" resizable="false" text="Sex" />
+            <TableColumn fx:id="contactNumberColumn" editable="false" prefWidth="132.0" text="Contact" />
+            <TableColumn fx:id="countryColumn" editable="false" prefWidth="123.0" text="Country" />
+            <TableColumn fx:id="defaulterColumn" prefWidth="85.0" text="Defaulter" />
         </columns>
       </TableView>
    </children>

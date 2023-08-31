@@ -55,6 +55,8 @@ public class TouristController implements Initializable{
     @FXML
     private TableColumn<TouristDto, String> countryColumn;
     @FXML
+    private TableColumn<TouristDto, String> defaulterColumn;
+    @FXML
     private Button closeButton;
     @FXML
     private Button deleteButton;
@@ -80,8 +82,8 @@ public class TouristController implements Initializable{
     private ChoiceBox<String>sexMenu;
     @FXML
     private ChoiceBox<CountryDto>countryMenu;
-
-
+    @FXML
+    private Button refreshBtn;
 
     public void close() {
         Stage stage = (Stage) touristTable.getScene().getWindow();
@@ -101,6 +103,7 @@ public class TouristController implements Initializable{
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("LastName"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<>("Age"));
         contactNumberColumn.setCellValueFactory(new PropertyValueFactory<>("Contact"));
+        defaulterColumn.setCellValueFactory(new PropertyValueFactory<>("defaulter"));
 
         countryColumn.setCellValueFactory(cellData -> {
             CountryDto country = cellData.getValue().getCountry();
@@ -111,6 +114,15 @@ public class TouristController implements Initializable{
             TouristDto touristDto = cellData.getValue();
             String sex = String.valueOf(touristDto.getSex());
             return new SimpleStringProperty(sex);
+        });
+        defaulterColumn.setCellValueFactory(cellData -> {
+            boolean tourist = cellData.getValue().getDefauter();
+            String defaulter = "False";
+            System.out.println(tourist);
+            if(tourist){     
+                defaulter = "True";
+            }
+            return new SimpleStringProperty(defaulter);
         });
         touristTable.setItems(tourists);
     }
@@ -156,6 +168,7 @@ public void onTouristForm() {
     insertTouristPane.setVisible(true);
     backButton.setVisible(true);
     saveButton.setVisible(true);
+    refreshBtn.setVisible(false);
 }
 
 public void onBackButton() {
@@ -166,6 +179,7 @@ public void onBackButton() {
     insertTouristPane.setVisible(false);
     backButton.setVisible(false);
     saveButton.setVisible(false);
+    refreshBtn.setVisible(true);
     cleanFields();
 }
 
@@ -278,7 +292,8 @@ public boolean validarCamposLLenos(){
                                         , Integer.parseInt(ageField.getText())
                                         , sexMenu.getValue().charAt(0)
                                         , contactField.getText()
-                                        , countryMenu.getValue());
+                                        , countryMenu.getValue()
+                                        , false);
                     
                     ServicesLocator.getTouristServices().insertTourist(touristDto);
                     
@@ -302,7 +317,8 @@ public boolean validarCamposLLenos(){
                                         , Integer.parseInt(ageField.getText())
                                         , sexMenu.getValue().charAt(0)
                                         , contactField.getText()
-                                        , countryMenu.getValue());
+                                        , countryMenu.getValue()
+                                        ,selectedTourist.getDefauter());
                 
                     ServicesLocator.getTouristServices().updateTourist(touristUpdate);
 

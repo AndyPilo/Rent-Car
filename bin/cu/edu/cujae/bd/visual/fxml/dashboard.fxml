@@ -8,11 +8,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #ECECE7;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.DashboardController">
    <children>
-      <AnchorPane layoutY="70.0" prefHeight="580.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <AnchorPane layoutX="-14.0" layoutY="82.0" prefHeight="580.0" prefWidth="900.0" AnchorPane.bottomAnchor="-12.0" AnchorPane.topAnchor="82.0">
          <children>
-            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="275.0" prefWidth="862.0">
+            <AnchorPane layoutX="24.0" layoutY="49.0" prefHeight="458.0" prefWidth="862.0">
                <children>
-                  <AnchorPane layoutX="22.0" layoutY="24.0" prefHeight="224.0" prefWidth="240.0" style="-fx-background-color: #979dac; -fx-background-radius: 10;">
+                  <AnchorPane layoutX="22.0" layoutY="29.0" prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #979dac; -fx-background-radius: 10;">
                      <children>
                         <FontAwesomeIcon fill="WHITE" iconName="CAR" layoutX="21.0" layoutY="32.0" size="1.7em" />
                         <Label layoutX="31.0" layoutY="104.0" prefHeight="30.0" prefWidth="178.0" text="Available Car " textFill="WHITE" AnchorPane.bottomAnchor="22.0">
@@ -27,22 +27,22 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="308.0" layoutY="24.0" prefHeight="224.0" prefWidth="240.0" style="-fx-background-color: #7d8597; -fx-background-radius: 10;">
+                  <AnchorPane layoutX="309.0" layoutY="29.0" prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #7d8597; -fx-background-radius: 10;">
                      <children>
-                        <FontAwesomeIcon fill="WHITE" iconName="CAR" layoutX="21.0" layoutY="32.0" size="1.7em" />
+                        <FontAwesomeIcon fill="#fffefe" iconName="CAR" layoutX="21.0" layoutY="32.0" size="1.7em" />
                         <Label fx:id="tallerCars" alignment="CENTER_RIGHT" layoutX="149.0" layoutY="13.0" prefHeight="35.0" prefWidth="77.0" text="0" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="29.0" />
                            </font>
                         </Label>
-                        <Label layoutX="21.0" layoutY="104.0" prefHeight="30.0" prefWidth="178.0" text="Carros en Taller" textFill="#abf5f0" AnchorPane.bottomAnchor="22.0">
+                        <Label layoutX="21.0" layoutY="104.0" prefHeight="30.0" prefWidth="178.0" text="Cars under repair" textFill="WHITE" AnchorPane.bottomAnchor="22.0">
                            <font>
                               <Font name="System Bold" size="19.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="593.0" layoutY="24.0" prefHeight="224.0" prefWidth="233.0" style="-fx-background-color: #5c677d; -fx-background-radius: 10;">
+                  <AnchorPane layoutX="594.0" layoutY="29.0" prefHeight="400.0" prefWidth="233.0" style="-fx-background-color: #5c677d; -fx-background-radius: 10;">
                      <children>
                         <FontAwesomeIcon fill="WHITE" iconName="CAR" layoutX="21.0" layoutY="32.0" size="1.7em" />
                         <Label fx:id="alqCars" alignment="CENTER_RIGHT" layoutX="139.0" layoutY="13.0" prefHeight="35.0" prefWidth="77.0" text="0" textFill="WHITE">
@@ -50,7 +50,7 @@
                               <Font name="System Bold" size="29.0" />
                            </font>
                         </Label>
-                        <Label layoutX="21.0" layoutY="105.0" prefHeight="30.0" prefWidth="178.0" text="Carros Alquilados" textFill="WHITE" AnchorPane.bottomAnchor="21.0">
+                        <Label layoutX="21.0" layoutY="105.0" prefHeight="30.0" prefWidth="178.0" text="Rented cars" textFill="WHITE" AnchorPane.bottomAnchor="21.0">
                            <font>
                               <Font name="System Bold" size="19.0" />
                            </font>
@@ -59,10 +59,16 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Button fx:id="btnRefresh" layoutX="837.0" layoutY="528.0" mnemonicParsing="false" onAction="#onRefresh" prefHeight="38.0" prefWidth="41.0" style="-fx-background-color: transparent;">
+            <Label alignment="CENTER" layoutX="31.0" layoutY="6.0" prefHeight="30.0" prefWidth="202.0" text="Car Rent">
+               <font>
+                  <Font name="Calibri Bold" size="37.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnRefresh" layoutX="859.0" layoutY="513.0" mnemonicParsing="false" onAction="#onRefresh" prefHeight="30.0" prefWidth="37.0" style="-fx-background-color: transparent;">
                <graphic>
-                  <FontAwesomeIcon fx:id="icon" iconName="REFRESH" size="2.5em" wrappingWidth="33.0" />
-               </graphic></Button>
+                  <FontAwesomeIcon fx:id="icon" iconName="REFRESH" size="2.5em" text="" wrappingWidth="21.0" />
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="70.0" prefWidth="900.0" styleClass="paneDashboard" stylesheets="@../style/style.css">

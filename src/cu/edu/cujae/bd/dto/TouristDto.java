@@ -11,11 +11,10 @@ public class TouristDto {
 	private char sex;
 	private String contact;
 	private CountryDto country;
-	//private ObservableList<CarDto> cars;
-	
+	private boolean defauter;
 	
 	public TouristDto(String passport, String name, String last_name, int age,
-			char sex, String contact, CountryDto country) {
+			char sex, String contact, CountryDto country,boolean defaulter) {
 		super();
 		this.passport = passport;
 		this.name = name;
@@ -24,10 +23,11 @@ public class TouristDto {
 		this.sex = sex;
 		this.contact = contact;
 		this.country = country;
+		this.defauter = defaulter;
 	}
 
 	public TouristDto(int codTourist,String passport, String name, String last_name, int age,
-			char sex, String contact, CountryDto country) {
+			char sex, String contact, CountryDto country,boolean defaulter) {
 		super();
 		this.passport = passport;
 		this.name = name;
@@ -37,6 +37,7 @@ public class TouristDto {
 		this.contact = contact;
 		this.country = country;
 		this.codTourist = codTourist;
+		this.defauter = defaulter;
 	}
 
 	public TouristDto(){
@@ -109,4 +110,13 @@ public class TouristDto {
 	public void setCountry(CountryDto country) {
 		this.country = country;
 	}
+
+	public boolean getDefauter() {
+		return defauter;
+	}
+
+	public void setDefauter(boolean defauter) {
+		this.defauter = defauter;
+	}
+
 }

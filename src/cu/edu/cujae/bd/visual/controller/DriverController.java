@@ -73,6 +73,8 @@ public class DriverController implements Initializable{
     private Button deleteButton;
     @FXML
     private Button backButton;
+    @FXML
+    private Button refreshBtn;
 
 /****************************    TABLAS Y CHOICEBOX     ****************************/
 
@@ -246,6 +248,7 @@ public class DriverController implements Initializable{
         insertDriverPane.setVisible(false);
         backButton.setVisible(false);
         saveButton.setVisible(false);
+        refreshBtn.setVisible(true);
         cleanFields();
     }
 
@@ -257,6 +260,7 @@ public class DriverController implements Initializable{
         insertDriverPane.setVisible(true);
         backButton.setVisible(true);
         saveButton.setVisible(true);
+        refreshBtn.setVisible(false);
     }
 
     public void cleanFields(){

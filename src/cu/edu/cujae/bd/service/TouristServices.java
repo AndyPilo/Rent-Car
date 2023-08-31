@@ -19,7 +19,7 @@ public class TouristServices {
 	}
 
 	public void insertTourist(TouristDto tourist) throws SQLException {
-		String function = "{call insert_tourist(?,?,?,?,?,?,?)}";
+		String function = "{call insert_tourist(?,?,?,?,?,?,?,?)}";
 
 		Connection connection = ServicesLocator.getConnection();
 		CallableStatement preparedFunction = connection.prepareCall(function);
@@ -30,6 +30,7 @@ public class TouristServices {
 		preparedFunction.setString(5, String.valueOf(tourist.getSex()));
 		preparedFunction.setString(6, tourist.getContact());
 		preparedFunction.setInt(7, tourist.getCountry().getCodCountry());
+		preparedFunction.setBoolean(8, tourist.getDefauter());
 		preparedFunction.execute();
 
 		preparedFunction.close();
@@ -49,7 +50,7 @@ public class TouristServices {
 	}
 
 	public void updateTourist(TouristDto tourist) throws SQLException {
-		String function = "{call update_tourist(?,?,?,?,?,?,?,?)}";
+		String function = "{call update_tourist(?,?,?,?,?,?,?,?,?)}";
 
 		Connection connection = ServicesLocator.getConnection();
 		CallableStatement preparedFunction = connection.prepareCall(function);
@@ -61,6 +62,7 @@ public class TouristServices {
 		preparedFunction.setString(6, String.valueOf(tourist.getSex()));
 		preparedFunction.setString(7, tourist.getContact());
 		preparedFunction.setInt(8, tourist.getCountry().getCodCountry());
+		preparedFunction.setBoolean(9, tourist.getDefauter());
 		preparedFunction.execute();
 
 		preparedFunction.close();
@@ -99,7 +101,8 @@ public class TouristServices {
 					resultSet.getInt("age"),
 					resultSet.getString("sex").charAt(0),
 					resultSet.getString("contact"),
-					country));
+					country,
+					resultSet.getBoolean("defaulter")));
 		}
 
 		resultSet.close();
@@ -130,8 +133,9 @@ public class TouristServices {
 			char sex = resultSet.getString(6).charAt(0);
 			String contact = resultSet.getString(7);
 			CountryDto country = ServicesLocator.getCountryServices().getCountryById(resultSet.getInt(8));
+			boolean defaulter = resultSet.getBoolean(9);
 
-			tourist = new TouristDto(passport, name, lastName, age, sex, contact, country);
+			tourist = new TouristDto(passport, name, lastName, age, sex, contact, country,defaulter);
 			tourist.setCodTourist(touristId);
 		}
 
