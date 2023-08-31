@@ -43,24 +43,24 @@
                </font></Button>
          </children>
       </HBox>
-      <TextField fx:id="userField" alignment="CENTER" layoutX="30.0" layoutY="109.0" prefHeight="33.0" prefWidth="440.0" promptText="username" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+      <TextField fx:id="userField" layoutX="30.0" layoutY="109.0" prefHeight="33.0" prefWidth="440.0" promptText="username" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
       <Label layoutX="30.0" layoutY="160.0" text="Rol" AnchorPane.leftAnchor="30.0">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="rolMenu" layoutX="30.0" layoutY="187.0" prefHeight="33.0" prefWidth="400.0" style="-fx-background-color: white; -fx-border-color: #CED4DA;" />
-      <Label layoutX="30.0" layoutY="247.0" text="Password" AnchorPane.leftAnchor="30.0">
+      <ChoiceBox fx:id="rolMenu" blendMode="MULTIPLY" cache="true" layoutX="30.0" layoutY="187.0" prefHeight="33.0" prefWidth="394.0" style="-fx-background-color: white; -fx-border-color: #CED4DA;" />
+      <Label fx:id="passLbl" layoutX="30.0" layoutY="247.0" text="Password" AnchorPane.leftAnchor="30.0">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passField" alignment="CENTER" layoutX="30.0" layoutY="277.0" prefHeight="33.0" prefWidth="400.0" promptText="password" />
-      <Label layoutX="30.0" layoutY="341.0" text="Confirm Password" AnchorPane.leftAnchor="30.0">
+      <PasswordField fx:id="passField" layoutX="30.0" layoutY="277.0" prefHeight="33.0" prefWidth="394.0" promptText="password" />
+      <Label fx:id="cofPassLbl" layoutX="30.0" layoutY="341.0" text="Confirm Password" AnchorPane.leftAnchor="30.0">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <PasswordField fx:id="confPassField" alignment="CENTER" layoutX="30.0" layoutY="368.0" prefHeight="33.0" prefWidth="400.0" promptText="confirm password" />
+      <PasswordField fx:id="confPassField" layoutX="30.0" layoutY="368.0" prefHeight="33.0" prefWidth="394.0" promptText="confirm password" />
    </children>
 </AnchorPane>

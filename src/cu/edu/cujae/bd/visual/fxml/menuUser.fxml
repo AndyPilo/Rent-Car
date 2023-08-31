@@ -44,7 +44,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="PLUS" wrappingWidth="16.0" />
+                  <FontAwesomeIcon fill="WHITE" iconName="LIST" wrappingWidth="16.0" />
                </graphic>
                <opaqueInsets>
                   <Insets />

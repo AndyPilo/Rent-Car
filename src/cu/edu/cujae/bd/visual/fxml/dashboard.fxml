@@ -3,7 +3,6 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -11,10 +10,7 @@
    <children>
       <AnchorPane layoutY="70.0" prefHeight="580.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="70.0">
          <children>
-            <AnchorPane layoutX="19.0" layoutY="19.0" prefHeight="275.0" prefWidth="862.0" style="-fx-background-color: white; -fx-background-radius: 10;">
-               <effect>
-                  <DropShadow height="18.07" radius="11.465" width="29.79" />
-               </effect>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="275.0" prefWidth="862.0">
                <children>
                   <AnchorPane layoutX="22.0" layoutY="24.0" prefHeight="224.0" prefWidth="240.0" style="-fx-background-color: #979dac; -fx-background-radius: 10;">
                      <children>
@@ -39,7 +35,7 @@
                               <Font name="System Bold" size="29.0" />
                            </font>
                         </Label>
-                        <Label layoutX="21.0" layoutY="104.0" prefHeight="30.0" prefWidth="178.0" text="Carros en Taller" textFill="WHITE" AnchorPane.bottomAnchor="22.0">
+                        <Label layoutX="21.0" layoutY="104.0" prefHeight="30.0" prefWidth="178.0" text="Carros en Taller" textFill="#abf5f0" AnchorPane.bottomAnchor="22.0">
                            <font>
                               <Font name="System Bold" size="19.0" />
                            </font>
@@ -63,6 +59,10 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
+            <Button fx:id="btnRefresh" layoutX="837.0" layoutY="528.0" mnemonicParsing="false" onAction="#onRefresh" prefHeight="38.0" prefWidth="41.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <FontAwesomeIcon fx:id="icon" iconName="REFRESH" size="2.5em" wrappingWidth="33.0" />
+               </graphic></Button>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="70.0" prefWidth="900.0" styleClass="paneDashboard" stylesheets="@../style/style.css">

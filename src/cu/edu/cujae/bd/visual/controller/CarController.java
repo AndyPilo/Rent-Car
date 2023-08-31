@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import cu.edu.cujae.bd.dto.BrandDto;
 import cu.edu.cujae.bd.dto.CarDto;
+import cu.edu.cujae.bd.dto.ContractDto;
 import cu.edu.cujae.bd.dto.ModelDto;
 import cu.edu.cujae.bd.dto.SituationDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
@@ -126,6 +127,8 @@ public class CarController implements Initializable {
     private TableColumn<ModelDto, String> colBrandM;
     @FXML
     private TableColumn<BrandDto, String> colBrandB;
+    @FXML
+    private Label infSituationLbl;
         
 
 
@@ -246,6 +249,8 @@ public class CarController implements Initializable {
     public void openNew() {
         this.selectedCar = new CarDto();
         carFormLabel.setText("New Car");
+        situationMenu.setDisable(false);
+        infSituationLbl.setVisible(false);
         onCarForm();
     }
 
@@ -273,6 +278,26 @@ public class CarController implements Initializable {
             }
             situationMenu.setValue(situation);
             onCarForm();
+
+            boolean alquilado = false;
+            ObservableList<ContractDto> contractList;
+            try {
+                contractList = ServicesLocator.getContractServices().getAllContract();
+                for (ContractDto contractDto : contractList) {
+                if(selectedCar.getCodCar() == contractDto.getCar().getCodCar()){
+                    alquilado = true;
+                    
+                }
+            }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }         
+
+            if(alquilado){
+                situationMenu.setDisable(true);
+                infSituationLbl.setVisible(true);
+            }
+                
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText(null);
@@ -380,27 +405,27 @@ public class CarController implements Initializable {
                 
                     onBackButton();           
             }else{
-                    CarDto  carUpdate = new CarDto(selectedCar.getCodCar()
-                            , plateField.getText()
-                            , colorField.getText() 
-                            , Integer.parseInt(kmField.getText())
-                            , modelMenu.getValue()
-                            , situationMenu.getValue()
-                            , Integer.parseInt(priceField.getText()));
-                
-                    ServicesLocator.getCarServices().updateCar(carUpdate);
+                CarDto  carUpdate = new CarDto(selectedCar.getCodCar()
+                        , plateField.getText()
+                        , colorField.getText() 
+                        , Integer.parseInt(kmField.getText())
+                        , modelMenu.getValue()
+                        , situationMenu.getValue()
+                        , Integer.parseInt(priceField.getText()));
+            
+                ServicesLocator.getCarServices().updateCar(carUpdate);
 
-                    // Mostrar mensaje de exito
-                    Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Éxito");
-                    alert.setHeaderText(null);
-                    alert.setContentText("The car has been updated successfully.");
-                    alert.showAndWait();
-                        
-                    //Actualizar en la tabla
-                    rellenarTablaCar();
-                        
-                    onBackButton();
+                // Mostrar mensaje de exito
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Éxito");
+                alert.setHeaderText(null);
+                alert.setContentText("The car has been updated successfully.");
+                alert.showAndWait();
+                    
+                //Actualizar en la tabla
+                rellenarTablaCar();
+                    
+                onBackButton();
             }
         }
     }

@@ -15,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -23,6 +24,7 @@ import javafx.util.StringConverter;
 public class AddUserController implements Initializable{
     private ObservableList<RolDto> roles = FXCollections.observableArrayList();
     private UserDto selectedUser;
+    private boolean update = false;
     
     @FXML
     private Button cancelButton;
@@ -36,14 +38,38 @@ public class AddUserController implements Initializable{
     private Button saveButton;
     @FXML
     private TextField userField;
+    @FXML
+    private Label cofPassLbl;
+    @FXML
+    private Label passLbl;
 
     public void initAtributes(){
         this.selectedUser = new UserDto();
+
+        passLbl.setVisible(true);
+        passField.setVisible(true);
+        confPassField.setVisible(true);
+        cofPassLbl.setVisible(true);
+        update = false;
     }
 
     public void initAtributes(UserDto user){
         this.selectedUser = user;
         this.userField.setText(user.getUsername());
+        update = true;
+        RolDto rolDto = null;
+    
+        for (RolDto rol : this.roles){
+            if(user.getRol().getCodRol() == rol.getCodRol()){
+                rolDto = rol;
+            }
+        }
+        rolMenu.setValue(rolDto);
+
+        passLbl.setVisible(false);
+        passField.setVisible(false);
+        confPassField.setVisible(false);
+        cofPassLbl.setVisible(false);
     }
 
     public void configurarChoiceBoxSituation() {
@@ -71,14 +97,17 @@ public class AddUserController implements Initializable{
     }
 
     public void save () throws SQLException{
-        if(userField.getText().equals("") || passField.getText().equals("") 
+        if(update){
+            selectedUser.setUsername(userField.getText());
+            selectedUser.setRol(rolMenu.getValue()); 
+            close();
+        }else if(userField.getText().equals("") || passField.getText().equals("") 
         || confPassField.getText().equals("") || rolMenu.getValue()==null){
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setContentText("You must fill in all fields");
             alert.showAndWait();
         }else if(!passField.getText().equals(confPassField.getText())){
-
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setContentText("Las contraseñas no coinciden");
@@ -88,13 +117,7 @@ public class AddUserController implements Initializable{
             selectedUser.setPassword(passField.getText());
             selectedUser.setRol(rolMenu.getValue());
             close();
-        }else{
-            selectedUser.setUsername(userField.getText());
-            selectedUser.setPassword(passField.getText());
-            selectedUser.setRol(rolMenu.getValue()); 
-            close();
-        }
-      
+        } 
     }
     
     public UserDto getSelectedUser(){

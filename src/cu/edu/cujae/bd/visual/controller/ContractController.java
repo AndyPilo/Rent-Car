@@ -2,9 +2,13 @@ package cu.edu.cujae.bd.visual.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.time.LocalDate;
 
 import cu.edu.cujae.bd.dto.CarDto;
 import cu.edu.cujae.bd.dto.ContractDto;
@@ -15,9 +19,12 @@ import cu.edu.cujae.bd.dto.SituationDto;
 import cu.edu.cujae.bd.dto.TouristDto;
 import cu.edu.cujae.bd.service.ServicesLocator;
 import cu.edu.cujae.bd.visual.models.Model;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.ScheduledService;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,16 +34,20 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 public class ContractController implements Initializable{
 
     private ObservableList<ContractDto> contracts = FXCollections.observableArrayList();
+    private ObservableList<ContractDto> contractList = FXCollections.observableArrayList();
+    private int count = 0;
 
     @FXML
     private Button closeButton;
@@ -60,6 +71,8 @@ public class ContractController implements Initializable{
     private TableColumn<ContractDto, String> colSDate;
     @FXML
     private TableColumn<ContractDto, String> colTourist;
+    @FXML 
+    private Label lblprueba;
 
 
     public void configurarTablaContract() {
@@ -103,9 +116,9 @@ public class ContractController implements Initializable{
 
     public void rellenarTablaContract(){
         contracts.clear();
-        ObservableList<ContractDto> contractList = FXCollections.observableArrayList();
+        
         try {
-            contractList = ServicesLocator.getContractServices().getAllContract();
+            this.contractList = ServicesLocator.getContractServices().getAllContract();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -176,6 +189,11 @@ public class ContractController implements Initializable{
             }
     }
 
+    public void onRefresh(){
+       diasExtension();
+       rellenarTablaContract();
+    }
+
     public void close() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         Model.getInstanse().getViewFactory().closeStage(stage);
@@ -188,7 +206,82 @@ public class ContractController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        diasExtension();
         configurarTablaContract();
         rellenarTablaContract();
+        //scheduleLabelUpdate();
+    }
+/*
+    private void scheduleLabelUpdate() {
+        ScheduledService<Void> scheduledService = new ScheduledService<Void>() {
+            @Override
+            protected Task<Void> createTask() {
+                return new Task<Void>() {
+                    @Override
+                    protected Void call() {
+                        Platform.runLater(() -> {
+                            for (int i =0; i < contractList.size();i++){
+                                LocalDate finalDate = contractList.get(i).getDate().getFinalDate().toLocalDate();
+                                LocalDate nowDate = LocalDate.now();
+                                int diafinal = 30;
+                                int diahoy = 31;
+                                int diferencia = Long.valueOf(ChronoUnit.DAYS.between(nowDate, finalDate)).intValue();
+                                int diasExtension = Long.valueOf(ChronoUnit.DAYS.between(finalDate, nowDate)).intValue();
+                                System.out.println("la diferencia es :" + diferencia);
+                                System.out.println("los dias de extension son :" + diasExtension);
+                                if(diferencia < 0){
+                                    ContractDto contractDto = contractList.get(i);
+                                    contractDto.setExtension(diasExtension);
+                                    try {
+                                        lblprueba.setText(count + "");
+                                        count ++;
+                                        ServicesLocator.getContractServices().updateContract(contractDto);
+                                        rellenarTablaContract();
+                                    } catch (SQLException e) {
+                                        // TODO Auto-generated catch block
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }                             
+                        });
+                        return null;
+                    }
+                };
+            }
+        };
+
+        // Schedule the task to run every 24 hours
+        scheduledService.setDelay(Duration.ZERO);
+        scheduledService.setPeriod(Duration.seconds(10));
+        scheduledService.start();
+    }
+*/
+
+    public void diasExtension(){
+        for (int i =0; i < contractList.size();i++){
+                                LocalDate finalDate = contractList.get(i).getDate().getFinalDate().toLocalDate();
+                                LocalDate startDate = contractList.get(i).getDate().getStarDate().toLocalDate();
+                                LocalDate nowDate = LocalDate.now();
+                                //diferencia entre el ultimo dia del contrato y la fecha actual (para saber si ya se paso del contrato)
+                                int diferencia = Long.valueOf(ChronoUnit.DAYS.between(nowDate, finalDate)).intValue();
+                                //cantidad de dias que se paso del contrato
+                                int diasExtension = Long.valueOf(ChronoUnit.DAYS.between(finalDate, nowDate)).intValue();
+                                //cantidad de dias de duracion del contrato
+                                int diasDeContrato = Long.valueOf(ChronoUnit.DAYS.between(startDate, finalDate)).intValue();
+                               
+                                if(diferencia < 0){
+                                    ContractDto contractDto = contractList.get(i);
+                                    contractDto.setExtension(diasExtension);
+                                    contractDto.setPriceTotal(((diasDeContrato * contractDto.getCar().getPrice()) + (contractDto.getBillSpecial() * diasExtension)));
+                                    try {
+                                        lblprueba.setText(count + "");
+                                        count ++;
+                                        ServicesLocator.getContractServices().updateContract(contractDto);
+                                    } catch (SQLException e) {
+                                        
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
     }
 }

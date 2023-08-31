@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="270.0" style="-fx-background-color: #33415c;" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="270.0" style="-fx-background-color: #33415c;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.bd.visual.controller.MenuController">
    <children>
       <HBox prefHeight="70.0" prefWidth="271.0" style="-fx-background-color: #001233;">
          <children>
@@ -39,12 +39,12 @@
                   <Insets bottom="20.0" left="40.0" />
                </padding>
             </Button>
-            <Button fx:id="usersButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="slideItem" stylesheets="@../style/menu.css" text="Users" textFill="WHITE">
+            <Button fx:id="reportsButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="slideItem" stylesheets="@../style/menu.css" text="Reports" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="USERS" wrappingWidth="20.0" />
+                  <FontAwesomeIcon fill="WHITE" iconName="LIST" wrappingWidth="16.0" />
                </graphic>
                <opaqueInsets>
                   <Insets />
@@ -53,12 +53,12 @@
                   <Insets bottom="20.0" left="40.0" />
                </padding>
             </Button>
-            <Button fx:id="reportsButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="slideItem" stylesheets="@../style/menu.css" text="Reports" textFill="WHITE">
+            <Button fx:id="usersButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="slideItem" stylesheets="@../style/menu.css" text="Users" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" iconName="PLUS" wrappingWidth="16.0" />
+                  <FontAwesomeIcon fill="WHITE" iconName="USERS" wrappingWidth="20.0" />
                </graphic>
                <opaqueInsets>
                   <Insets />

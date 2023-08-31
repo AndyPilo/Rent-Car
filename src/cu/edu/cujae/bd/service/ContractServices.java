@@ -43,7 +43,7 @@ public class ContractServices {
     }
 	
     public void updateContract(ContractDto contract)throws SQLException{
-    	String function ="{call update_contract(?,?,?,?,?,?,?,?,?,?)}";
+    	String function ="{call update_contract(?,?,?,?,?,?,?,?,?)}";
  		
  		Connection connection = ServicesLocator.getConnection();
  		CallableStatement preparedFunction = connection.prepareCall(function);

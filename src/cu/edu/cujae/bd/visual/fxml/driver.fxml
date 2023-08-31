@@ -129,7 +129,7 @@
             <Button layoutX="350.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" styleClass="buttonDriver" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
-      <TableView fx:id="driverTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <TableView fx:id="driverTable" prefHeight="200.0" prefWidth="200.0" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
         <columns>
           <TableColumn fx:id="dniColumn" minWidth="30.0" prefWidth="193.0" resizable="false" text="DNI" />
             <TableColumn fx:id="nameColumn" prefWidth="177.0" resizable="false" text="Name " />

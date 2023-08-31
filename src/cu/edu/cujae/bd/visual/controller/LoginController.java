@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 public class LoginController implements Initializable{
 	
 	private UserServices userServices = ServicesLocator.getUserServices();
+
 	@FXML
 	private Button loginButton;
 	@FXML
@@ -44,7 +45,6 @@ public class LoginController implements Initializable{
 		
 		UserDto userAuth = userServices.getLoginUser(userField.getText(),passField.getText());
 		String rol = userAuth != null ? userAuth.getRol().getRol():"";
-
 		if(userField.getText().isEmpty()==true || passField.getText().isEmpty() == true) {
 			lblMessage.setText("Please enter your data");	
 			userField.setText("");
@@ -53,13 +53,14 @@ public class LoginController implements Initializable{
 			lblMessage.setText("Invalid login, please try again");
 			userField.setText("");
 			passField.setText("");
-		}else if(rol.equals("admin")){	
+		}else if(rol.equals("admin") || rol.equals("superadmin")){	
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setHeaderText(null);
 			alert.setContentText("Successfully Login");
 			alert.showAndWait();
 			Model.getInstanse().getViewFactory().showApplicationWindow();
 			Model.getInstanse().getViewFactory().closeStage(stage);
+			
 		}else if(rol.equals("user")){
 			Model.getInstanse().getViewFactory().closeStage(stage);
 			Model.getInstanse().getViewFactory().showAplicationUserWindow();

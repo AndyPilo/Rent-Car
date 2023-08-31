@@ -11,7 +11,8 @@
 .table-view .column-header,
 .table-view .column-header-background .filler{
     -fx-cell-size: 20;
-    -fx-background-color:  #AB27A8;
+    -fx-background-color:  #7d8597;
+    -fx-padding: 0px;
 }
 
 .table-view .column-header .label{
@@ -61,5 +62,8 @@
     -fx-background-color: linear-gradient(to bottom right,  #062052 , #0b65be );
 }
 
+.table-view .column-header .label{
+    -fx-text-fill: white;
+}
 
 

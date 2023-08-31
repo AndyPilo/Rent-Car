@@ -3,6 +3,7 @@ package cu.edu.cujae.bd.visual.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import cu.edu.cujae.bd.dto.RolDto;
 import cu.edu.cujae.bd.dto.UserDto;
@@ -18,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -29,6 +31,7 @@ public class UserController implements Initializable{
 
     public ObservableList<UserDto> users = FXCollections.observableArrayList();
     private UserDto selectedUser;
+    private UserDto userAuth;
 
     @FXML
     private TableView<UserDto> usersTable;
@@ -36,6 +39,7 @@ public class UserController implements Initializable{
     private TableColumn<UserDto, String> rolCol;
     @FXML
     private TableColumn<UserDto, String> usernameCol;
+
 
 /****************************    TABLAS Y CHOICEBOX     ****************************/
 
@@ -85,15 +89,43 @@ public class UserController implements Initializable{
     }
 
      public void onDeleteButton() {
+
         UserDto selectedUserDto = usersTable.getSelectionModel().getSelectedItem();
             if (selectedUserDto != null) {
-                try {
-                    ServicesLocator.getUserServices().deleteUser(selectedUserDto.getCodUser());;
-                } catch (SQLException e) {
-                    e.printStackTrace();
+
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Confirmation Message");
+                alert.setContentText("Are you sure you want to delete ?");
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if(option.get().equals(ButtonType.OK)){
+                    
+                    if(userAuth.getCodUser() == selectedUserDto.getCodUser()){
+                        Alert alert2 = new Alert(AlertType.ERROR);
+                        alert2.setHeaderText(null);
+                        alert2.setContentText("No te puedes eliminar a ti mismo");
+                        alert2.showAndWait();
+                    }else if(userAuth.getRol().getCodRol() == selectedUserDto.getRol().getCodRol()){
+                        Alert alert2 = new Alert(AlertType.ERROR);
+                        alert2.setHeaderText(null);
+                        alert2.setContentText("No puedes eliminar a otro admin");
+                        alert2.showAndWait();
+                    }else{
+                        try {
+                        ServicesLocator.getUserServices().deleteUser(selectedUserDto.getCodUser());;
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                        users.remove(selectedUserDto);
+                        usersTable.refresh();
+
+                        Alert alert2 = new Alert(AlertType.INFORMATION);
+                        alert2.setHeaderText(null);
+                        alert2.setContentText("Successfuly");
+                        alert2.showAndWait();
+                    }
                 }
-                users.remove(selectedUserDto);
-                usersTable.refresh();
             }else{
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText(null);
@@ -105,7 +137,7 @@ public class UserController implements Initializable{
 
     //Se ejecuta al dar clic en el boton update
 	public void openForEdit() throws SQLException, IOException {
-        /* 
+         
 		this.selectedUser = usersTable.getSelectionModel().getSelectedItem();
 
         if(this.selectedUser != null){
@@ -114,25 +146,26 @@ public class UserController implements Initializable{
             loader.load();
             AddUserController controller = loader.getController();
             
-            controller.initAtributes();
+            controller.initAtributes(this.selectedUser);
 
             Parent parent = loader.getRoot();
-            Stage stage = new Stage(StageStyle.UTILITY);
+            Stage stage = new Stage(StageStyle.UNDECORATED);
             stage.setScene(new Scene(parent));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
                 
             UserDto user = controller.getSelectedUser();
-            ServicesLocator.getUserServices().insertUser(user); 
-                
-            rellenarTablaUser();
+            if(user!=null){
+                ServicesLocator.getUserServices().updateUser(user); 
+                rellenarTablaUser();
+            } 
         }else{
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setContentText("You must select a user");
             alert.showAndWait();
         } 
-        */       
+               
 	}
 
     public void close() {

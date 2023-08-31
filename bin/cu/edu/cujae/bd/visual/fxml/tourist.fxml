@@ -161,7 +161,7 @@
             <Button layoutX="349.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" styleClass="buttonTourist" stylesheets="@../style/menu.css" text="Refresh" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
-      <TableView fx:id="touristTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <TableView fx:id="touristTable" prefHeight="200.0" prefWidth="200.0" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
         <columns>
           <TableColumn fx:id="passportColumn" editable="false" minWidth="30.0" prefWidth="163.0" resizable="false" text="Passport" />
             <TableColumn fx:id="nameColumn" editable="false" prefWidth="134.0" resizable="false" text="Name" />

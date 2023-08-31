@@ -30,10 +30,10 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView fx:id="usersTable" layoutY="70.0" prefHeight="511.0" prefWidth="900.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <TableView fx:id="usersTable" layoutY="70.0" prefHeight="511.0" prefWidth="900.0" stylesheets="@../style/style.css" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
         <columns>
-          <TableColumn fx:id="usernameCol" prefWidth="172.0" text="User Name" />
-            <TableColumn fx:id="rolCol" prefWidth="185.0" text="Rol" />
+          <TableColumn fx:id="usernameCol" prefWidth="439.0" text="User Name" />
+            <TableColumn fx:id="rolCol" prefWidth="457.0" text="Rol" />
         </columns>
       </TableView>
       <AnchorPane layoutX="27.0" layoutY="499.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="580.0">

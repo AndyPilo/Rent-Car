@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import cu.edu.cujae.bd.dto.CountryDto;
 import cu.edu.cujae.bd.dto.RolDto;
 import cu.edu.cujae.bd.dto.UserDto;
 import cu.edu.cujae.bd.utils.Encription;
@@ -123,5 +124,18 @@ public class UserServices {
 			e.printStackTrace();
 		}		
 		return userAuth;
+	}
+
+	public void updateUser(UserDto user) throws SQLException{
+		String function = "{call update_user(?,?,?)}";
+		Connection connection = ServicesLocator.getConnection();		
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.setInt(1, user.getCodUser());
+		preparedFunction.setString(2, user.getUsername());
+		preparedFunction.setInt(3, user.getRol().getCodRol());
+		preparedFunction.execute();
+		
+		preparedFunction.close();
+		connection.close();	
 	}
 }
